@@ -68,6 +68,32 @@ export default function App() {
     setLegalModalOpen(true);
   };
 
+  // Lock background scroll when any modal is open
+  useEffect(() => {
+    const isAnyModalOpen = scheduleModalOpen || intakeModalOpen || legalModalOpen;
+    if (isAnyModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [scheduleModalOpen, intakeModalOpen, legalModalOpen]);
+
+  // Close modals on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setScheduleModalOpen(false);
+        setIntakeModalOpen(false);
+        setLegalModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <div className="min-h-screen bg-surface flex flex-col selection:bg-primary-container selection:text-on-primary">
       {/* Global Header */}
