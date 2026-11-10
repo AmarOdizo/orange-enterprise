@@ -2,19 +2,27 @@
 
 High-performance institutional wealth management web application for **Orange Enterprise (ARN 83312 • Mumbai)**, engineered with **React 19, Vite, and Tailwind CSS**.
 
-Extracted and implemented from the official Google Stitch project (`projects/17557924396338521739`).
+- **GitHub Repository:** [https://github.com/AmarOdizo/orange-enterprise](https://github.com/AmarOdizo/orange-enterprise)
+- **Design Source:** Google Stitch Project (`projects/17557924396338521739`) & [ore.b12sites.com](https://ore.b12sites.com/index)
+- **Fiduciary Credentials:** AMFI Registered ARN 83312 • Mumbai Desk
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Development Server
+### 1. Development Server (Local & Network)
 ```bash
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+- **Local:** [http://localhost:5173](http://localhost:5173) (or auto-assigned port)
+- **Mobile/Network:** Open `http://<your-local-ip>:5173` on any mobile device or tablet connected to the same Wi-Fi.
 
-### 2. Production Build
+### 2. Linting & Validation
+```bash
+npm run lint
+```
+
+### 3. Production Build
 ```bash
 npm run build
 npm run preview
