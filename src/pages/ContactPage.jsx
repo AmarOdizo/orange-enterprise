@@ -271,7 +271,7 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                     event_available
                   </span>
                   <span className="text-xs sm:text-sm font-bold">
-                    Schedule appointment
+                    Book Consultation
                   </span>
                   <span className="text-[11px] text-inverse-on-surface/70 mt-1 leading-snug">
                     Reserve dedicated private salon consultation slot.

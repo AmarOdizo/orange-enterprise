@@ -89,15 +89,15 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               +91 98204 33220
             </a>
 
-            {/* Schedule Appointment on Desktop/Laptop (lg+) */}
+            {/* Book Consultation on Desktop/Laptop (lg+) */}
             <button
-              onClick={() => onOpenSchedule('Schedule Appointment')}
+              onClick={() => onOpenSchedule('Book Consultation')}
               className="hidden lg:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors cursor-pointer"
             >
               <span className="material-symbols-outlined text-[16px] mr-1 text-[#FD6702]">
                 calendar_today
               </span>
-              Schedule Appointment
+              Book Consultation
             </button>
 
             {/* Contact CTA Button on Right Side */}
@@ -186,13 +186,13 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               </button>
               <button
                 onClick={() => {
-                  onOpenSchedule('Mobile Menu Appointment');
+                  onOpenSchedule('Mobile Menu Consultation');
                   setMobileMenuOpen(false);
                 }}
                 className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#FD6702]/10 text-[#161C25] hover:bg-[#FD6702]/20 border border-[#FD6702]/20 text-xs font-semibold transition-colors cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[16px] text-[#FD6702]">calendar_today</span>
-                Schedule Appointment
+                Book Consultation
               </button>
               <a
                 href="tel:+919820433220"

@@ -70,7 +70,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                 Private Advisory Salon
               </span>
               <h2 className="text-base sm:text-lg font-bold text-on-surface mt-0.5">
-                Schedule Fiduciary Appointment
+                Book Fiduciary Consultation
               </h2>
               <p className="text-xs text-on-surface-variant mt-0.5">
                 Reserve an executive consultation with an AMFI registered principal.
@@ -189,7 +189,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                 type="submit"
                 className="flex-1 py-2 px-4 rounded-md bg-primary-container text-on-primary text-xs sm:text-sm font-semibold hover:bg-primary transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
               >
-                <span>Confirm Appointment Booking</span>
+                <span>Confirm Consultation Booking</span>
                 <span className="material-symbols-outlined text-[16px]">calendar_today</span>
               </button>
             </div>

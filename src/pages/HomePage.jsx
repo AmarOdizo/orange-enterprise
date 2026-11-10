@@ -526,10 +526,10 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                 {/* Direct Action Buttons */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
                   <button
-                    onClick={() => onOpenSchedule('Quick Appointment')}
+                    onClick={() => onOpenSchedule('Quick Consultation')}
                     className="inline-flex items-center justify-center py-2 px-3 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-inverse-on-surface text-xs rounded-md transition-colors text-center cursor-pointer font-semibold"
                   >
-                    Schedule appointment
+                    Book consultation
                   </button>
                   <button
                     onClick={() => onOpenIntake()}

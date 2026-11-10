@@ -82,10 +82,10 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
                 Contact Salon
               </button>
               <button 
-                onClick={() => onOpenSchedule('General Advisory Appointment')} 
+                onClick={() => onOpenSchedule('General Advisory Consultation')} 
                 className="text-left text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer py-0.5"
               >
-                Schedule Appointment
+                Book Consultation
               </button>
               <button 
                 onClick={() => onOpenIntake()} 

@@ -410,7 +410,7 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-primary-container text-white text-xs sm:text-sm rounded-lg shadow-sm hover:bg-primary transition-all duration-200 cursor-pointer font-semibold"
               >
                 <span className="material-symbols-outlined text-[16px]">calendar_today</span>
-                <span>Schedule appointment</span>
+                <span>Book consultation</span>
               </button>
 
               <button

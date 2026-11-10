@@ -610,7 +610,7 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
                         <span className="material-symbols-outlined text-[18px]">calendar_month</span>
                       </div>
                       <span className="text-xs sm:text-sm text-on-surface font-bold mt-1">
-                        Schedule appointment
+                        Book Consultation
                       </span>
                       <p className="text-xs text-on-surface-variant leading-relaxed">
                         Lock in an in-person or virtual advisory session with an AMFI registered principal.
