@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const TODAY_DATE = new Date().toISOString().split('T')[0];
+
 export default function ScheduleModal({ isOpen, onClose, defaultService = 'General Advisory' }) {
   const [formData, setFormData] = useState({
     name: '',
@@ -7,7 +9,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
     email: '',
     service: defaultService,
     mode: 'In-Person Salon (Mumbai BKC)',
-    date: '',
+    date: TODAY_DATE,
     slot: '11:00 AM – 12:00 PM IST',
     notes: ''
   });
@@ -31,7 +33,10 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+      onClick={onClose}
+    >
       <div 
         className="relative w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-2xl p-4 sm:p-5 lg:p-6 max-h-[88vh] overflow-y-auto border border-surface-container"
         onClick={(e) => e.stopPropagation()}
@@ -52,7 +57,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
               Consultation Reserved
             </h3>
             <p className="text-xs sm:text-sm text-on-surface-variant max-w-sm leading-relaxed">
-              Thank you, <strong>{formData.name}</strong>. Our Mumbai fiduciary desk has logged your appointment request. You will receive an encrypted invite shortly.
+              Thank you, <strong>{formData.name}</strong>. Our Mumbai fiduciary desk has logged your appointment request for <strong>{formData.date} ({formData.slot})</strong>.
             </p>
             <div className="mt-1 px-3 py-1 bg-surface-container rounded-md text-xs text-primary font-semibold">
               ARN 83312 • Mumbai Financial Center
@@ -141,19 +146,31 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
               </div>
 
               <div className="flex flex-col gap-1">
-                <label className="text-xs font-medium text-on-surface">Preferred Time Slot (IST)</label>
-                <select
-                  value={formData.slot}
-                  onChange={(e) => setFormData({ ...formData, slot: e.target.value })}
+                <label className="text-xs font-medium text-on-surface">Preferred Date *</label>
+                <input
+                  required
+                  type="date"
+                  min={TODAY_DATE}
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                   className="w-full h-9 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-primary-container"
-                >
-                  <option value="10:00 AM – 11:00 AM IST">Morning: 10:00 AM – 11:00 AM IST</option>
-                  <option value="11:30 AM – 12:30 PM IST">Noon: 11:30 AM – 12:30 PM IST</option>
-                  <option value="03:00 PM – 04:00 PM IST">Afternoon: 03:00 PM – 04:00 PM IST</option>
-                  <option value="05:30 PM – 06:30 PM IST">Evening: 05:30 PM – 06:30 PM IST</option>
-                  <option value="08:00 PM – 09:00 PM IST">Late Advisory: 08:00 PM – 09:00 PM IST</option>
-                </select>
+                />
               </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-medium text-on-surface">Preferred Time Slot (IST)</label>
+              <select
+                value={formData.slot}
+                onChange={(e) => setFormData({ ...formData, slot: e.target.value })}
+                className="w-full h-9 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-primary-container"
+              >
+                <option value="10:00 AM – 11:00 AM IST">Morning: 10:00 AM – 11:00 AM IST</option>
+                <option value="11:30 AM – 12:30 PM IST">Noon: 11:30 AM – 12:30 PM IST</option>
+                <option value="03:00 PM – 04:00 PM IST">Afternoon: 03:00 PM – 04:00 PM IST</option>
+                <option value="05:30 PM – 06:30 PM IST">Evening: 05:30 PM – 06:30 PM IST</option>
+                <option value="08:00 PM – 09:00 PM IST">Late Advisory: 08:00 PM – 09:00 PM IST</option>
+              </select>
             </div>
 
             <div className="flex flex-col gap-1">
