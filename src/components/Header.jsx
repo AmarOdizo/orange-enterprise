@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const LOGO_URL = "https://lh3.googleusercontent.com/aida/ALJJyrBtkKQ6EShH3sJOhcaBqscWa8D6yEWu5C-HGGZyFSzUa0HcrSs0IbOsolI9c2zBuOjNDWINM0oorVLUfr1QdhoiszLKI74nJ4v16BcvvOuaCieCAc9pJKTxlSlAPh-2Q5UrfCPhlFrQE94U-LYYWq7D4ZLngYYZAYib4l4qNhB0DYWayT4NG67UiXZSfoWmvu548j2gOUl8PXjFURcF_Q6yjkd1M-E9wkjV8CL90TU9LA";
+const LOGO_URL = "/orange-enterprise-logo.jpg";
 
 export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -52,7 +52,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             <div className="bg-white p-1 rounded-md shadow-xs flex items-center justify-center shrink-0">
               <img 
                 alt="Orange Enterprise Logo" 
-                className="h-6 sm:h-7 w-auto object-contain transition-transform group-hover:scale-105" 
+                className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105" 
                 src={LOGO_URL} 
               />
             </div>

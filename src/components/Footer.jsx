@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LOGO_URL = "https://lh3.googleusercontent.com/aida/ALJJyrBtkKQ6EShH3sJOhcaBqscWa8D6yEWu5C-HGGZyFSzUa0HcrSs0IbOsolI9c2zBuOjNDWINM0oorVLUfr1QdhoiszLKI74nJ4v16BcvvOuaCieCAc9pJKTxlSlAPh-2Q5UrfCPhlFrQE94U-LYYWq7D4ZLngYYZAYib4l4qNhB0DYWayT4NG67UiXZSfoWmvu548j2gOUl8PXjFURcF_Q6yjkd1M-E9wkjV8CL90TU9LA";
+const LOGO_URL = "/orange-enterprise-logo.jpg";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, onOpenLegal }) {
@@ -17,11 +17,13 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
           {/* Column 1: Institutional Identity */}
           <div className="lg:col-span-4 flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <img 
-                alt="Orange Enterprise Logo" 
-                className="h-6 sm:h-7 w-auto object-contain" 
-                src={LOGO_URL} 
-              />
+              <div className="bg-white p-1 rounded-md shadow-xs border border-surface-container flex items-center justify-center">
+                <img 
+                  alt="Orange Enterprise Logo" 
+                  className="h-8 sm:h-9 w-auto object-contain" 
+                  src={LOGO_URL} 
+                />
+              </div>
               <span className="text-sm sm:text-base text-on-surface font-bold">
                 Orange Enterprise
               </span>
