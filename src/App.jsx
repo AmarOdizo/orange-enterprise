@@ -73,7 +73,7 @@ export default function App() {
 
   // Lock background scroll when any modal is open
   useEffect(() => {
-    const isAnyModalOpen = scheduleModalOpen || intakeModalOpen || legalModalOpen;
+    const isAnyModalOpen = scheduleModalOpen || intakeModalOpen || legalModalOpen || deskModalOpen;
     if (isAnyModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -82,7 +82,7 @@ export default function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [scheduleModalOpen, intakeModalOpen, legalModalOpen]);
+  }, [scheduleModalOpen, intakeModalOpen, legalModalOpen, deskModalOpen]);
 
   // Close modals on Escape key
   useEffect(() => {
@@ -91,6 +91,7 @@ export default function App() {
         setScheduleModalOpen(false);
         setIntakeModalOpen(false);
         setLegalModalOpen(false);
+        setDeskModalOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -108,7 +109,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="w-full pt-14 sm:pt-16 flex-1 bg-surface min-h-[calc(100vh-56px)] sm:min-h-[calc(100vh-64px)]">
+      <main className="w-full pt-16 sm:pt-[70px] flex-1 bg-surface min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-70px)]">
         {activePage === 'home' && (
           <HomePage 
             setActivePage={setActivePage}
