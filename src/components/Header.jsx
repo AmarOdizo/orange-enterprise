@@ -44,24 +44,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
       <header className="fixed top-0 left-0 w-full z-50 bg-[#FFF4E8] shadow-xs border-b border-[#F2DECA] text-[#161C25]">
         <div className="h-14 sm:h-16 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Brand Logo & Registration */}
+          {/* Brand Logo */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 sm:gap-3 shrink-0 text-left focus:outline-none cursor-pointer group"
+            className="flex items-center shrink-0 text-left focus:outline-none cursor-pointer group"
           >
             <img 
               alt="Orange Enterprise Logo" 
               className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" 
               src={LOGO_URL} 
             />
-            <div className="hidden sm:flex flex-col border-l border-[#161C25]/20 pl-2.5">
-              <span className="text-[10px] text-[#161C25] font-bold tracking-wider leading-tight uppercase">
-                ARN 83312
-              </span>
-              <span className="text-[9px] text-[#FD6702] uppercase tracking-widest font-bold">
-                Mumbai Desk
-              </span>
-            </div>
           </button>
 
           {/* Desktop & Laptop Navigation */}

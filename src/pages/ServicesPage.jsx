@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SipCalculator from '../components/SipCalculator';
 
 const WEALTH_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuBdW1zF3_WXUhRahR2CZTsi9vCLiV4h-zRkqlC-nmShxGJ6kwyoovrvjgjsqSTyRmN7zqFthsQgwfx1v9fTgsSNNeiPVRZEiiYqIEPPad6qRK0f-cUQb9tyQlpLG32jEfISgi89LdLiZD5K1_lFwUAQiEPgXrut-CLucNYx6uLOZWhkzZqzA0yXH4V9ka2PhEL0UHyzz8yFudbuSpb3UvmITAzDgr5yfNpsUCwN_60H";
 const INSURANCE_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuDmRp5a6O5lbB32sm-nxPU6_dk5UuOohKQ4iJYzpxU2011Ft2jRA2c_nts8Amoc6hYurVh976ngJwrfw0IaIYoXwzuUc7B7SLVxiRmtV-f9o6rVqSk0c3mjq7DrTsXFnb38veex_LCrSQ1yPPtjRhV-RKkhnXnholm3JpFtZXEXQ_cBBBVm5Gl0l8Y1cZinz4YC4urJ4F-SkiGyqY4AvpZfUR8lEmKG4k1wWpXPGkvd";
@@ -284,6 +285,11 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
               </div>
             </div>
 
+          </div>
+
+          {/* Interactive SIP & Wealth Calculator */}
+          <div className="w-full mt-4 sm:mt-6">
+            <SipCalculator onOpenSchedule={onOpenSchedule} />
           </div>
         </div>
       </section>
