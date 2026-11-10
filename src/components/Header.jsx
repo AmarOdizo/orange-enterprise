@@ -9,10 +9,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
+    { id: 'consultation', label: 'Book Consultation', isAction: true },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (id) => {
-    setActivePage(id);
+    if (id === 'consultation') {
+      onOpenSchedule('Book Consultation');
+    } else {
+      setActivePage(id);
+    }
     setMobileMenuOpen(false);
   };
 
@@ -57,50 +63,30 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
           </button>
 
           {/* Desktop & Laptop Navigation (Middle) */}
-          <nav className="hidden md:flex items-center gap-1 sm:gap-1.5">
+          <nav className="hidden md:flex items-center gap-1 sm:gap-1.5 lg:gap-2">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3 py-1.5 rounded-md text-xs sm:text-sm transition-all cursor-pointer font-semibold ${
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer border shadow-2xs ${
                     isActive 
-                      ? 'bg-[#FD6702] text-white shadow-xs' 
-                      : 'text-[#161C25]/80 hover:text-[#FD6702] hover:bg-[#FD6702]/8'
+                      ? 'bg-[#FD6702] text-white border-[#FD6702] shadow-xs font-bold' 
+                      : 'bg-white/80 text-[#161C25] border-[#E2D2C0] hover:bg-[#FD6702] hover:text-white hover:border-[#FD6702]'
                   }`}
                 >
                   {item.label}
                 </button>
               );
             })}
-
-            {/* Book Consultation Button in Middle */}
-            <button
-              onClick={() => onOpenSchedule('Book Consultation')}
-              className="px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold border border-[#FD6702] text-[#FD6702] bg-[#FD6702]/8 hover:bg-[#FD6702] hover:text-white transition-all duration-200 shadow-xs cursor-pointer ml-1"
-            >
-              Book Consultation
-            </button>
-
-            {/* Contact Button in Middle */}
-            <button
-              onClick={() => handleNavClick('contact')}
-              className={`px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-xs ${
-                activePage === 'contact'
-                  ? 'bg-[#161C25] text-white shadow-xs'
-                  : 'bg-[#FD6702] text-white hover:bg-[#E55A00] hover:shadow-xs'
-              }`}
-            >
-              Contact
-            </button>
           </nav>
 
           {/* Quick Actions & Local Storage on Right */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Direct Call Link for Laptop & Desktop */}
             <a 
-              className="hidden xl:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors" 
+              className="hidden xl:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors px-2 py-1.5" 
               href="tel:+919820433220"
             >
               <span className="material-symbols-outlined text-[16px] mr-1 text-[#FD6702]">
@@ -113,9 +99,9 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
             <button
               onClick={() => onOpenDesk && onOpenDesk()}
               title="Open Local Storage Leads Portal (ARN 83312)"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#161C25] hover:bg-black text-white shadow-xs transition-all cursor-pointer border border-[#161C25]"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer border shadow-2xs bg-white/80 text-[#161C25] border-[#E2D2C0] hover:bg-[#FD6702] hover:text-white hover:border-[#FD6702] group"
             >
-              <span className="material-symbols-outlined text-[15px] text-[#FD6702]">
+              <span className="material-symbols-outlined text-[15px] text-[#FD6702] group-hover:text-white transition-colors">
                 storage
               </span>
               <span>Local Storage</span>
@@ -158,60 +144,45 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
 
         {/* Mobile-only Drawer Menu (< md) */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FFF4E8] border-t border-[#F2DECA] px-4 py-3 flex flex-col gap-1.5 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-[#161C25]">
-            <span className="text-[10px] uppercase text-[#161C25]/60 px-2 pt-1 font-bold tracking-wider">
-              Navigation
+          <div className="md:hidden bg-[#FFF4E8] border-t border-[#F2DECA] px-4 py-3.5 flex flex-col gap-2 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-[#161C25]">
+            <span className="text-[10px] uppercase text-[#161C25]/60 px-1 font-bold tracking-wider">
+              Navigation Tabs
             </span>
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full text-left px-3.5 py-2.5 rounded-md text-sm transition-colors flex items-center justify-between cursor-pointer ${
-                  activePage === item.id
-                    ? 'bg-[#FD6702] text-white font-bold shadow-xs'
-                    : 'text-[#161C25] hover:bg-[#FD6702]/10 font-medium'
-                }`}
-              >
-                <span>{item.label}</span>
-                <span className="material-symbols-outlined text-[16px]">
-                  chevron_right
-                </span>
-              </button>
-            ))}
+            <div className="flex flex-col gap-1.5">
+              {navItems.map((item) => {
+                const isActive = activePage === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`w-full text-left px-3.5 py-2.5 rounded-md text-sm transition-all duration-200 flex items-center justify-between cursor-pointer border shadow-2xs ${
+                      isActive
+                        ? 'bg-[#FD6702] text-white border-[#FD6702] font-bold shadow-xs'
+                        : 'bg-white/80 text-[#161C25] border-[#E2D2C0] hover:bg-[#FD6702] hover:text-white hover:border-[#FD6702] font-semibold'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span className="material-symbols-outlined text-[16px]">
+                      chevron_right
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
-            <div className="pt-2.5 border-t border-[#F2DECA] flex flex-col gap-1.5 mt-1.5">
-              <span className="text-[10px] uppercase text-[#161C25]/60 px-2 font-bold tracking-wider">
-                Direct Actions
+            <div className="pt-2.5 border-t border-[#F2DECA] flex flex-col gap-1.5 mt-1">
+              <span className="text-[10px] uppercase text-[#161C25]/60 px-1 font-bold tracking-wider">
+                Quick Actions
               </span>
-              <button
-                onClick={() => handleNavClick('contact')}
-                className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md text-xs font-bold shadow-xs transition-all cursor-pointer ${
-                  activePage === 'contact'
-                    ? 'bg-[#161C25] text-white'
-                    : 'bg-[#FD6702] text-white hover:bg-[#E55A00]'
-                }`}
-              >
-                <span className="material-symbols-outlined text-[16px]">mail</span>
-                Contact
-              </button>
-              <button
-                onClick={() => {
-                  onOpenSchedule('Mobile Menu Consultation');
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-center px-3 py-2.5 rounded-md bg-[#FD6702]/10 hover:bg-[#FD6702] hover:text-white text-[#FD6702] border border-[#FD6702]/30 text-xs font-bold transition-colors cursor-pointer"
-              >
-                Book Consultation
-              </button>
               <button
                 onClick={() => {
                   if (onOpenDesk) onOpenDesk();
                   setMobileMenuOpen(false);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#161C25] hover:bg-black text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-white/80 text-[#161C25] border border-[#E2D2C0] hover:bg-[#FD6702] hover:text-white hover:border-[#FD6702] text-xs font-semibold shadow-2xs transition-all cursor-pointer group"
               >
-                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">storage</span>
-                Local Storage Leads Portal
+                <span className="material-symbols-outlined text-[16px] text-[#FD6702] group-hover:text-white transition-colors">storage</span>
+                <span>Local Storage Leads Portal</span>
               </button>
               <a
                 href="tel:+919820433220"
