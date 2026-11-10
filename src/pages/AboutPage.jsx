@@ -383,61 +383,6 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
           </div>
         </div>
       </section>
-
-      {/* Section 4: Action CTA Banner (Midnight Navy Tier) */}
-      <section className="w-full bg-inverse-surface text-inverse-on-surface py-8 sm:py-12 lg:py-14 relative overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-tertiary-container/15 blur-3xl pointer-events-none"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-3">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-primary-fixed text-[11px] tracking-widest uppercase font-bold">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
-              BEGIN THE COLLABORATION
-            </div>
-
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-tight font-extrabold">
-              Ready to begin your financial journey?
-            </h2>
-
-            <p className="text-xs sm:text-sm text-secondary-fixed max-w-xl leading-relaxed">
-              Partner with Orange Enterprise to formulate a comprehensive, disciplined wealth strategy designed for capital protection and generational endurance.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-3 w-full sm:w-auto">
-              <button
-                onClick={() => onOpenSchedule('Advisory Collaboration')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-primary-container text-white text-xs sm:text-sm rounded-lg shadow-sm hover:bg-primary transition-all duration-200 cursor-pointer font-semibold"
-              >
-                <span className="material-symbols-outlined text-[16px]">calendar_today</span>
-                <span>Book consultation</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setActivePage('contact');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-white text-on-surface text-xs sm:text-sm rounded-lg shadow-xs hover:bg-surface-container-low transition-all duration-200 cursor-pointer font-semibold"
-              >
-                <span className="material-symbols-outlined text-[16px]">mail</span>
-                <span>Get in touch</span>
-              </button>
-            </div>
-
-            <div className="mt-4 pt-3 flex flex-wrap items-center justify-center gap-2.5 text-secondary-fixed-dim text-xs">
-              <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[14px] text-primary-fixed">verified</span>
-                AMFI Registered ARN 83312
-              </span>
-              <span>•</span>
-              <span>Dedicated Fiduciary Advisory</span>
-              <span>•</span>
-              <span>Mumbai Desk</span>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

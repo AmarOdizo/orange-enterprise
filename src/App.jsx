@@ -9,6 +9,7 @@ import ScheduleModal from './components/ScheduleModal';
 import IntakeModal from './components/IntakeModal';
 import LegalModal from './components/LegalModal';
 import CookieBanner from './components/CookieBanner';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 const VALID_PAGES = ['home', 'about', 'services', 'contact'];
 
@@ -163,6 +164,9 @@ export default function App() {
 
       {/* Cookie Consent Banner */}
       <CookieBanner onOpenLegal={handleOpenLegal} />
+
+      {/* Direct WhatsApp Consultation Widget */}
+      <WhatsAppWidget />
     </div>
   );
 }
