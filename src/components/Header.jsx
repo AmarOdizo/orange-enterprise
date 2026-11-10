@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const LOGO_URL = "/orange-enterprise-logo.jpg";
+const LOGO_URL = "/orange-enterprise-white-logo.png";
 
 export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,21 +47,19 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
           {/* Brand Logo & Registration */}
           <button 
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 sm:gap-2.5 shrink-0 text-left focus:outline-none cursor-pointer group"
+            className="flex items-center gap-2 sm:gap-3 shrink-0 text-left focus:outline-none cursor-pointer group"
           >
-            <div className="bg-white p-1 rounded-md shadow-xs flex items-center justify-center shrink-0">
-              <img 
-                alt="Orange Enterprise Logo" 
-                className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105" 
-                src={LOGO_URL} 
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm sm:text-base text-white tracking-tight leading-none font-bold">
-                Orange Enterprise
+            <img 
+              alt="Orange Enterprise Logo" 
+              className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105 filter drop-shadow-xs" 
+              src={LOGO_URL} 
+            />
+            <div className="hidden sm:flex flex-col border-l border-white/30 pl-2.5">
+              <span className="text-[10px] text-white font-bold tracking-wider leading-tight uppercase">
+                ARN 83312
               </span>
-              <span className="text-[9px] sm:text-[10px] text-white/85 uppercase tracking-wider mt-0.5 font-semibold">
-                ARN 83312 • Mumbai
+              <span className="text-[9px] text-white/85 uppercase tracking-widest font-semibold">
+                Mumbai Desk
               </span>
             </div>
           </button>
