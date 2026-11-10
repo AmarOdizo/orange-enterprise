@@ -24,50 +24,6 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[280px] rounded-full bg-gradient-to-r from-[#2563EB]/10 via-[#FD6702]/10 to-transparent blur-3xl pointer-events-none -z-10"></div>
 
       {/* =========================================================================
-          PRE-FOOTER CALL-TO-ACTION CARD (Dual-Tone Glassmorphic)
-          ========================================================================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0C1B33]/90 via-[#152542]/90 to-[#2E180D]/90 border border-white/15 p-6 sm:p-8 lg:p-10 shadow-xl backdrop-blur-md">
-          {/* Subtle glow accents inside banner */}
-          <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-[#FD6702]/25 blur-2xl pointer-events-none"></div>
-          <div className="absolute -left-8 -bottom-8 w-40 h-40 rounded-full bg-[#3B82F6]/25 blur-2xl pointer-events-none"></div>
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="flex flex-col gap-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#FD6702]/20 to-[#3B82F6]/20 border border-[#FD6702]/40 text-[#FFA366] text-[10px] font-bold tracking-wider uppercase w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FD6702] animate-pulse"></span>
-                <span>Orange Enterprise • Fiduciary Wealth Desk</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-snug">
-                Ready to build and protect your enduring wealth?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Connect directly with our Mumbai advisory desk for bespoke mutual fund strategies, comprehensive portfolio diagnostics, and institutional asset architecture.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-              <button
-                onClick={() => onOpenSchedule('Footer Executive Consultation')}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-[#FD6702] to-[#FF7700] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs sm:text-sm font-bold shadow-lg shadow-orange-500/20 transition-all transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-[18px]">calendar_today</span>
-                <span>Book Consultation</span>
-              </button>
-              
-              <a
-                href="tel:+919820433220"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-bold shadow-xs backdrop-blur-sm transition-colors"
-              >
-                <span className="material-symbols-outlined text-[18px] text-[#FD6702]">phone</span>
-                <span>+91 98204 33220</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* =========================================================================
           MAIN MULTI-COLUMN FOOTER NAVIGATION
           ========================================================================= */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
