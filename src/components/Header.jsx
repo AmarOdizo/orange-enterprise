@@ -9,7 +9,6 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
-    { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (id) => {
@@ -109,12 +108,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               Schedule Appointment
             </button>
 
-            {/* Get in Touch CTA Button */}
+            {/* Contact CTA Button on Right Side */}
             <button
               onClick={() => handleNavClick('contact')}
-              className="hidden sm:inline-flex items-center justify-center px-3 py-1.5 bg-primary-container text-on-primary text-xs sm:text-sm rounded-md shadow-xs hover:bg-primary transition-all duration-200 cursor-pointer font-semibold"
+              className={`hidden sm:inline-flex items-center justify-center px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-xs ${
+                activePage === 'contact'
+                  ? 'bg-primary text-white shadow-sm ring-1 ring-primary/40'
+                  : 'bg-primary-container text-on-primary hover:bg-primary'
+              }`}
             >
-              Get in Touch
+              Contact
             </button>
 
             {/* Mobile Call Icon Button (< sm) */}
@@ -180,10 +183,14 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               </span>
               <button
                 onClick={() => handleNavClick('contact')}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-primary-container text-white text-xs font-semibold shadow-xs hover:bg-primary transition-all cursor-pointer"
+                className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md text-xs font-semibold shadow-xs transition-all cursor-pointer ${
+                  activePage === 'contact'
+                    ? 'bg-primary text-white ring-1 ring-primary/40'
+                    : 'bg-primary-container text-white hover:bg-primary'
+                }`}
               >
                 <span className="material-symbols-outlined text-[16px]">mail</span>
-                Get in Touch
+                Contact
               </button>
               <button
                 onClick={() => {
