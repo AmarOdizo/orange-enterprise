@@ -56,7 +56,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
             />
           </button>
 
-          {/* Desktop & Laptop Navigation */}
+          {/* Desktop & Laptop Navigation (Middle) */}
           <nav className="hidden md:flex items-center gap-1 sm:gap-1.5">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
@@ -74,9 +74,29 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                 </button>
               );
             })}
+
+            {/* Book Consultation Button in Middle */}
+            <button
+              onClick={() => onOpenSchedule('Book Consultation')}
+              className="px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold border border-[#FD6702] text-[#FD6702] bg-[#FD6702]/8 hover:bg-[#FD6702] hover:text-white transition-all duration-200 shadow-xs cursor-pointer ml-1"
+            >
+              Book Consultation
+            </button>
+
+            {/* Contact Button in Middle */}
+            <button
+              onClick={() => handleNavClick('contact')}
+              className={`px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-xs ${
+                activePage === 'contact'
+                  ? 'bg-[#161C25] text-white shadow-xs'
+                  : 'bg-[#FD6702] text-white hover:bg-[#E55A00] hover:shadow-xs'
+              }`}
+            >
+              Contact
+            </button>
           </nav>
 
-          {/* Quick Actions & Mobile Controls */}
+          {/* Quick Actions & Local Storage on Right */}
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Direct Call Link for Laptop & Desktop */}
             <a 
@@ -89,24 +109,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               +91 98204 33220
             </a>
 
-            {/* Book Consultation Button on Desktop/Laptop (lg+) */}
+            {/* Local Storage / Advisory Desk Portal Button on Right */}
             <button
-              onClick={() => onOpenSchedule('Book Consultation')}
-              className="hidden lg:inline-flex items-center justify-center px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold border border-[#FD6702] text-[#FD6702] bg-[#FD6702]/8 hover:bg-[#FD6702] hover:text-white transition-all duration-200 shadow-xs cursor-pointer"
+              onClick={() => onOpenDesk && onOpenDesk()}
+              title="Open Local Storage Leads Portal (ARN 83312)"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold bg-[#161C25] hover:bg-black text-white shadow-xs transition-all cursor-pointer border border-[#161C25]"
             >
-              Book Consultation
-            </button>
-
-            {/* Contact CTA Button on Right Side */}
-            <button
-              onClick={() => handleNavClick('contact')}
-              className={`hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-xs ${
-                activePage === 'contact'
-                  ? 'bg-[#161C25] text-white shadow-xs'
-                  : 'bg-[#FD6702] text-white hover:bg-[#E55A00] hover:shadow-xs'
-              }`}
-            >
-              Contact
+              <span className="material-symbols-outlined text-[15px] text-[#FD6702]">
+                storage
+              </span>
+              <span>Local Storage</span>
             </button>
 
             {/* Mobile Call Icon Button (< sm) */}
@@ -119,14 +131,14 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               <span className="material-symbols-outlined text-[18px]">phone</span>
             </a>
 
-            {/* AMFI Licensed Badge Avatar - Click to open Advisory Desk Portal */}
-            <button 
+            {/* Mobile Local Storage Icon Button (< sm) */}
+            <button
               onClick={() => onOpenDesk && onOpenDesk()}
-              title="Advisory Desk Portal (ARN 83312)"
-              className="hidden lg:flex w-7 h-7 rounded-full bg-[#FD6702]/10 hover:bg-[#FD6702]/25 border border-[#FD6702]/25 text-[#FD6702] items-center justify-center shrink-0 cursor-pointer shadow-xs transition-colors"
+              title="Open Local Storage Leads"
+              className="sm:hidden w-8 h-8 rounded-md bg-[#161C25] text-[#FD6702] flex items-center justify-center shadow-xs cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[#FD6702] text-[15px]">
-                verified_user
+              <span className="material-symbols-outlined text-[16px]">
+                storage
               </span>
             </button>
 
@@ -190,6 +202,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                 className="w-full flex items-center justify-center px-3 py-2.5 rounded-md bg-[#FD6702]/10 hover:bg-[#FD6702] hover:text-white text-[#FD6702] border border-[#FD6702]/30 text-xs font-bold transition-colors cursor-pointer"
               >
                 Book Consultation
+              </button>
+              <button
+                onClick={() => {
+                  if (onOpenDesk) onOpenDesk();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#161C25] hover:bg-black text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
+              >
+                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">storage</span>
+                Local Storage Leads Portal
               </button>
               <a
                 href="tel:+919820433220"
