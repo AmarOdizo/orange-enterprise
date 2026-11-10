@@ -21,13 +21,13 @@ export default function CookieBanner({ onOpenLegal }) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-5 bg-inverse-surface/95 text-inverse-on-surface backdrop-blur-md border-t border-inverse-on-surface/10 shadow-2xl animate-fade-in">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-start sm:items-center gap-3">
-          <span className="material-symbols-outlined text-primary-container text-[24px] shrink-0 mt-0.5 sm:mt-0">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4 md:p-5 bg-inverse-surface/95 text-inverse-on-surface backdrop-blur-md border-t border-inverse-on-surface/10 shadow-2xl animate-fade-in">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
+          <span className="material-symbols-outlined text-primary-container text-[22px] sm:text-[24px] shrink-0 mt-0.5 sm:mt-0">
             cookie
           </span>
-          <p className="font-body-sm text-body-sm text-secondary-fixed leading-normal">
+          <p className="font-body-sm text-xs sm:text-body-sm text-secondary-fixed leading-normal">
             This website uses cookies to ensure you get the best browsing experience. Read our{' '}
             <button
               onClick={() => onOpenLegal('Cookie Policy')}
@@ -39,7 +39,7 @@ export default function CookieBanner({ onOpenLegal }) {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0 self-end sm:self-center">
           <button
             onClick={() => onOpenLegal('Cookie Policy')}
             className="px-3 py-1.5 rounded-lg text-secondary-fixed hover:text-white font-label-sm text-label-sm transition-colors cursor-pointer"

@@ -25,14 +25,14 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
       <div 
-        className="relative w-full max-w-xl bg-surface-container-lowest rounded-2xl shadow-2xl p-6 lg:p-8 max-h-[90vh] overflow-y-auto border border-surface-container"
+        className="relative w-full max-w-xl bg-surface-container-lowest rounded-2xl shadow-2xl p-5 sm:p-6 lg:p-8 max-h-[92vh] overflow-y-auto border border-surface-container"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer"
+          className="absolute top-4 right-4 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer"
         >
           <span className="material-symbols-outlined text-[20px]">close</span>
         </button>

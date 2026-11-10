@@ -68,19 +68,19 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
         <div className="absolute top-96 -left-20 w-80 h-80 bg-secondary-container/40 rounded-full blur-3xl pointer-events-none"></div>
 
         {/* Editorial Masthead Section */}
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop pt-space-lg pb-space-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md border-none">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop pt-6 sm:pt-space-lg pb-8 sm:pb-space-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-space-md border-none">
             <div className="flex flex-col max-w-2xl">
               <div className="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container w-fit mb-space-sm">
                 <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-                <span className="font-label-caps text-label-caps text-primary tracking-widest uppercase font-bold">
+                <span className="font-label-caps text-[10px] sm:text-label-caps text-primary tracking-widest uppercase font-bold">
                   Direct Advisory Desk • ARN 83312
                 </span>
               </div>
-              <h1 className="font-headline-xl text-headline-xl text-on-surface tracking-tight font-extrabold">
+              <h1 className="font-headline-xl text-headline-xl-mobile sm:text-3xl lg:text-headline-xl text-on-surface tracking-tight font-extrabold">
                 Get in touch
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+              <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant mt-1 sm:mt-space-xs">
                 We're here to assist you! Reach out to our advisory team in Mumbai.
               </p>
             </div>
@@ -89,10 +89,10 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
             <div className="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-sm self-start md:self-auto border border-surface-container">
               <span className="material-symbols-outlined text-[20px] text-primary">verified</span>
               <div className="flex flex-col">
-                <span className="font-label-sm text-label-sm text-on-surface font-semibold">
+                <span className="font-label-sm text-xs sm:text-label-sm text-on-surface font-semibold">
                   Private Client Salon
                 </span>
-                <span className="font-body-sm text-body-sm text-on-surface-variant">
+                <span className="font-body-sm text-[11px] sm:text-body-sm text-on-surface-variant">
                   Mumbai • Bandra Kurla Complex Access
                 </span>
               </div>
@@ -101,14 +101,14 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
         </div>
 
         {/* Main Two-Column Advisory Grid */}
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop pb-space-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop pb-12 sm:pb-space-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-start">
             
             {/* Column 1: Contact, Telemetry, and Operational Salon Data (5 Cols) */}
-            <div className="lg:col-span-5 flex flex-col gap-space-lg">
+            <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-space-lg">
               
               {/* Direct Channels Card */}
-              <div className="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-surface-container hover:shadow-md transition-shadow duration-200">
+              <div className="bg-surface-container-lowest rounded-xl p-5 sm:p-space-lg shadow-sm border border-surface-container hover:shadow-md transition-shadow duration-200">
                 <div className="flex items-center justify-between pb-space-sm mb-space-md border-b border-surface-container">
                   <span className="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider font-bold">
                     Direct Access Channels
@@ -290,8 +290,8 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
             </div>
 
             {/* Column 2: Client Inquiry Executive Form (7 Cols) */}
-            <div className="lg:col-span-7 flex flex-col mt-6 lg:mt-0">
-              <div className="bg-surface-container-lowest rounded-xl p-space-xl shadow-md relative overflow-hidden border border-surface-container">
+            <div className="lg:col-span-7 flex flex-col mt-6 lg:mt-0 w-full">
+              <div className="bg-surface-container-lowest rounded-xl p-5 sm:p-space-lg lg:p-space-xl shadow-md relative overflow-hidden border border-surface-container">
                 {/* Top Accent Gradient Bar */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-primary-container to-secondary"></div>
 

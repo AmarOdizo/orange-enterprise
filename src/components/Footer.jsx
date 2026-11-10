@@ -10,9 +10,9 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
   };
 
   return (
-    <footer className="w-full bg-surface-container-low text-on-surface mt-space-xl border-t border-surface-container">
-      <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop py-space-xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter-lg">
+    <footer className="w-full bg-surface-container-low text-on-surface mt-10 sm:mt-space-xl border-t border-surface-container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop py-8 sm:py-space-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-gutter-lg">
           
           {/* Column 1: Institutional Identity */}
           <div className="lg:col-span-4 flex flex-col gap-space-sm">

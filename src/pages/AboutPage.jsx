@@ -32,50 +32,50 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
       </section>
 
       {/* Section 1: Executive Header with Editorial Scale */}
-      <section className="relative w-full bg-surface py-space-xl lg:py-24 overflow-hidden">
+      <section className="relative w-full bg-surface py-10 sm:py-16 lg:py-24 overflow-hidden">
         {/* Ambient Gradient Glows */}
         <div className="absolute -top-32 right-0 w-[580px] h-[580px] rounded-full bg-gradient-to-br from-primary-fixed/30 via-secondary-fixed/20 to-transparent blur-3xl pointer-events-none -z-10"></div>
         <div className="absolute -bottom-24 left-10 w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-surface-container via-surface-container-high/40 to-transparent blur-2xl pointer-events-none -z-10"></div>
 
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-end">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-end">
             
-            <div className="lg:col-span-8 flex flex-col gap-space-md">
+            <div className="lg:col-span-8 flex flex-col gap-3 sm:gap-space-md">
               <div className="flex flex-wrap items-center gap-space-xs">
-                <span className="font-label-caps text-label-caps uppercase tracking-widest text-primary bg-primary-fixed/50 px-3 py-1 rounded-full font-bold">
+                <span className="font-label-caps text-[10px] sm:text-label-caps uppercase tracking-widest text-primary bg-primary-fixed/50 px-2.5 sm:px-3 py-1 rounded-full font-bold">
                   ABOUT ORANGE ENTERPRISE
                 </span>
                 <span className="text-outline-variant">•</span>
-                <span className="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase font-semibold">
-                  ARN 83312 • Mumbai Financial Center
+                <span className="font-label-caps text-[10px] sm:text-label-caps text-on-surface-variant tracking-wider uppercase font-semibold">
+                  ARN 83312 • Mumbai Desk
                 </span>
               </div>
 
-              <h1 className="font-headline-xl lg:font-display-hero text-headline-xl lg:text-display-hero text-on-surface tracking-tight leading-[1.08] max-w-4xl font-extrabold">
+              <h1 className="font-headline-xl lg:font-display-hero text-headline-xl-mobile sm:text-3xl lg:text-display-hero text-on-surface tracking-tight leading-[1.1] max-w-4xl font-extrabold">
                 Empower your wealth through{' '}
                 <span className="text-primary-container underline decoration-primary-fixed decoration-4 underline-offset-8">
                   strategic discipline
                 </span>.
               </h1>
 
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-sm leading-relaxed">
+              <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant max-w-2xl mt-1 sm:mt-space-sm leading-relaxed">
                 Institutional caliber private wealth planning and capital guidance tailored for high-net-worth families, entrepreneurs, and visionary investors across India.
               </p>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col justify-end mt-6 lg:mt-0">
-              <div className="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col gap-space-sm relative overflow-hidden border border-surface-container">
+            <div className="lg:col-span-4 flex flex-col justify-end mt-4 sm:mt-6 lg:mt-0">
+              <div className="bg-surface-container-low p-5 sm:p-space-lg rounded-xl shadow-sm flex flex-col gap-space-sm relative overflow-hidden border border-surface-container">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/20 rounded-bl-full pointer-events-none"></div>
                 <div className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
                   Fiduciary Credentials
                 </div>
-                <div className="font-headline-md text-headline-md text-on-surface font-bold">
+                <div className="font-headline-md text-xl sm:text-headline-md text-on-surface font-bold">
                   ARN 83312
                 </div>
-                <div className="text-body-sm text-body-sm text-on-surface-variant leading-snug">
+                <div className="text-body-sm text-xs sm:text-body-sm text-on-surface-variant leading-snug">
                   Certified Mutual Fund Distribution desk operating in association with Wealth Works, compliant with SEBI & AMFI code of fiduciary conduct.
                 </div>
-                <div className="pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-on-surface">
+                <div className="pt-space-xs flex items-center justify-between font-label-sm text-xs sm:text-label-sm text-on-surface">
                   <span className="flex items-center gap-1 text-primary font-semibold">
                     <span className="material-symbols-outlined text-[18px]">verified</span>
                     Verified Distributor
@@ -90,28 +90,28 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
       </section>
 
       {/* Section 2: Detailed Story & Mumbai Panoramic Boardroom Asset */}
-      <section className="w-full bg-surface-container-lowest py-space-xl lg:py-24 border-y border-surface-container">
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop">
+      <section className="w-full bg-surface-container-lowest py-12 sm:py-16 lg:py-24 border-y border-surface-container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-stretch">
             {/* Photographic Feature (Boardroom high above Mumbai skyline) */}
             <div className="lg:col-span-7 flex flex-col justify-between">
-              <div className="relative w-full h-[380px] sm:h-[460px] lg:h-full min-h-[380px] rounded-xl overflow-hidden shadow-lg group">
+              <div className="relative w-full h-[260px] sm:h-[380px] lg:h-full min-h-[260px] lg:min-h-[380px] rounded-xl overflow-hidden shadow-lg group">
                 <img 
                   alt="Orange Enterprise advisory session in an executive boardroom overlooking Mumbai" 
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
                   src={BOARDROOM_IMG} 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-on-secondary-fixed/90 via-on-secondary-fixed/20 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-space-md lg:p-space-lg text-on-primary flex flex-col gap-space-xs">
-                  <div className="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-caps text-label-caps tracking-widest uppercase w-fit font-bold">
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-space-md lg:p-space-lg text-on-primary flex flex-col gap-1 sm:gap-space-xs">
+                  <div className="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-caps text-[10px] sm:text-label-caps tracking-widest uppercase w-fit font-bold">
                     <span className="material-symbols-outlined text-[14px]">apartment</span>
                     Mumbai Advisory Headquarters
                   </div>
-                  <p className="font-headline-sm text-headline-sm font-semibold text-white drop-shadow-sm">
+                  <p className="font-headline-sm text-sm sm:text-headline-sm font-semibold text-white drop-shadow-sm">
                     Strategic counsel framed against India’s most dynamic economic epicenter.
                   </p>
-                  <span className="font-body-sm text-body-sm text-secondary-fixed font-light">
+                  <span className="font-body-sm text-xs sm:text-body-sm text-secondary-fixed font-light">
                     High-level consultation sessions at our private executive salon.
                   </span>
                 </div>
@@ -119,8 +119,8 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
             </div>
 
             {/* Verbatim Company Text & Fiduciary Foundation */}
-            <div className="lg:col-span-5 flex flex-col justify-between bg-surface-container-low p-space-lg lg:p-space-xl rounded-xl shadow-sm border border-surface-container mt-6 lg:mt-0">
-              <div className="flex flex-col gap-space-md">
+            <div className="lg:col-span-5 flex flex-col justify-between bg-surface-container-low p-5 sm:p-space-lg lg:p-space-xl rounded-xl shadow-sm border border-surface-container mt-6 lg:mt-0">
+              <div className="flex flex-col gap-3 sm:gap-space-md">
                 <div className="flex items-center justify-between">
                   <span className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
                     Institutional Creed
@@ -128,49 +128,49 @@ export default function AboutPage({ setActivePage, onOpenSchedule }) {
                   <span className="material-symbols-outlined text-primary text-[28px]">account_balance</span>
                 </div>
                 
-                <div className="font-headline-md text-headline-md text-on-surface font-bold leading-snug">
+                <div className="font-headline-md text-lg sm:text-headline-md text-on-surface font-bold leading-snug">
                   Guiding capital with deliberate rigor and client-aligned precision.
                 </div>
                 
                 {/* Exact Verbatim Company Quote */}
-                <blockquote className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed bg-surface p-space-md rounded-lg shadow-sm border-l-4 border-primary">
+                <blockquote className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant leading-relaxed bg-surface p-4 sm:p-space-md rounded-lg shadow-sm border-l-4 border-primary">
                   “Orange Enterprise is your trusted partner in navigating the complex world of wealth management. Based in Mumbai, we specialize in tailor-made financial strategies that cater to your unique goals and aspirations. Our experienced team is dedicated to enhancing your financial journey, ensuring that every decision is aligned with your vision for the future. Together, we will build a secure financial legacy that stands the test of time.”
                 </blockquote>
                 
-                <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                <p className="font-body-md text-xs sm:text-body-md text-on-surface-variant leading-relaxed">
                   Every client journey begins with intensive listening. We reject standardized asset models in favor of rigorous portfolio mapping that considers generational transition, risk liquidity, and wealth sustainability.
                 </p>
               </div>
 
-              <div className="pt-space-md mt-space-md flex items-center justify-between bg-surface-container px-space-md py-space-sm rounded-lg">
+              <div className="pt-3 sm:pt-space-md mt-4 sm:mt-space-md flex items-center justify-between bg-surface-container px-3 sm:px-space-md py-2.5 sm:py-space-sm rounded-lg">
                 <div className="flex flex-col">
-                  <span className="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Primary Hub</span>
-                  <span className="font-headline-sm text-headline-sm text-on-surface font-bold">Mumbai, India</span>
+                  <span className="font-label-caps text-[10px] sm:text-label-caps uppercase text-on-surface-variant font-semibold">Primary Hub</span>
+                  <span className="font-headline-sm text-sm sm:text-headline-sm text-on-surface font-bold">Mumbai, India</span>
                 </div>
                 <div className="h-8 w-px bg-outline-variant/30"></div>
                 <div className="flex flex-col text-right">
-                  <span className="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Entity Status</span>
-                  <span className="font-headline-sm text-headline-sm text-primary font-bold">Active • ARN 83312</span>
+                  <span className="font-label-caps text-[10px] sm:text-label-caps uppercase text-on-surface-variant font-semibold">Entity Status</span>
+                  <span className="font-headline-sm text-sm sm:text-headline-sm text-primary font-bold">Active • ARN 83312</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Core Values & Tenets Section */}
-          <div className="mt-space-xl pt-space-lg">
-            <div className="flex flex-col mb-space-lg">
+          <div className="mt-8 sm:mt-space-xl pt-6 sm:pt-space-lg">
+            <div className="flex flex-col mb-6 sm:mb-space-lg">
               <span className="font-label-caps text-label-caps uppercase tracking-widest text-primary font-bold">
                 Guiding Foundations
               </span>
-              <h2 className="font-headline-xl text-headline-xl text-on-surface mt-space-xs font-bold">
+              <h2 className="font-headline-xl text-headline-xl-mobile sm:text-3xl lg:text-headline-xl text-on-surface mt-space-xs font-bold">
                 Core Tenets of Our Wealth Practice
               </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+              <p className="font-body-md text-sm sm:text-body-md text-on-surface-variant max-w-2xl mt-1">
                 Three pillar principles that govern every recommendation, asset review, and fiduciary relationship.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-gutter-lg">
               {/* Tenet 1 */}
               <div className="bg-surface p-space-lg rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group border border-surface-container">
                 <div className="flex flex-col gap-space-sm">

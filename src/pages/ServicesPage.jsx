@@ -15,35 +15,35 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
   return (
     <div className="flex flex-col w-full">
       {/* Top Editorial Header Block */}
-      <section className="relative w-full bg-surface-container-low px-margin-mobile lg:px-margin-desktop py-space-xl overflow-hidden border-b border-surface-container">
+      <section className="relative w-full bg-surface-container-low px-4 sm:px-margin-mobile lg:px-margin-desktop py-10 sm:py-16 lg:py-space-xl overflow-hidden border-b border-surface-container">
         <div className="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-primary-container/10 blur-3xl pointer-events-none"></div>
         <div className="absolute left-1/3 bottom-0 w-80 h-80 rounded-full bg-secondary-container/20 blur-2xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto flex flex-col gap-space-lg relative z-10">
-          <div className="flex flex-wrap items-center justify-between gap-space-md">
-            <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-highest">
+        <div className="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-space-lg relative z-10">
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-space-md">
+            <div className="inline-flex items-center gap-space-xs px-3 sm:px-space-md py-1 sm:py-space-xs rounded-full bg-surface-container-highest">
               <span className="w-2 h-2 rounded-full bg-primary-container"></span>
-              <span className="font-label-caps text-label-caps text-on-surface uppercase tracking-widest font-bold">
+              <span className="font-label-caps text-[10px] sm:text-label-caps text-on-surface uppercase tracking-widest font-bold">
                 Our Advisory Offerings
               </span>
             </div>
-            <div className="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant font-medium">
+            <div className="inline-flex items-center gap-space-xs font-label-sm text-xs sm:text-label-sm text-on-surface-variant font-medium">
               <span className="material-symbols-outlined text-primary text-[18px]">verified_user</span>
               <span>AMFI ARN 83312 • Mumbai Desk</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-end">
-            <div className="lg:col-span-8 flex flex-col gap-space-sm">
-              <h1 className="font-display-hero text-display-hero text-on-surface tracking-tight leading-[1.08] font-extrabold">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-end">
+            <div className="lg:col-span-8 flex flex-col gap-2 sm:gap-space-sm">
+              <h1 className="font-display-hero text-display-hero-mobile sm:text-4xl lg:text-display-hero text-on-surface tracking-tight leading-[1.1] font-extrabold">
                 Tailored strategies for financial growth.
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-xs leading-relaxed">
+              <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant max-w-2xl mt-1 sm:mt-space-xs leading-relaxed">
                 Comprehensive wealth management solutions designed for high-net-worth individuals, institutional portfolios, and family offices in Mumbai and beyond.
               </p>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm border border-surface-container mt-6 lg:mt-0">
+            <div className="lg:col-span-4 flex flex-col gap-3 sm:gap-space-md bg-surface-container-lowest p-5 sm:p-space-lg rounded-xl shadow-sm border border-surface-container mt-4 sm:mt-6 lg:mt-0">
               <div className="flex items-center justify-between">
                 <span className="font-label-caps text-label-caps text-on-surface-variant uppercase font-semibold">
                   Advisory Model
@@ -53,10 +53,10 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
                 </span>
               </div>
               <div className="flex items-baseline gap-space-xs">
-                <span className="font-financial-metric-lg text-financial-metric-lg text-on-surface font-extrabold">
+                <span className="font-financial-metric-lg text-2xl sm:text-financial-metric-lg text-on-surface font-extrabold">
                   360°
                 </span>
-                <span className="font-body-sm text-body-sm text-on-surface-variant">
+                <span className="font-body-sm text-xs sm:text-body-sm text-on-surface-variant">
                   Coverage across asset, protection & debt architecture
                 </span>
               </div>
@@ -73,28 +73,28 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
         </div>
       </section>
 
-      {/* Interactive Quick Anchor Navigation */}
-      <section className="w-full bg-surface-container px-margin-mobile lg:px-margin-desktop py-space-md sticky top-20 z-40 backdrop-blur-md shadow-xs">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-md">
-          <span className="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-bold">
+      {/* Interactive Quick Anchor Navigation (Smooth Swipe on Mobile & Tablet) */}
+      <section className="w-full bg-surface-container px-4 sm:px-margin-mobile lg:px-margin-desktop py-2 sm:py-space-md sticky top-16 sm:top-20 z-40 backdrop-blur-md shadow-xs border-b border-surface-container-high">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 overflow-x-auto no-scrollbar py-1">
+          <span className="font-label-caps text-[10px] sm:text-label-caps text-on-surface-variant uppercase tracking-wider font-bold shrink-0">
             Mandate Directory
           </span>
-          <div className="flex flex-wrap items-center gap-space-sm">
+          <div className="flex items-center gap-2 sm:gap-space-sm shrink-0">
             <button
               onClick={() => scrollToSection('wealth-advisory')}
-              className="px-space-md py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium"
+              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
             >
               01. Wealth advisory
             </button>
             <button
               onClick={() => scrollToSection('insurance-advisory')}
-              className="px-space-md py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium"
+              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
             >
               02. Insurance advisory
             </button>
             <button
               onClick={() => scrollToSection('finance')}
-              className="px-space-md py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium"
+              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
             >
               03. Finance
             </button>
@@ -631,7 +631,7 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-space-md">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-space-md">
             <div className="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-sm relative border border-surface-container">
               <span className="font-headline-xl text-headline-xl text-primary-container/30 font-bold">01</span>
               <span className="font-headline-sm text-headline-sm text-on-surface -mt-space-md font-bold">Holistic Audit</span>

@@ -26,39 +26,39 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
       {/* =========================================================================
           HERO SECTION
           ========================================================================= */}
-      <section className="relative w-full overflow-hidden bg-surface-container-low py-space-xl lg:py-24">
+      <section className="relative w-full overflow-hidden bg-surface-container-low py-10 sm:py-16 lg:py-24">
         {/* Subtle Architectural Ambient Backdrop Gradients */}
         <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 right-10 w-[500px] h-[500px] rounded-full bg-secondary-fixed/25 blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-center">
             
             {/* Hero Left Column: Editorial Typography */}
             <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-lowest shadow-sm mb-space-lg">
+              <div className="inline-flex items-center gap-space-xs px-3 sm:px-space-md py-1.5 rounded-full bg-surface-container-lowest shadow-sm mb-4 sm:mb-space-lg">
                 <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-                <span className="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">
+                <span className="font-label-caps text-[10px] sm:text-label-caps uppercase tracking-wider text-primary font-bold">
                   ORANGE ENTERPRISE • ARN 83312 • MUMBAI
                 </span>
               </div>
 
-              <h1 className="font-display-hero text-display-hero-mobile lg:text-display-hero text-on-surface tracking-tight font-extrabold max-w-xl">
+              <h1 className="font-display-hero text-display-hero-mobile sm:text-4xl lg:text-display-hero text-on-surface tracking-tight font-extrabold max-w-xl">
                 Wealth management <span className="text-primary-container">redefined</span>
               </h1>
 
-              <p className="font-body-lg text-body-lg text-on-surface-variant mt-space-md max-w-xl leading-relaxed">
+              <p className="font-body-lg text-base sm:text-body-lg text-on-surface-variant mt-3 sm:mt-space-md max-w-xl leading-relaxed">
                 Strategic wealth management solutions designed to navigate financial complexities and build enduring legacies.
               </p>
 
               {/* Executive CTA Suite */}
-              <div className="flex flex-wrap items-center gap-space-md mt-space-xl">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-space-md mt-6 sm:mt-space-xl w-full sm:w-auto">
                 <button
                   onClick={() => {
                     setActivePage('services');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-md hover:bg-primary transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-md hover:bg-primary transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer font-semibold text-center"
                 >
                   <span>View services</span>
                   <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -69,43 +69,43 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                     setActivePage('contact');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center justify-center px-space-lg py-3.5 bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-lg shadow-sm hover:bg-on-background transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center px-space-lg py-3.5 bg-inverse-surface text-inverse-on-surface font-label-md text-label-md rounded-lg shadow-sm hover:bg-on-background transition-all duration-200 cursor-pointer font-semibold text-center"
                 >
                   Get in touch
                 </button>
               </div>
 
               {/* Telemetry & Trust Badges Strip */}
-              <div className="grid grid-cols-3 gap-space-md w-full max-w-lg mt-space-xl pt-space-lg bg-surface-container-lowest/80 p-space-md rounded-xl backdrop-blur-sm shadow-sm border border-surface-container">
+              <div className="grid grid-cols-3 gap-2 sm:gap-space-md w-full max-w-lg mt-6 sm:mt-space-xl pt-4 sm:pt-space-lg bg-surface-container-lowest/90 p-3 sm:p-space-md rounded-xl backdrop-blur-sm shadow-sm border border-surface-container">
                 <div className="flex flex-col">
-                  <span className="font-financial-metric-lg text-headline-lg text-on-surface font-bold">
+                  <span className="font-financial-metric-lg text-base sm:text-headline-md lg:text-headline-lg text-on-surface font-bold truncate">
                     ARN 83312
                   </span>
-                  <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">
+                  <span className="font-label-caps text-[9px] sm:text-label-caps text-on-surface-variant uppercase mt-1">
                     AMFI Registered
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-financial-metric-lg text-headline-lg text-primary-container font-bold">
+                  <span className="font-financial-metric-lg text-base sm:text-headline-md lg:text-headline-lg text-primary-container font-bold">
                     100%
                   </span>
-                  <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">
+                  <span className="font-label-caps text-[9px] sm:text-label-caps text-on-surface-variant uppercase mt-1">
                     Fiduciary Focus
                   </span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-financial-metric-lg text-headline-lg text-on-surface font-bold">
+                  <span className="font-financial-metric-lg text-base sm:text-headline-md lg:text-headline-lg text-on-surface font-bold">
                     Mumbai
                   </span>
-                  <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">
-                    Financial Capital
+                  <span className="font-label-caps text-[9px] sm:text-label-caps text-on-surface-variant uppercase mt-1">
+                    Financial Hub
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Hero Right Column: High-Fidelity Consultation Visual */}
-            <div className="lg:col-span-5 relative mt-8 lg:mt-0">
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
               <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-surface-container-highest aspect-[4/3] lg:aspect-[5/4]">
                 <img 
                   className="w-full h-full object-cover" 
@@ -114,21 +114,21 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                 />
                 
                 {/* Architectural Glass Tag */}
-                <div className="absolute bottom-5 left-5 right-5 p-space-md bg-surface-container-lowest/90 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-between border border-surface-container">
-                  <div className="flex items-center gap-space-sm">
-                    <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shrink-0">
-                      <span className="material-symbols-outlined text-[22px]">verified</span>
+                <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 p-2.5 sm:p-space-md bg-surface-container-lowest/95 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-between border border-surface-container gap-2">
+                  <div className="flex items-center gap-2 sm:gap-space-sm min-w-0">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shrink-0">
+                      <span className="material-symbols-outlined text-[18px] sm:text-[22px]">verified</span>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="font-label-md text-label-md text-on-surface font-semibold">
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-label-md text-xs sm:text-label-md text-on-surface font-semibold truncate">
                         Trusted Wealth Advisory
                       </span>
-                      <span className="font-body-sm text-body-sm text-on-surface-variant">
-                        Mumbai Metropolitan • HNW Client Salon
+                      <span className="font-body-sm text-[11px] sm:text-body-sm text-on-surface-variant truncate">
+                        Mumbai • HNW Client Salon
                       </span>
                     </div>
                   </div>
-                  <span className="font-label-caps text-label-caps uppercase text-primary bg-primary-fixed px-2.5 py-1 rounded-full font-bold">
+                  <span className="font-label-caps text-[10px] sm:text-label-caps uppercase text-primary bg-primary-fixed px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full font-bold shrink-0">
                     Active
                   </span>
                 </div>
@@ -235,13 +235,13 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                 </div>
               </div>
 
-              <div className="mt-space-xl flex items-center gap-4">
+              <div className="mt-6 sm:mt-space-xl flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <button
                   onClick={() => {
                     setActivePage('contact');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-md hover:bg-primary transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-md hover:bg-primary transition-all duration-200 cursor-pointer font-semibold text-center"
                 >
                   <span>Get in touch</span>
                   <span className="material-symbols-outlined text-[18px]">call</span>
@@ -252,7 +252,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                     setActivePage('about');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-surface-container text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 bg-surface-container text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer font-semibold text-center"
                 >
                   <span>Learn About Us</span>
                   <span className="material-symbols-outlined text-[18px]">chevron_right</span>
@@ -267,28 +267,28 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
       {/* =========================================================================
           FINANCIAL SERVICES OVERVIEW
           ========================================================================= */}
-      <section className="w-full py-space-xl lg:py-24 bg-surface-container-low" id="services">
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop">
+      <section className="w-full py-12 sm:py-16 lg:py-24 bg-surface-container-low" id="services">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop">
           
-          <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-xl">
+          <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-8 sm:mb-space-xl">
             <div className="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-highest text-on-surface-variant mb-space-xs">
               <span className="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">
                 EMPOWER YOUR WEALTH
               </span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface tracking-tight font-bold">
+            <h2 className="font-headline-xl text-headline-xl-mobile sm:text-3xl lg:text-headline-xl text-on-surface tracking-tight font-bold">
               Tailored strategies for financial growth
             </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+            <p className="font-body-md text-sm sm:text-body-md text-on-surface-variant mt-space-sm">
               Comprehensive, client-aligned financial advisory practices designed for capital appreciation and multigenerational preservation.
             </p>
           </div>
 
-          {/* Luxury 3-Card Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg">
+          {/* Luxury 3-Card Services Grid (Responsive Tablet & Mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-gutter-lg">
             
             {/* Service Card 1: Insurance Advisory */}
-            <div className="group flex flex-col bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative border border-surface-container">
+            <div className="group flex flex-col bg-surface-container-lowest p-6 sm:p-space-lg lg:p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative border border-surface-container">
               <div className="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-200 mb-space-lg">
                 <span className="material-symbols-outlined text-[30px]">shield</span>
               </div>
@@ -318,7 +318,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
             </div>
 
             {/* Service Card 2: Wealth Advisory (Flagship) */}
-            <div className="group flex flex-col bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative ring-1 ring-primary/20 border border-primary/20">
+            <div className="group flex flex-col bg-surface-container-lowest p-6 sm:p-space-lg lg:p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative ring-1 ring-primary/20 border border-primary/20">
               <div className="absolute top-4 right-4 bg-primary-container text-on-primary font-label-caps text-label-caps uppercase px-2.5 py-1 rounded-full font-bold">
                 Flagship
               </div>
@@ -351,7 +351,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
             </div>
 
             {/* Service Card 3: Finance */}
-            <div className="group flex flex-col bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative border border-surface-container">
+            <div className="group flex flex-col bg-surface-container-lowest p-6 sm:p-space-lg lg:p-space-xl rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative border border-surface-container">
               <div className="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-200 mb-space-lg">
                 <span className="material-symbols-outlined text-[30px]">payments</span>
               </div>
@@ -387,36 +387,36 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
       {/* =========================================================================
           CLIENT INQUIRY & CONTACT SECTION
           ========================================================================= */}
-      <section className="w-full py-space-xl lg:py-24 bg-surface" id="contact">
-        <div className="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop">
+      <section className="w-full py-12 sm:py-16 lg:py-24 bg-surface" id="contact">
+        <div className="max-w-7xl mx-auto px-4 sm:px-margin-mobile lg:px-margin-desktop">
           
-          <div className="flex flex-col items-start mb-space-xl">
+          <div className="flex flex-col items-start mb-8 sm:mb-space-xl">
             <div className="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-secondary-container text-on-secondary-container mb-space-xs">
               <span className="font-label-caps text-label-caps uppercase tracking-wider font-bold">
                 Direct Advisory Salon
               </span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface tracking-tight font-bold">
+            <h2 className="font-headline-xl text-headline-xl-mobile sm:text-3xl lg:text-headline-xl text-on-surface tracking-tight font-bold">
               Get in touch
             </h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+            <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant mt-space-xs">
               We're here to assist you! Reach out to our AMFI registered advisory team.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-gutter-lg items-start">
             
             {/* Left Column: Contact Details Card */}
             <div className="lg:col-span-5 flex flex-col gap-space-md">
-              <div className="bg-inverse-surface text-inverse-on-surface p-space-xl rounded-2xl shadow-xl flex flex-col">
+              <div className="bg-inverse-surface text-inverse-on-surface p-6 sm:p-space-lg lg:p-space-xl rounded-2xl shadow-xl flex flex-col">
                 <span className="font-label-caps text-label-caps uppercase text-primary-container tracking-wider font-bold">
                   Orange Enterprise Desk
                 </span>
-                <h3 className="font-headline-md text-headline-md text-inverse-on-surface font-semibold mt-1">
+                <h3 className="font-headline-md text-xl sm:text-headline-md text-inverse-on-surface font-semibold mt-1">
                   Direct Advisory & Salon
                 </h3>
 
-                <div className="flex flex-col gap-space-md mt-space-lg font-body-md text-body-md text-inverse-on-surface/90">
+                <div className="flex flex-col gap-space-md mt-6 sm:mt-space-lg font-body-md text-body-md text-inverse-on-surface/90">
                   {/* Phone */}
                   <div className="flex items-center gap-space-sm">
                     <div className="w-10 h-10 rounded-lg bg-inverse-on-surface/10 flex items-center justify-center shrink-0">
@@ -428,7 +428,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                       <span className="font-label-caps text-label-caps uppercase text-inverse-on-surface/60">
                         Phone Consultation
                       </span>
-                      <a className="font-headline-sm text-headline-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold" href="tel:+919820433220">
+                      <a className="font-headline-sm text-base sm:text-headline-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold truncate" href="tel:+919820433220">
                         +91 98204 33220
                       </a>
                     </div>
@@ -441,11 +441,11 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                         mail
                       </span>
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col min-w-0">
                       <span className="font-label-caps text-label-caps uppercase text-inverse-on-surface/60">
                         Electronic Dispatch
                       </span>
-                      <a className="font-headline-sm text-headline-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold" href="mailto:wlthwrks@gmail.com">
+                      <a className="font-headline-sm text-base sm:text-headline-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold truncate" href="mailto:wlthwrks@gmail.com">
                         wlthwrks@gmail.com
                       </a>
                     </div>
@@ -497,7 +497,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                   {/* LinkedIn Connect */}
                   <div className="flex items-center justify-between pt-space-md mt-space-xs border-t border-inverse-on-surface/15">
                     <a 
-                      className="inline-flex items-center gap-space-xs font-label-md text-label-md text-primary-container hover:underline" 
+                      className="inline-flex items-center gap-space-xs font-label-md text-sm sm:text-label-md text-primary-container hover:underline" 
                       href="http://www.linkedin.com/in/pbd09" 
                       rel="noopener noreferrer" 
                       target="_blank"
@@ -509,16 +509,16 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                 </div>
 
                 {/* Direct Action Buttons */}
-                <div className="grid grid-cols-2 gap-space-sm mt-space-xl">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-space-sm mt-6 sm:mt-space-xl">
                   <button
                     onClick={() => onOpenSchedule('Quick Appointment')}
-                    className="inline-flex items-center justify-center py-2.5 px-space-sm bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-inverse-on-surface font-label-sm text-label-sm rounded-lg transition-colors text-center cursor-pointer"
+                    className="inline-flex items-center justify-center py-2.5 px-space-sm bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-inverse-on-surface font-label-sm text-label-sm rounded-lg transition-colors text-center cursor-pointer font-semibold"
                   >
                     Schedule appointment
                   </button>
                   <button
                     onClick={() => onOpenIntake()}
-                    className="inline-flex items-center justify-center py-2.5 px-space-sm bg-primary-container hover:bg-primary text-on-primary font-label-sm text-label-sm rounded-lg transition-colors text-center cursor-pointer"
+                    className="inline-flex items-center justify-center py-2.5 px-space-sm bg-primary-container hover:bg-primary text-on-primary font-label-sm text-label-sm rounded-lg transition-colors text-center cursor-pointer font-semibold"
                   >
                     Complete intake
                   </button>
@@ -527,7 +527,7 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
             </div>
 
             {/* Right Column: Luxury Inquiry Form Card */}
-            <div className="lg:col-span-7 bg-surface-container-lowest p-space-xl rounded-2xl shadow-xl border border-surface-container">
+            <div className="lg:col-span-7 bg-surface-container-lowest p-6 sm:p-space-lg lg:p-space-xl rounded-2xl shadow-xl border border-surface-container w-full">
               <div className="mb-space-lg">
                 <h3 className="font-headline-md text-headline-md text-on-surface font-bold">
                   Initiate Strategic Consultation

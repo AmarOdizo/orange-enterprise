@@ -78,7 +78,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="w-full pt-20 flex-1 bg-surface min-h-[calc(100vh-80px)]">
+      <main className="w-full pt-16 sm:pt-20 flex-1 bg-surface min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)]">
         {activePage === 'home' && (
           <HomePage 
             setActivePage={setActivePage}
