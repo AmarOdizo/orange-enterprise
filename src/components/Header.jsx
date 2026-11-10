@@ -17,10 +17,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
     setMobileMenuOpen(false);
   };
 
-  // Close mobile menu on resize to desktop
+  // Close mobile menu on resize to tablet/desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1280) {
+      if (window.innerWidth >= 768) {
         setMobileMenuOpen(false);
       }
     };
@@ -65,15 +65,15 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             </div>
           </button>
 
-          {/* Desktop Navigation (XL screens) */}
-          <nav className="hidden xl:flex items-center gap-space-sm">
+          {/* Desktop & Laptop Navigation (Visible on md, lg, xl, and all desktop/laptop screens) */}
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-space-md py-space-xs rounded-lg font-label-md text-label-md transition-all cursor-pointer ${
+                  className={`px-3 lg:px-4 py-1.5 rounded-lg font-label-md text-sm lg:text-label-md transition-all cursor-pointer font-medium ${
                     isActive 
                       ? 'bg-surface-container-high text-on-surface font-semibold shadow-xs' 
                       : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
@@ -87,9 +87,9 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
           {/* Quick Actions & Mobile Controls */}
           <div className="flex items-center gap-2 sm:gap-space-md shrink-0">
-            {/* Direct Call Quick Link for Tablet & Desktop */}
+            {/* Direct Call Link for Laptop & Desktop */}
             <a 
-              className="hidden lg:inline-flex items-center font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" 
+              className="hidden xl:inline-flex items-center font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" 
               href="tel:+919820433220"
             >
               <span className="material-symbols-outlined text-[16px] mr-space-xs text-primary">
@@ -98,10 +98,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               +91 98204 33220
             </a>
 
-            {/* Schedule Appointment on Tablet (md+) */}
+            {/* Schedule Appointment on Desktop/Laptop (lg+) */}
             <button
               onClick={() => onOpenSchedule('Schedule Appointment')}
-              className="hidden md:inline-flex items-center font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+              className="hidden lg:inline-flex items-center font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
             >
               <span className="material-symbols-outlined text-[16px] mr-space-xs text-primary">
                 calendar_today
@@ -109,10 +109,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               Schedule Appointment
             </button>
 
-            {/* Get in Touch CTA Button (Shown on sm+) */}
+            {/* Get in Touch CTA Button */}
             <button
               onClick={() => handleNavClick('contact')}
-              className="hidden sm:inline-flex items-center justify-center px-space-md py-2 sm:py-space-sm bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary transition-all duration-200 cursor-pointer font-semibold"
+              className="hidden sm:inline-flex items-center justify-center px-3.5 lg:px-space-md py-2 sm:py-space-sm bg-primary-container text-on-primary font-label-md text-sm lg:text-label-md rounded-lg shadow-sm hover:bg-primary transition-all duration-200 cursor-pointer font-semibold"
             >
               Get in Touch
             </button>
@@ -130,17 +130,17 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* AMFI Licensed Badge Avatar (Desktop & Tablet) */}
             <div 
               title="Authorized AMFI Distributor ARN 83312"
-              className="hidden md:flex w-8 h-8 rounded-full bg-primary items-center justify-center shrink-0 cursor-default shadow-xs"
+              className="hidden lg:flex w-8 h-8 rounded-full bg-primary items-center justify-center shrink-0 cursor-default shadow-xs"
             >
               <span className="material-symbols-outlined text-on-primary text-[18px]">
                 verified_user
               </span>
             </div>
 
-            {/* Mobile & Tablet Hamburger Toggle */}
+            {/* Mobile-only Hamburger Toggle (< md / phones only) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-on-surface hover:bg-surface-container rounded-lg transition-colors cursor-pointer"
+              className="md:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-on-surface hover:bg-surface-container rounded-lg transition-colors cursor-pointer"
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -151,9 +151,9 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
           </div>
         </div>
 
-        {/* Mobile & Tablet Drawer Menu */}
+        {/* Mobile-only Drawer Menu (< md) */}
         {mobileMenuOpen && (
-          <div className="xl:hidden bg-surface-container-lowest border-t border-surface-container px-4 sm:px-margin-mobile py-4 flex flex-col gap-2 shadow-2xl animate-fade-in max-h-[calc(100vh-64px)] sm:max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="md:hidden bg-surface-container-lowest border-t border-surface-container px-4 sm:px-margin-mobile py-4 flex flex-col gap-2 shadow-2xl animate-fade-in max-h-[calc(100vh-64px)] overflow-y-auto">
             <span className="font-label-caps text-label-caps uppercase text-on-surface-variant px-2 pt-1 font-bold">
               Navigation
             </span>
@@ -214,7 +214,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
       {mobileMenuOpen && (
         <div 
           onClick={() => setMobileMenuOpen(false)}
-          className="xl:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity"
+          className="md:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity"
         />
       )}
     </>

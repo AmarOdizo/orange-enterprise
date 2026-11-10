@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const WEALTH_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuBdW1zF3_WXUhRahR2CZTsi9vCLiV4h-zRkqlC-nmShxGJ6kwyoovrvjgjsqSTyRmN7zqFthsQgwfx1v9fTgsSNNeiPVRZEiiYqIEPPad6qRK0f-cUQb9tyQlpLG32jEfISgi89LdLiZD5K1_lFwUAQiEPgXrut-CLucNYx6uLOZWhkzZqzA0yXH4V9ka2PhEL0UHyzz8yFudbuSpb3UvmITAzDgr5yfNpsUCwN_60H";
 const INSURANCE_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuDmRp5a6O5lbB32sm-nxPU6_dk5UuOohKQ4iJYzpxU2011Ft2jRA2c_nts8Amoc6hYurVh976ngJwrfw0IaIYoXwzuUc7B7SLVxiRmtV-f9o6rVqSk0c3mjq7DrTsXFnb38veex_LCrSQ1yPPtjRhV-RKkhnXnholm3JpFtZXEXQ_cBBBVm5Gl0l8Y1cZinz4YC4urJ4F-SkiGyqY4AvpZfUR8lEmKG4k1wWpXPGkvd";
 const FINANCE_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuB-_GMPEV95IeRuD4FbEZA8eZ1JXjrp9k906QUyDtpLL5JNCLP51ALurjFBBToTAmxqg4Sd1ed9Fla-akci1NJylX_Dq1c8GXRXn1-Izi-LKPnMbd8iajHiw99i7KVhNIeaZatpyftCEP49zAOFGKkdZ3fSFlOsi37bWWpecgUhJ2sVLcvbMiV-66QS8GIeSlXZzNybspYSMWMpT2Awoii2pCD2IhwfC_LnYlJu_0Ln";
 
 export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
+  const [activeMandate, setActiveMandate] = useState('wealth-advisory');
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    const sections = ['wealth-advisory', 'insurance-advisory', 'finance'];
+    const handleScroll = () => {
+      const scrollY = window.scrollY + 220;
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollY >= top && scrollY < top + height) {
+            setActiveMandate(sectionId);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -82,19 +104,31 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
           <div className="flex items-center gap-2 sm:gap-space-sm shrink-0">
             <button
               onClick={() => scrollToSection('wealth-advisory')}
-              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
+              className={`px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full font-label-sm text-xs sm:text-label-sm transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap ${
+                activeMandate === 'wealth-advisory'
+                  ? 'bg-primary-container text-on-primary font-semibold'
+                  : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+              }`}
             >
               01. Wealth advisory
             </button>
             <button
               onClick={() => scrollToSection('insurance-advisory')}
-              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
+              className={`px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full font-label-sm text-xs sm:text-label-sm transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap ${
+                activeMandate === 'insurance-advisory'
+                  ? 'bg-primary-container text-on-primary font-semibold'
+                  : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+              }`}
             >
               02. Insurance advisory
             </button>
             <button
               onClick={() => scrollToSection('finance')}
-              className="px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full bg-surface-container-lowest font-label-sm text-xs sm:text-label-sm text-on-surface hover:bg-primary-container hover:text-on-primary transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap"
+              className={`px-3 sm:px-space-md py-1.5 sm:py-space-xs rounded-full font-label-sm text-xs sm:text-label-sm transition-all shadow-xs cursor-pointer font-medium whitespace-nowrap ${
+                activeMandate === 'finance'
+                  ? 'bg-primary-container text-on-primary font-semibold'
+                  : 'bg-surface-container-lowest text-on-surface hover:bg-surface-container-high'
+              }`}
             >
               03. Finance
             </button>
