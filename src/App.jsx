@@ -10,6 +10,7 @@ import IntakeModal from './components/IntakeModal';
 import LegalModal from './components/LegalModal';
 import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import AdminDeskModal from './components/AdminDeskModal';
 
 const VALID_PAGES = ['home', 'about', 'services', 'contact'];
 
@@ -30,6 +31,7 @@ export default function App() {
   const [intakeModalOpen, setIntakeModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalTopic, setLegalTopic] = useState('Privacy Policy');
+  const [deskModalOpen, setDeskModalOpen] = useState(false);
 
   // Sync active page with URL hash for browser history & bookmarking
   const setActivePage = (page) => {
@@ -102,6 +104,7 @@ export default function App() {
         activePage={activePage} 
         setActivePage={setActivePage}
         onOpenSchedule={handleOpenSchedule}
+        onOpenDesk={() => setDeskModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -160,6 +163,11 @@ export default function App() {
         isOpen={legalModalOpen}
         onClose={() => setLegalModalOpen(false)}
         topic={legalTopic}
+      />
+
+      <AdminDeskModal 
+        isOpen={deskModalOpen}
+        onClose={() => setDeskModalOpen(false)}
       />
 
       {/* Cookie Consent Banner */}

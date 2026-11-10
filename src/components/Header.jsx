@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const LOGO_URL = "/orange-enterprise-logo.png";
 
-export default function Header({ activePage, setActivePage, onOpenSchedule }) {
+export default function Header({ activePage, setActivePage, onOpenSchedule, onOpenDesk }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -122,15 +122,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               <span className="material-symbols-outlined text-[18px]">phone</span>
             </a>
 
-            {/* AMFI Licensed Badge Avatar (Desktop & Tablet) */}
-            <div 
-              title="Authorized AMFI Distributor ARN 83312"
-              className="hidden lg:flex w-7 h-7 rounded-full bg-[#FD6702]/10 border border-[#FD6702]/25 text-[#FD6702] items-center justify-center shrink-0 cursor-default shadow-xs"
+            {/* AMFI Licensed Badge Avatar - Click to open Advisory Desk Portal */}
+            <button 
+              onClick={() => onOpenDesk && onOpenDesk()}
+              title="Advisory Desk Portal (ARN 83312)"
+              className="hidden lg:flex w-7 h-7 rounded-full bg-[#FD6702]/10 hover:bg-[#FD6702]/25 border border-[#FD6702]/25 text-[#FD6702] items-center justify-center shrink-0 cursor-pointer shadow-xs transition-colors"
             >
               <span className="material-symbols-outlined text-[#FD6702] text-[15px]">
                 verified_user
               </span>
-            </div>
+            </button>
 
             {/* Mobile-only Hamburger Toggle (< md) */}
             <button
