@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SipCalculator from '../components/SipCalculator';
 
 const HERO_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuCJUSnGNHCshsywHkCy3L0pIeXhA6HNk6K5qTB8hKFK2Ikt6j_qDhtSQXTEpPEvx7mTwUNMfJHq74NRh88jWef1fwLaI3Bf-hvz3m4dCOn0r8Jpvqku8gQofl-E3ANV_Z9IO9uRMo0YxVB_sR9NiRnGqFgpo3Aq4fxVMVbnluEd-rYKMDq_NNqRf7-UmCQFWQ9TCS_OKhDp4XhjdUpFSqY-DMgfs_tNbImsKNxjqTqZ";
 const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD09XHqfHAACiOMMGHuNRecvitZyr8cxEByV7I5wECGIxyHAA2rOMsyI1pC-SpJTNfptv32rgLX-PYdHprzjwrRUKRE0_KNekqTHK1EjL7bgtzBNz7nbyj7sRSDm88_kvWqZuvr-JTayB-dbtmS9KeShpTh_59aRXUwtjrnJQLJ6sHmxHxva7XzhfrNTWTrzwqEgaHYdCQFtB9APdpQnT3yhC5FbPmOn6xILhusY8kL";
@@ -49,12 +50,15 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight font-extrabold max-w-lg leading-tight">
-                Wealth management <span className="text-primary-container">redefined</span>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight font-extrabold max-w-xl leading-tight">
+                Wealth management <span className="text-primary-container">redefined</span>.
+                <span className="block text-lg sm:text-xl lg:text-2xl font-bold text-on-surface/85 mt-1">
+                  Building Tomorrow, Together.
+                </span>
               </h1>
 
-              <p className="text-xs sm:text-sm text-on-surface-variant mt-2.5 max-w-md leading-relaxed">
-                Strategic wealth management solutions designed to navigate financial complexities and build enduring legacies.
+              <p className="text-xs sm:text-sm text-on-surface-variant mt-2.5 max-w-lg leading-relaxed">
+                Strategic wealth management solutions, bespoke mutual fund advisory, and disciplined fiduciary architecture designed for families, entrepreneurs, and institutions in Mumbai.
               </p>
 
               {/* Executive CTA Suite */}
@@ -383,6 +387,15 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          INTERACTIVE WEALTH & SIP CALCULATOR
+          ========================================================================= */}
+      <section className="w-full py-6 sm:py-8 bg-surface-container-low/60 border-b border-surface-container">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SipCalculator onOpenSchedule={onOpenSchedule} />
         </div>
       </section>
 

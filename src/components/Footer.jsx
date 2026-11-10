@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LOGO_URL = "/orange-enterprise-logo.jpg";
+const LOGO_URL = "/orange-enterprise-logo.png";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, onOpenLegal }) {
@@ -17,7 +17,7 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
           {/* Column 1: Institutional Identity */}
           <div className="lg:col-span-4 flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <div className="bg-[#FD6702] px-2.5 py-1.5 rounded-lg shadow-xs flex items-center justify-center">
+              <div className="bg-[#FFF4E8] border border-[#F2DECA] px-2.5 py-1.5 rounded-lg shadow-xs flex items-center justify-center">
                 <img 
                   alt="Orange Enterprise Logo" 
                   className="h-8 sm:h-9 w-auto object-contain" 

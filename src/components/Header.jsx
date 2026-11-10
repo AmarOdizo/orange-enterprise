@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const LOGO_URL = "/orange-enterprise-logo.jpg";
+const LOGO_URL = "/orange-enterprise-logo.png";
 
 export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#FD6702] shadow-md border-b border-[#E55A00] text-white">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#FFF4E8] shadow-xs border-b border-[#F2DECA] text-[#161C25]">
         <div className="h-14 sm:h-16 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Brand Logo & Registration */}
@@ -54,28 +54,28 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" 
               src={LOGO_URL} 
             />
-            <div className="hidden sm:flex flex-col border-l border-white/30 pl-2.5">
-              <span className="text-[10px] text-white font-bold tracking-wider leading-tight uppercase">
+            <div className="hidden sm:flex flex-col border-l border-[#161C25]/20 pl-2.5">
+              <span className="text-[10px] text-[#161C25] font-bold tracking-wider leading-tight uppercase">
                 ARN 83312
               </span>
-              <span className="text-[9px] text-white/85 uppercase tracking-widest font-semibold">
+              <span className="text-[9px] text-[#FD6702] uppercase tracking-widest font-bold">
                 Mumbai Desk
               </span>
             </div>
           </button>
 
           {/* Desktop & Laptop Navigation */}
-          <nav className="hidden md:flex items-center gap-1.5">
+          <nav className="hidden md:flex items-center gap-1 sm:gap-1.5">
             {navItems.map((item) => {
               const isActive = activePage === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3 py-1 rounded-md text-xs sm:text-sm transition-all cursor-pointer font-medium ${
+                  className={`px-3 py-1.5 rounded-md text-xs sm:text-sm transition-all cursor-pointer font-semibold ${
                     isActive 
-                      ? 'bg-white text-[#FD6702] font-bold shadow-xs' 
-                      : 'text-white/90 hover:text-white hover:bg-white/15'
+                      ? 'bg-[#FD6702] text-white shadow-xs' 
+                      : 'text-[#161C25]/80 hover:text-[#FD6702] hover:bg-[#FD6702]/8'
                   }`}
                 >
                   {item.label}
@@ -88,10 +88,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
           <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {/* Direct Call Link for Laptop & Desktop */}
             <a 
-              className="hidden xl:inline-flex items-center text-xs text-white/90 hover:text-white font-medium transition-colors" 
+              className="hidden xl:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors" 
               href="tel:+919820433220"
             >
-              <span className="material-symbols-outlined text-[15px] mr-1 text-white">
+              <span className="material-symbols-outlined text-[16px] mr-1 text-[#FD6702]">
                 phone
               </span>
               +91 98204 33220
@@ -100,9 +100,9 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* Schedule Appointment on Desktop/Laptop (lg+) */}
             <button
               onClick={() => onOpenSchedule('Schedule Appointment')}
-              className="hidden lg:inline-flex items-center text-xs text-white/90 hover:text-white font-medium transition-colors cursor-pointer"
+              className="hidden lg:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[15px] mr-1 text-white">
+              <span className="material-symbols-outlined text-[16px] mr-1 text-[#FD6702]">
                 calendar_today
               </span>
               Schedule Appointment
@@ -111,10 +111,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* Contact CTA Button on Right Side */}
             <button
               onClick={() => handleNavClick('contact')}
-              className={`hidden sm:inline-flex items-center justify-center px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-xs ${
+              className={`hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-md text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-xs ${
                 activePage === 'contact'
-                  ? 'bg-[#101D32] text-white shadow-sm ring-2 ring-white/60 font-bold'
-                  : 'bg-white text-[#FD6702] hover:bg-white/95 hover:shadow-sm font-bold'
+                  ? 'bg-[#161C25] text-white shadow-xs'
+                  : 'bg-[#FD6702] text-white hover:bg-[#E55A00] hover:shadow-xs'
               }`}
             >
               Contact
@@ -123,7 +123,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* Mobile Call Icon Button (< sm) */}
             <a
               href="tel:+919820433220"
-              className="sm:hidden w-8 h-8 rounded-md bg-white/20 text-white hover:bg-white/30 flex items-center justify-center transition-colors"
+              className="sm:hidden w-8 h-8 rounded-md bg-[#FD6702]/10 text-[#FD6702] hover:bg-[#FD6702]/20 flex items-center justify-center transition-colors"
               title="Call Advisor Desk"
               aria-label="Call +91 98204 33220"
             >
@@ -133,9 +133,9 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* AMFI Licensed Badge Avatar (Desktop & Tablet) */}
             <div 
               title="Authorized AMFI Distributor ARN 83312"
-              className="hidden lg:flex w-7 h-7 rounded-full bg-white/20 border border-white/30 text-white items-center justify-center shrink-0 cursor-default shadow-xs"
+              className="hidden lg:flex w-7 h-7 rounded-full bg-[#FD6702]/10 border border-[#FD6702]/25 text-[#FD6702] items-center justify-center shrink-0 cursor-default shadow-xs"
             >
-              <span className="material-symbols-outlined text-white text-[15px]">
+              <span className="material-symbols-outlined text-[#FD6702] text-[15px]">
                 verified_user
               </span>
             </div>
@@ -143,7 +143,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* Mobile-only Hamburger Toggle (< md) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-white hover:bg-white/20 rounded-md transition-colors cursor-pointer"
+              className="md:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#161C25] hover:bg-[#FD6702]/10 rounded-md transition-colors cursor-pointer"
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -156,8 +156,8 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
         {/* Mobile-only Drawer Menu (< md) */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FD6702] border-t border-white/20 px-4 py-3 flex flex-col gap-1.5 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-white">
-            <span className="text-[10px] uppercase text-white/80 px-2 pt-1 font-bold tracking-wider">
+          <div className="md:hidden bg-[#FFF4E8] border-t border-[#F2DECA] px-4 py-3 flex flex-col gap-1.5 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-[#161C25]">
+            <span className="text-[10px] uppercase text-[#161C25]/60 px-2 pt-1 font-bold tracking-wider">
               Navigation
             </span>
             {navItems.map((item) => (
@@ -166,8 +166,8 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                 onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left px-3.5 py-2.5 rounded-md text-sm transition-colors flex items-center justify-between cursor-pointer ${
                   activePage === item.id
-                    ? 'bg-white text-[#FD6702] font-bold shadow-xs'
-                    : 'text-white hover:bg-white/15'
+                    ? 'bg-[#FD6702] text-white font-bold shadow-xs'
+                    : 'text-[#161C25] hover:bg-[#FD6702]/10 font-medium'
                 }`}
               >
                 <span>{item.label}</span>
@@ -177,16 +177,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               </button>
             ))}
 
-            <div className="pt-2.5 border-t border-white/20 flex flex-col gap-1.5 mt-1.5">
-              <span className="text-[10px] uppercase text-white/80 px-2 font-bold tracking-wider">
+            <div className="pt-2.5 border-t border-[#F2DECA] flex flex-col gap-1.5 mt-1.5">
+              <span className="text-[10px] uppercase text-[#161C25]/60 px-2 font-bold tracking-wider">
                 Direct Actions
               </span>
               <button
                 onClick={() => handleNavClick('contact')}
-                className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md text-xs font-semibold shadow-xs transition-all cursor-pointer ${
+                className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md text-xs font-bold shadow-xs transition-all cursor-pointer ${
                   activePage === 'contact'
-                    ? 'bg-[#101D32] text-white ring-2 ring-white/60 font-bold'
-                    : 'bg-white text-[#FD6702] hover:bg-white/95 font-bold'
+                    ? 'bg-[#161C25] text-white'
+                    : 'bg-[#FD6702] text-white hover:bg-[#E55A00]'
                 }`}
               >
                 <span className="material-symbols-outlined text-[16px]">mail</span>
@@ -197,19 +197,19 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                   onOpenSchedule('Mobile Menu Appointment');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-white/15 text-white hover:bg-white/25 border border-white/20 text-xs font-semibold transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#FD6702]/10 text-[#161C25] hover:bg-[#FD6702]/20 border border-[#FD6702]/20 text-xs font-semibold transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-[16px] text-white">calendar_today</span>
+                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">calendar_today</span>
                 Schedule Appointment
               </button>
               <a
                 href="tel:+919820433220"
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-white/15 text-white hover:bg-white/25 border border-white/20 text-xs font-semibold transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#FD6702]/10 text-[#161C25] hover:bg-[#FD6702]/20 border border-[#FD6702]/20 text-xs font-semibold transition-colors"
               >
-                <span className="material-symbols-outlined text-[16px] text-white">phone</span>
+                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">phone</span>
                 +91 98204 33220
               </a>
-              <div className="pt-1 text-center text-[11px] text-white/80">
+              <div className="pt-1 text-center text-[11px] text-[#161C25]/70">
                 AMFI Registered Distributor • ARN 83312 • Mumbai
               </div>
             </div>
