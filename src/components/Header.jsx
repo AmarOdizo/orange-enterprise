@@ -41,7 +41,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#FE6902] shadow-md border-b border-[#E05A00] text-white">
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#FD7302] shadow-md border-b border-[#E56600] text-white">
         <div className="h-14 sm:h-16 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Brand Logo & Registration */}
@@ -74,7 +74,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                   onClick={() => handleNavClick(item.id)}
                   className={`px-3 py-1 rounded-md text-xs sm:text-sm transition-all cursor-pointer font-medium ${
                     isActive 
-                      ? 'bg-white text-[#FE6902] font-bold shadow-xs' 
+                      ? 'bg-white text-[#FD7302] font-bold shadow-xs' 
                       : 'text-white/90 hover:text-white hover:bg-white/15'
                   }`}
                 >
@@ -114,7 +114,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               className={`hidden sm:inline-flex items-center justify-center px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer shadow-xs ${
                 activePage === 'contact'
                   ? 'bg-[#101D32] text-white shadow-sm ring-2 ring-white/60 font-bold'
-                  : 'bg-white text-[#FE6902] hover:bg-white/95 hover:shadow-sm font-bold'
+                  : 'bg-white text-[#FD7302] hover:bg-white/95 hover:shadow-sm font-bold'
               }`}
             >
               Contact
@@ -156,7 +156,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
         {/* Mobile-only Drawer Menu (< md) */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FE6902] border-t border-white/20 px-4 py-3 flex flex-col gap-1.5 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-white">
+          <div className="md:hidden bg-[#FD7302] border-t border-white/20 px-4 py-3 flex flex-col gap-1.5 shadow-2xl animate-fade-in max-h-[calc(100vh-56px)] overflow-y-auto text-white">
             <span className="text-[10px] uppercase text-white/80 px-2 pt-1 font-bold tracking-wider">
               Navigation
             </span>
@@ -166,7 +166,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                 onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left px-3.5 py-2.5 rounded-md text-sm transition-colors flex items-center justify-between cursor-pointer ${
                   activePage === item.id
-                    ? 'bg-white text-[#FE6902] font-bold shadow-xs'
+                    ? 'bg-white text-[#FD7302] font-bold shadow-xs'
                     : 'text-white hover:bg-white/15'
                 }`}
               >
@@ -186,7 +186,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                 className={`w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md text-xs font-semibold shadow-xs transition-all cursor-pointer ${
                   activePage === 'contact'
                     ? 'bg-[#101D32] text-white ring-2 ring-white/60 font-bold'
-                    : 'bg-white text-[#FE6902] hover:bg-white/95 font-bold'
+                    : 'bg-white text-[#FD7302] hover:bg-white/95 font-bold'
                 }`}
               >
                 <span className="material-symbols-outlined text-[16px]">mail</span>
