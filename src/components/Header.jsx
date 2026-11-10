@@ -89,14 +89,11 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               +91 98204 33220
             </a>
 
-            {/* Book Consultation on Desktop/Laptop (lg+) */}
+            {/* Book Consultation Button on Desktop/Laptop (lg+) */}
             <button
               onClick={() => onOpenSchedule('Book Consultation')}
-              className="hidden lg:inline-flex items-center text-xs text-[#161C25]/85 hover:text-[#FD6702] font-semibold transition-colors cursor-pointer"
+              className="hidden lg:inline-flex items-center justify-center px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-bold border border-[#FD6702] text-[#FD6702] bg-[#FD6702]/8 hover:bg-[#FD6702] hover:text-white transition-all duration-200 shadow-xs cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[16px] mr-1 text-[#FD6702]">
-                calendar_today
-              </span>
               Book Consultation
             </button>
 
@@ -190,9 +187,8 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                   onOpenSchedule('Mobile Menu Consultation');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-md bg-[#FD6702]/10 text-[#161C25] hover:bg-[#FD6702]/20 border border-[#FD6702]/20 text-xs font-semibold transition-colors cursor-pointer"
+                className="w-full flex items-center justify-center px-3 py-2.5 rounded-md bg-[#FD6702]/10 hover:bg-[#FD6702] hover:text-white text-[#FD6702] border border-[#FD6702]/30 text-xs font-bold transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">calendar_today</span>
                 Book Consultation
               </button>
               <a
