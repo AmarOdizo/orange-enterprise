@@ -125,10 +125,10 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
         {/* Main Two-Column Advisory Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-            
+
             {/* Column 1: Contact Coordinates, Schedule & Actions (5 Cols) */}
             <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-5">
-              
+
               {/* Direct Channels Card */}
               <div className="bg-white rounded-2xl p-5 shadow-xs border border-[#E8D5C2]">
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F0DCB]">
@@ -142,8 +142,8 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
 
                 <div className="flex flex-col gap-2.5">
                   {/* Phone */}
-                  <a 
-                    className="group flex items-start gap-3 p-3 rounded-xl bg-[#FFFDF9] hover:bg-[#FFF4E8] border border-[#F0DCB]/70 transition-colors" 
+                  <a
+                    className="group flex items-start gap-3 p-3 rounded-xl bg-[#FFFDF9] hover:bg-[#FFF4E8] border border-[#F0DCB]/70 transition-colors"
                     href="tel:+919820433220"
                   >
                     <div className="w-9 h-9 rounded-xl bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -163,8 +163,8 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                   </a>
 
                   {/* Email */}
-                  <a 
-                    className="group flex items-start gap-3 p-3 rounded-xl bg-[#FFFDF9] hover:bg-[#FFF4E8] border border-[#F0DCB]/70 transition-colors" 
+                  <a
+                    className="group flex items-start gap-3 p-3 rounded-xl bg-[#FFFDF9] hover:bg-[#FFF4E8] border border-[#F0DCB]/70 transition-colors"
                     href="mailto:wlthwrks@gmail.com"
                   >
                     <div className="w-9 h-9 rounded-xl bg-[#161C25]/5 text-[#161C25] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -192,10 +192,10 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                       <span className="text-[10px] text-[#161C25]/60 uppercase font-bold tracking-wider">
                         Executive Salon Location
                       </span>
-                      <a 
-                        className="text-xs sm:text-sm text-[#161C25] hover:text-[#FD6702] transition-colors font-bold" 
-                        href="https://www.google.com/maps/place/Mumbai,+Maharashtra,+India" 
-                        rel="noopener noreferrer" 
+                      <a
+                        className="text-xs sm:text-sm text-[#161C25] hover:text-[#FD6702] transition-colors font-bold"
+                        href="https://www.google.com/maps/place/Mumbai,+Maharashtra,+India"
+                        rel="noopener noreferrer"
                         target="_blank"
                       >
                         Mumbai, MH India
@@ -207,10 +207,10 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                   </div>
 
                   {/* LinkedIn Connect */}
-                  <a 
-                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#FFF4E8] hover:bg-[#F2DECA] border border-[#E8D5C2] transition-colors group cursor-pointer" 
-                    href="http://www.linkedin.com/in/pbd09" 
-                    rel="noopener noreferrer" 
+                  <a
+                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#FFF4E8] hover:bg-[#F2DECA] border border-[#E8D5C2] transition-colors group cursor-pointer"
+                    href="http://www.linkedin.com/in/pbd09"
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <div className="flex items-center gap-2">
@@ -298,7 +298,7 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
             {/* Column 2: Client Inquiry Clean Form (7 Cols) */}
             <div className="lg:col-span-7 flex flex-col w-full">
               <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden border border-[#E8D5C2]">
-                
+
                 {/* Decorative Ambient Corner Glow */}
                 <div className="absolute top-0 right-0 w-36 h-36 bg-[#FD6702]/10 rounded-bl-full pointer-events-none" />
 
@@ -359,7 +359,7 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
 
                 {/* Clean, Tactile Form */}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-                  
+
                   {/* Row 1: Full Name & Phone Number */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div className="flex flex-col gap-1">
@@ -369,21 +369,19 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                         </span>
                         <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
                       </label>
-                      <div className="relative">
-                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-[#161C25]/40 text-[18px]">
-                          person
-                        </span>
-                        <input
-                          id="input-name"
-                          type="text"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Anand Mahindra"
-                          className={`w-full pl-9.5 pr-3.5 py-2 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
-                            errors.name 
-                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
-                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                          }`}
+                          <div className="relative flex items-center">
+                            <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                              person
+                            </span>
+                            <input
+                              id="input-name"
+                              type="text"
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              placeholder="e.g. Anand Mahindra"
+                                    ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
+                                    : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                                  }`}
                         />
                       </div>
                       {errors.name && (
@@ -398,8 +396,8 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                         </span>
                         <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
                       </label>
-                      <div className="relative">
-                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-[#161C25]/40 text-[18px]">
+                      <div className="relative flex items-center">
+                        <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
                           phone
                         </span>
                         <input
@@ -408,43 +406,40 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+91 98204 33220"
-                          className={`w-full pl-9.5 pr-3.5 py-2 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
-                            errors.phone 
-                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
-                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                          }`}
+                              className = {`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${errors.phone
+                                  ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
+                                  : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                                }`}
                         />
+                          </div>
+                          {errors.phone && (
+                            <span className="text-[10px] text-red-600 font-semibold">{errors.phone}</span>
+                          )}
                       </div>
-                      {errors.phone && (
-                        <span className="text-[10px] text-red-600 font-semibold">{errors.phone}</span>
-                      )}
                     </div>
-                  </div>
 
-                  {/* Row 2: Email Address & Advisory Topic */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div className="flex flex-col gap-1">
-                      <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
-                        <span className="flex items-center gap-1">
-                          Email Address <span className="text-[#FD6702]">*</span>
-                        </span>
-                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
-                      </label>
-                      <div className="relative">
-                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-[#161C25]/40 text-[18px]">
-                          mail
-                        </span>
-                        <input
-                          id="input-email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="client@enterprise-advisory.com"
-                          className={`w-full pl-9.5 pr-3.5 py-2 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
-                            errors.email 
-                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
-                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                          }`}
+                    {/* Row 2: Email Address & Advisory Topic */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div className="flex flex-col gap-1">
+                        <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
+                          <span className="flex items-center gap-1">
+                            Email Address <span className="text-[#FD6702]">*</span>
+                          </span>
+                          <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
+                        </label>
+                            <div className="relative flex items-center">
+                              <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                                mail
+                              </span>
+                              <input
+                                id="input-email"
+                                type="email"
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                placeholder="client@enterprise-advisory.com"
+                                      ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
+                                      : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                                    }`}
                         />
                       </div>
                       {errors.email && (
@@ -457,15 +452,15 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                         <span>Inquiry Focus Area</span>
                         <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Category</span>
                       </label>
-                      <div className="relative">
-                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-[#161C25]/40 text-[18px]">
+                      <div className="relative flex items-center">
+                        <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
                           account_balance_wallet
                         </span>
                         <select
                           id="input-topic"
                           value={formData.topic}
                           onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                          className="w-full pl-9.5 pr-8 py-2 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
+                          className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
                         >
                           <option value="Wealth & Portfolio Advisory">Wealth & Portfolio Advisory</option>
                           <option value="Mutual Funds & SIP Restructuring">Mutual Funds & SIP Restructuring</option>
@@ -474,7 +469,7 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                           <option value="Corporate Treasury & Liquidity">Corporate Treasury & Liquidity</option>
                           <option value="General Fiduciary Inquiry">General Fiduciary Inquiry</option>
                         </select>
-                        <span className="material-symbols-outlined absolute right-2.5 top-2.5 text-[#161C25]/40 pointer-events-none text-[18px]">
+                        <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
                           expand_more
                         </span>
                       </div>
@@ -484,8 +479,8 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                   {/* Row 3: Message Textarea */}
                   <div className="flex flex-col gap-1">
                     <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-message">
-                      <span className="flex items-center gap-1.5">
-                        <span className="material-symbols-outlined text-[15px] text-[#FD6702]">edit_note</span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-[15px] text-[#FD6702] leading-none">edit_note</span>
                         <span>Portfolio Requirement or Notes</span>
                       </span>
                       <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Optional</span>
