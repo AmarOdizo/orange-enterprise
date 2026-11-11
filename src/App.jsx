@@ -101,15 +101,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-surface flex flex-col selection:bg-primary-container selection:text-on-primary">
-      {/* Global Header */}
-      <Header 
-        activePage={activePage} 
-        setActivePage={setActivePage}
-        onOpenSchedule={handleOpenSchedule}
-      />
+      {/* Global Header (Hidden on Admin Page) */}
+      {activePage !== 'admin' && (
+        <Header 
+          activePage={activePage} 
+          setActivePage={setActivePage}
+          onOpenSchedule={handleOpenSchedule}
+        />
+      )}
 
       {/* Main Content Area */}
-      <main className="w-full pt-16 sm:pt-[70px] flex-1 bg-surface min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-70px)]">
+      <main className={`w-full flex-1 bg-surface ${activePage !== 'admin' ? 'pt-16 sm:pt-[70px] min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-70px)]' : 'pt-0 min-h-screen'}`}>
         {activePage === 'home' && (
           <HomePage 
             setActivePage={setActivePage}
@@ -146,13 +148,15 @@ export default function App() {
         )}
       </main>
 
-      {/* Global Footer */}
-      <Footer 
-        setActivePage={setActivePage}
-        onOpenSchedule={handleOpenSchedule}
-        onOpenIntake={handleOpenIntake}
-        onOpenLegal={handleOpenLegal}
-      />
+      {/* Global Footer (Hidden on Admin Page) */}
+      {activePage !== 'admin' && (
+        <Footer 
+          setActivePage={setActivePage}
+          onOpenSchedule={handleOpenSchedule}
+          onOpenIntake={handleOpenIntake}
+          onOpenLegal={handleOpenLegal}
+        />
+      )}
 
       {/* Interactive Modals */}
       <ScheduleModal 
@@ -180,8 +184,8 @@ export default function App() {
       {/* Cookie Consent Banner */}
       <CookieBanner onOpenLegal={handleOpenLegal} />
 
-      {/* Direct WhatsApp Consultation Widget */}
-      <WhatsAppWidget />
+      {/* Direct WhatsApp Consultation Widget (Public Pages Only) */}
+      {activePage !== 'admin' && <WhatsAppWidget />}
     </div>
   );
 }
