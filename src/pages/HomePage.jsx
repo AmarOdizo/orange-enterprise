@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-const HERO_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuCJUSnGNHCshsywHkCy3L0pIeXhA6HNk6K5qTB8hKFK2Ikt6j_qDhtSQXTEpPEvx7mTwUNMfJHq74NRh88jWef1fwLaI3Bf-hvz3m4dCOn0r8Jpvqku8gQofl-E3ANV_Z9IO9uRMo0YxVB_sR9NiRnGqFgpo3Aq4fxVMVbnluEd-rYKMDq_NNqRf7-UmCQFWQ9TCS_OKhDp4XhjdUpFSqY-DMgfs_tNbImsKNxjqTqZ";
 const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD09XHqfHAACiOMMGHuNRecvitZyr8cxEByV7I5wECGIxyHAA2rOMsyI1pC-SpJTNfptv32rgLX-PYdHprzjwrRUKRE0_KNekqTHK1EjL7bgtzBNz7nbyj7sRSDm88_kvWqZuvr-JTayB-dbtmS9KeShpTh_59aRXUwtjrnJQLJ6sHmxHxva7XzhfrNTWTrzwqEgaHYdCQFtB9APdpQnT3yhC5FbPmOn6xILhusY8kL";
 
 export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }) {

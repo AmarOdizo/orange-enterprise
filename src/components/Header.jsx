@@ -7,11 +7,12 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
   const [scrolled, setScrolled] = useState(false);
   const [leadCount, setLeadCount] = useState(0);
 
-  // Main page navigation items
-  const navLinks = [
+  // Navigation Items (Middle Nav - Unified & Consistent)
+  const navItems = [
     { id: 'home', label: 'Home', icon: 'home' },
     { id: 'about', label: 'About', icon: 'business' },
     { id: 'services', label: 'Services', icon: 'account_balance_wallet' },
+    { id: 'consultation', label: 'Book Consultation', icon: 'calendar_month', isModal: true },
     { id: 'contact', label: 'Contact', icon: 'mail' },
   ];
 
@@ -20,10 +21,10 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
     setMobileMenuOpen(false);
   };
 
-  // Scroll detection for enhanced glassmorphism
+  // Scroll detection for subtle shadow
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 12);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -77,15 +78,15 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 bg-[#FFF4E8] transition-all duration-200 ${
           scrolled 
-            ? 'bg-[#FFF4E8]/95 backdrop-blur-md shadow-md border-b border-[#EAD5C1]' 
-            : 'bg-[#FFF4E8] border-b border-[#F2DECA]'
+            ? 'shadow-sm border-b border-[#E8D5C2]' 
+            : 'border-b border-[#F2DECA]'
         }`}
       >
-        <div className="h-16 sm:h-[70px] max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-6">
+        <div className="h-16 sm:h-[68px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Brand Logo */}
+          {/* Brand Logo (Left) */}
           <button 
             onClick={() => handleNavClick('home')}
             className="flex items-center shrink-0 text-left focus:outline-none cursor-pointer group py-1"
@@ -93,25 +94,31 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
           >
             <img 
               alt="Orange Enterprise Logo" 
-              className="h-9 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
+              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
               src={LOGO_URL} 
             />
           </button>
 
-          {/* Desktop Primary Navigation (Middle Floating Pill) */}
+          {/* Desktop Navigation (Middle - Home, About, Services, Book Consultation, Contact) */}
           <nav 
-            className="hidden md:flex items-center bg-white/75 backdrop-blur-md border border-[#E8D5C2] p-1 rounded-full shadow-2xs"
+            className="hidden md:flex items-center gap-1 lg:gap-1.5"
             aria-label="Main Navigation"
           >
-            {navLinks.map((item) => {
+            {navItems.map((item) => {
               const isActive = activePage === item.id;
               return (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 lg:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  onClick={() => {
+                    if (item.isModal) {
+                      onOpenSchedule('Navbar Consultation');
+                    } else {
+                      handleNavClick(item.id);
+                    }
+                  }}
+                  className={`px-3.5 lg:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive 
-                      ? 'bg-[#FD6702] text-white shadow-xs font-bold scale-[1.02]' 
+                      ? 'bg-[#FD6702] text-white shadow-xs font-bold' 
                       : 'text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/10'
                   }`}
                 >
@@ -121,83 +128,71 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
             })}
           </nav>
 
-          {/* Action Center & Utilities on Right */}
+          {/* Action Center & Local Storage on Right */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Direct Call Link with Live Desk Indicator (Laptop/Desktop) */}
+            {/* Direct Phone Link (Laptop & Desktop) */}
             <a 
-              className="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs text-[#161C25]/85 hover:text-[#FD6702] hover:bg-white/70 font-semibold transition-all border border-transparent hover:border-[#E8D5C2]" 
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/8 font-semibold transition-colors" 
               href="tel:+919820433220"
               title="Call Mumbai Advisory Desk"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span className="material-symbols-outlined text-[15px] text-[#FD6702]">
+              <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
                 phone
               </span>
               <span>+91 98204 33220</span>
             </a>
 
-            {/* Local Storage / Advisory Desk Portal Button */}
+            {/* Local Storage / Advisory Desk Portal Button (Right) */}
             <button
               onClick={() => onOpenDesk && onOpenDesk()}
               title="Open Local Storage Leads Portal (ARN 83312)"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-white/85 hover:bg-white text-[#161C25] border border-[#E8D5C2] hover:border-[#FD6702]/60 hover:text-[#FD6702] shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer group"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-[#161C25] hover:bg-black text-white shadow-xs transition-all duration-200 cursor-pointer border border-[#161C25]"
             >
-              <span className="material-symbols-outlined text-[16px] text-[#FD6702] group-hover:scale-110 transition-transform">
+              <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
                 storage
               </span>
               <span>Local Storage</span>
               {leadCount > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-[#FD6702] text-white text-[10px] font-bold tracking-tight shadow-xs">
+                <span className="px-1.5 py-0.2 rounded-full bg-[#FD6702] text-white text-[10px] font-bold">
                   {leadCount}
                 </span>
               )}
             </button>
 
-            {/* High-Impact Primary CTA: Book Consultation */}
-            <button
-              onClick={() => onOpenSchedule('Book Consultation')}
-              className="inline-flex items-center justify-center px-3.5 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
-            >
-              Book Consultation
-            </button>
-
             {/* Mobile Call Icon Button (< sm) */}
             <a
               href="tel:+919820433220"
-              className="sm:hidden w-8 h-8 rounded-full bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs"
+              className="sm:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs"
               title="Call Advisor Desk"
               aria-label="Call +91 98204 33220"
             >
-              <span className="material-symbols-outlined text-[16px]">phone</span>
+              <span className="material-symbols-outlined text-[18px]">phone</span>
             </a>
 
             {/* Mobile Local Storage Icon Button (< sm) */}
             <button
               onClick={() => onOpenDesk && onOpenDesk()}
               title="Open Local Storage Leads"
-              className="sm:hidden relative w-8 h-8 rounded-full bg-white/90 border border-[#E8D5C2] text-[#161C25] hover:border-[#FD6702] hover:text-[#FD6702] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+              className="sm:hidden relative w-9 h-9 rounded-lg bg-[#161C25] text-white flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
+              <span className="material-symbols-outlined text-[18px] text-[#FD6702]">
                 storage
               </span>
               {leadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-3.5 h-3.5 px-0.5 bg-[#FD6702] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-[#FD6702] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-xs">
                   {leadCount}
                 </span>
               )}
             </button>
 
-            {/* Mobile Hamburger Toggle Button (< md) */}
+            {/* Mobile Hamburger Menu Toggle (< md) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-8 h-8 rounded-full bg-white/90 border border-[#E8D5C2] text-[#161C25] hover:text-[#FD6702] hover:border-[#FD6702] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+              className="md:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#161C25] hover:text-[#FD6702] hover:border-[#FD6702] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
               aria-label="Toggle Navigation Menu"
               aria-expanded={mobileMenuOpen}
             >
-              <span className="material-symbols-outlined text-[20px]">
+              <span className="material-symbols-outlined text-[22px]">
                 {mobileMenuOpen ? 'close' : 'menu'}
               </span>
             </button>
@@ -211,7 +206,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
             {/* Drawer Status Bar */}
             <div className="flex items-center justify-between pb-2 border-b border-[#F2DECA]">
               <span className="text-[11px] uppercase tracking-wider font-bold text-[#161C25]/60">
-                Menu & Quick Navigation
+                Navigation
               </span>
               <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 text-[10px] font-bold border border-emerald-500/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -221,12 +216,19 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
 
             {/* Navigation Links List */}
             <div className="flex flex-col gap-1.5">
-              {navLinks.map((item) => {
+              {navItems.map((item) => {
                 const isActive = activePage === item.id;
                 return (
                   <button
                     key={item.id}
-                    onClick={() => handleNavClick(item.id)}
+                    onClick={() => {
+                      if (item.isModal) {
+                        onOpenSchedule('Mobile Menu Consultation');
+                        setMobileMenuOpen(false);
+                      } else {
+                        handleNavClick(item.id);
+                      }
+                    }}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all duration-200 flex items-center justify-between cursor-pointer border ${
                       isActive
                         ? 'bg-[#FD6702] text-white border-[#FD6702] font-bold shadow-xs'
@@ -252,18 +254,6 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               <span className="text-[11px] uppercase tracking-wider font-bold text-[#161C25]/60">
                 Client Desk & Portal
               </span>
-              
-              {/* Consultation CTA Button */}
-              <button
-                onClick={() => {
-                  onOpenSchedule('Mobile Menu Consultation');
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-[#FD6702] to-[#FF7824] text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
-              >
-                <span className="material-symbols-outlined text-[16px]">event_available</span>
-                <span>Book Consultation</span>
-              </button>
 
               {/* Local Storage Leads Portal */}
               <button
@@ -271,7 +261,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                   if (onOpenDesk) onOpenDesk();
                   setMobileMenuOpen(false);
                 }}
-                className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/90 text-[#161C25] border border-[#E8D5C2] hover:border-[#FD6702] text-xs font-semibold shadow-2xs transition-all cursor-pointer"
+                className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#161C25] hover:bg-black text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
               >
                 <div className="flex items-center gap-2.5">
                   <span className="material-symbols-outlined text-[16px] text-[#FD6702]">storage</span>
@@ -290,7 +280,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                 className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/90 text-[#161C25] hover:bg-[#FD6702]/10 border border-[#E8D5C2] text-xs font-semibold transition-all"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="material-symbols-outlined text-[16px] text-[#FD6702]">call</span>
+                  <span className="material-symbols-outlined text-[16px] text-[#FD6702]">phone</span>
                   <span>+91 98204 33220</span>
                 </div>
                 <span className="text-[10px] text-[#161C25]/60">10 AM – 7 PM IST</span>
