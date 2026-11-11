@@ -234,13 +234,23 @@ export default function AdminPage({ setActivePage }) {
 
           {/* Form Header */}
           <div className="flex flex-col items-center text-center gap-2">
-            <div className="w-14 h-14 rounded-2xl bg-[#161C25] text-white flex items-center justify-center shadow-md border border-[#161C25]">
-              <span className="material-symbols-outlined text-[30px] text-[#FD6702]">
-                admin_panel_settings
-              </span>
-            </div>
+            {/* Orange Enterprise Brand Logo */}
+            <button
+              onClick={() => {
+                setActivePage('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="cursor-pointer group mb-1 focus:outline-none"
+              title="Return to Orange Enterprise Website"
+            >
+              <img 
+                src="/orange-enterprise-logo.png" 
+                alt="Orange Enterprise Logo" 
+                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
+            </button>
             
-            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FD6702]/10 text-[#FD6702] text-[10px] font-bold tracking-wider uppercase mt-1">
+            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FD6702]/10 text-[#FD6702] text-[10px] font-bold tracking-wider uppercase">
               <span>Secure Desk Access • ARN 83312</span>
             </div>
 
@@ -388,13 +398,26 @@ export default function AdminPage({ setActivePage }) {
           ========================================================================= */}
       <header className="sticky top-0 z-40 w-full bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#F0DCB] shadow-2xs py-3 sm:py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#FD6702]/15 text-[#FD6702] flex items-center justify-center border border-[#FD6702]/30 shadow-xs shrink-0">
-              <span className="material-symbols-outlined text-[24px] sm:text-[26px]">admin_panel_settings</span>
-            </div>
+          <div className="flex items-center gap-3 sm:gap-3.5">
+            {/* Brand Logo with direct click to return home */}
+            <button
+              onClick={() => {
+                setActivePage('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex items-center shrink-0 cursor-pointer group pr-3 border-r border-[#F0DCB] focus:outline-none"
+              title="Return to Orange Enterprise Website"
+            >
+              <img 
+                src="/orange-enterprise-logo.png" 
+                alt="Orange Enterprise Logo" 
+                className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
+            </button>
+
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-lg sm:text-xl lg:text-2xl font-black text-[#161C25] tracking-tight">
+                <h1 className="text-base sm:text-lg lg:text-xl font-black text-[#161C25] tracking-tight">
                   Admin Portal & Leads Desk
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#161C25] text-white text-[10px] sm:text-[11px] font-bold">
