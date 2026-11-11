@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const LOGO_URL = "/orange-enterprise-logo.png";
 
-export default function Header({ activePage, setActivePage, onOpenSchedule, onOpenDesk }) {
+export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [leadCount, setLeadCount] = useState(0);
@@ -142,18 +142,22 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               <span>+91 98204 33220</span>
             </a>
 
-            {/* Local Storage / Advisory Desk Portal Button (Right) */}
+            {/* Admin Desk Portal Button (Right) */}
             <button
-              onClick={() => onOpenDesk && onOpenDesk()}
-              title="Open Local Storage Leads Portal (ARN 83312)"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold bg-[#161C25] hover:bg-black text-white shadow-xs transition-all duration-200 cursor-pointer border border-[#161C25]"
+              onClick={() => handleNavClick('admin')}
+              title="Open Admin Portal (ARN 83312)"
+              className={`hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold shadow-xs transition-all duration-200 cursor-pointer border ${
+                activePage === 'admin'
+                  ? 'bg-[#FD6702] text-white border-[#FD6702]'
+                  : 'bg-[#161C25] hover:bg-black text-white border-[#161C25]'
+              }`}
             >
-              <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
-                storage
+              <span className={`material-symbols-outlined text-[16px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
+                admin_panel_settings
               </span>
-              <span>Local Storage</span>
+              <span>Admin</span>
               {leadCount > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-[#FD6702] text-white text-[10px] font-bold">
+                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${activePage === 'admin' ? 'bg-white text-[#FD6702]' : 'bg-[#FD6702] text-white'}`}>
                   {leadCount}
                 </span>
               )}
@@ -169,14 +173,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
               <span className="material-symbols-outlined text-[18px]">phone</span>
             </a>
 
-            {/* Mobile Local Storage Icon Button (< sm) */}
+            {/* Mobile Admin Icon Button (< sm) */}
             <button
-              onClick={() => onOpenDesk && onOpenDesk()}
-              title="Open Local Storage Leads"
-              className="sm:hidden relative w-9 h-9 rounded-lg bg-[#161C25] text-white flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
+              onClick={() => handleNavClick('admin')}
+              title="Open Admin Portal"
+              className={`sm:hidden relative w-9 h-9 rounded-lg flex items-center justify-center transition-colors shadow-2xs cursor-pointer ${
+                activePage === 'admin' ? 'bg-[#FD6702] text-white' : 'bg-[#161C25] text-white'
+              }`}
             >
-              <span className="material-symbols-outlined text-[18px] text-[#FD6702]">
-                storage
+              <span className={`material-symbols-outlined text-[18px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
+                admin_panel_settings
               </span>
               {leadCount > 0 && (
                 <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-[#FD6702] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-xs">
@@ -255,20 +261,23 @@ export default function Header({ activePage, setActivePage, onOpenSchedule, onOp
                 Client Desk & Portal
               </span>
 
-              {/* Local Storage Leads Portal */}
+              {/* Admin Leads Portal */}
               <button
-                onClick={() => {
-                  if (onOpenDesk) onOpenDesk();
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#161C25] hover:bg-black text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
+                onClick={() => handleNavClick('admin')}
+                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold shadow-xs transition-all cursor-pointer ${
+                  activePage === 'admin'
+                    ? 'bg-[#FD6702] text-white'
+                    : 'bg-[#161C25] hover:bg-black text-white'
+                }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="material-symbols-outlined text-[16px] text-[#FD6702]">storage</span>
-                  <span>Local Storage Leads Portal</span>
+                  <span className={`material-symbols-outlined text-[16px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
+                    admin_panel_settings
+                  </span>
+                  <span>Admin Portal</span>
                 </div>
                 {leadCount > 0 && (
-                  <span className="px-2 py-0.5 rounded-full bg-[#FD6702] text-white text-[10px] font-bold">
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${activePage === 'admin' ? 'bg-white text-[#FD6702]' : 'bg-[#FD6702] text-white'}`}>
                     {leadCount} Leads
                   </span>
                 )}

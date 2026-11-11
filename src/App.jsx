@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 import ScheduleModal from './components/ScheduleModal';
 import IntakeModal from './components/IntakeModal';
 import LegalModal from './components/LegalModal';
@@ -12,7 +13,7 @@ import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import AdminDeskModal from './components/AdminDeskModal';
 
-const VALID_PAGES = ['home', 'about', 'services', 'contact'];
+const VALID_PAGES = ['home', 'about', 'services', 'contact', 'admin'];
 
 export default function App() {
   const [activePage, setActivePageState] = useState(() => {
@@ -105,7 +106,6 @@ export default function App() {
         activePage={activePage} 
         setActivePage={setActivePage}
         onOpenSchedule={handleOpenSchedule}
-        onOpenDesk={() => setDeskModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -136,6 +136,12 @@ export default function App() {
           <ContactPage 
             onOpenSchedule={handleOpenSchedule}
             onOpenIntake={handleOpenIntake}
+          />
+        )}
+
+        {activePage === 'admin' && (
+          <AdminPage 
+            setActivePage={setActivePage}
           />
         )}
       </main>
