@@ -369,19 +369,21 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                         </span>
                         <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
                       </label>
-                          <div className="relative flex items-center">
-                            <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
-                              person
-                            </span>
-                            <input
-                              id="input-name"
-                              type="text"
-                              value={formData.name}
-                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                              placeholder="e.g. Anand Mahindra"
-                                    ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
-                                    : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                                  }`}
+                      <div className="relative flex items-center">
+                        <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                          person
+                        </span>
+                        <input
+                          id="input-name"
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder="e.g. Anand Mahindra"
+                          className={`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
+                            errors.name 
+                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
+                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                          }`}
                         />
                       </div>
                       {errors.name && (
@@ -406,40 +408,43 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+91 98204 33220"
-                              className = {`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${errors.phone
-                                  ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
-                                  : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                                }`}
+                          className={`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
+                            errors.phone 
+                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
+                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                          }`}
                         />
-                          </div>
-                          {errors.phone && (
-                            <span className="text-[10px] text-red-600 font-semibold">{errors.phone}</span>
-                          )}
                       </div>
+                      {errors.phone && (
+                        <span className="text-[10px] text-red-600 font-semibold">{errors.phone}</span>
+                      )}
                     </div>
+                  </div>
 
-                    {/* Row 2: Email Address & Advisory Topic */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <div className="flex flex-col gap-1">
-                        <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
-                          <span className="flex items-center gap-1">
-                            Email Address <span className="text-[#FD6702]">*</span>
-                          </span>
-                          <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
-                        </label>
-                            <div className="relative flex items-center">
-                              <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
-                                mail
-                              </span>
-                              <input
-                                id="input-email"
-                                type="email"
-                                value={formData.email}
-                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                placeholder="client@enterprise-advisory.com"
-                                      ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20'
-                                      : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
-                                    }`}
+                  {/* Row 2: Email Address & Advisory Topic */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
+                        <span className="flex items-center gap-1">
+                          Email Address <span className="text-[#FD6702]">*</span>
+                        </span>
+                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Required</span>
+                      </label>
+                      <div className="relative flex items-center">
+                        <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                          mail
+                        </span>
+                        <input
+                          id="input-email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="client@enterprise-advisory.com"
+                          className={`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
+                            errors.email 
+                              ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
+                              : 'border-[#E8D5C2] focus:border-[#FD6702] focus:ring-[#FD6702]/20'
+                          }`}
                         />
                       </div>
                       {errors.email && (
