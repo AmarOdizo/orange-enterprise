@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import HeroSphereNetwork from '../components/HeroSphereNetwork';
 
 const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD09XHqfHAACiOMMGHuNRecvitZyr8cxEByV7I5wECGIxyHAA2rOMsyI1pC-SpJTNfptv32rgLX-PYdHprzjwrRUKRE0_KNekqTHK1EjL7bgtzBNz7nbyj7sRSDm88_kvWqZuvr-JTayB-dbtmS9KeShpTh_59aRXUwtjrnJQLJ6sHmxHxva7XzhfrNTWTrzwqEgaHYdCQFtB9APdpQnT3yhC5FbPmOn6xILhusY8kL";
 
@@ -143,118 +144,12 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
 
             </div>
 
-            {/* Hero Right Column: User-Friendly Interactive Wealth Showcase Card */}
-            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-              
-              <div className="relative w-full rounded-2xl bg-white/95 backdrop-blur-md border border-[#E8D5C2] shadow-xl p-5 sm:p-6 flex flex-col gap-4 text-[#161C25]">
-                
-                {/* Card Header */}
-                <div className="flex items-center justify-between pb-3 border-b border-[#F2DECA]">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FD6702]/10 border border-[#FD6702]/30 flex items-center justify-center text-[#FD6702]">
-                      <span className="material-symbols-outlined text-[20px]">account_balance</span>
-                    </div>
-                    <div>
-                      <h3 className="text-xs sm:text-sm font-bold text-[#161C25] leading-tight">
-                        Wealth Architecture
-                      </h3>
-                      <p className="text-[10px] text-[#161C25]/60">
-                        Tailored Asset Allocation
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-[10px] font-bold border border-emerald-500/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Desk Live</span>
-                  </div>
-                </div>
-
-                {/* Visual Asset Allocation Architecture */}
-                <div className="bg-[#FFF4E8]/60 p-3.5 rounded-xl border border-[#F2DECA]">
-                  <div className="flex items-center justify-between text-xs font-semibold mb-2">
-                    <span className="text-[#161C25]">Strategic Portfolio Mix</span>
-                    <span className="text-[#FD6702] font-bold">12-14% Target CAGR</span>
-                  </div>
-                  
-                  {/* Multi-segment Progress Bar */}
-                  <div className="w-full h-2.5 rounded-full bg-[#E8D5C2]/40 overflow-hidden flex shadow-inner">
-                    <div className="bg-[#FD6702] h-full" style={{ width: '65%' }} title="Equity & Index: 65%"></div>
-                    <div className="bg-[#161C25] h-full" style={{ width: '25%' }} title="Debt & Arbitrage: 25%"></div>
-                    <div className="bg-[#F59E0B] h-full" style={{ width: '10%' }} title="Gold & Liquid: 10%"></div>
-                  </div>
-
-                  {/* Legend */}
-                  <div className="flex items-center justify-between text-[10px] text-[#161C25]/80 font-medium mt-2 pt-1 border-t border-[#F2DECA]/60">
-                    <span className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-[#FD6702]"></span>
-                      Equity (65%)
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-[#161C25]"></span>
-                      Debt (25%)
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]"></span>
-                      Gold (10%)
-                    </span>
-                  </div>
-                </div>
-
-                {/* 2 Quick Action Interactive Tiles */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {/* Tile 1: Portfolio Audit */}
-                  <button
-                    onClick={() => onOpenSchedule('15-Min Portfolio Audit')}
-                    className="p-3 rounded-xl bg-white hover:bg-[#FD6702]/5 border border-[#E8D5C2] hover:border-[#FD6702]/50 text-left transition-all duration-200 cursor-pointer shadow-2xs group"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="material-symbols-outlined text-[20px] text-[#FD6702] group-hover:scale-110 transition-transform">
-                        troubleshoot
-                      </span>
-                      <span className="text-[10px] text-[#FD6702] font-bold">Free</span>
-                    </div>
-                    <div className="text-xs font-bold text-[#161C25]">15-Min Portfolio Audit</div>
-                    <div className="text-[10px] text-[#161C25]/60 mt-0.5 leading-tight">Review funds & cut hidden costs</div>
-                  </button>
-
-                  {/* Tile 2: Client Wealth Intake */}
-                  <button
-                    onClick={() => onOpenIntake && onOpenIntake()}
-                    className="p-3 rounded-xl bg-white hover:bg-[#FD6702]/5 border border-[#E8D5C2] hover:border-[#FD6702]/50 text-left transition-all duration-200 cursor-pointer shadow-2xs group"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="material-symbols-outlined text-[20px] text-[#161C25] group-hover:text-[#FD6702] group-hover:scale-110 transition-transform">
-                        assignment_turned_in
-                      </span>
-                      <span className="text-[10px] text-emerald-600 font-bold">Confidential</span>
-                    </div>
-                    <div className="text-xs font-bold text-[#161C25]">Wealth Intake Form</div>
-                    <div className="text-[10px] text-[#161C25]/60 mt-0.5 leading-tight">Customized financial blueprint</div>
-                  </button>
-                </div>
-
-                {/* Direct Verified Desk Contact Strip */}
-                <div className="pt-2 border-t border-[#F2DECA] flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px] text-[#FD6702]">verified</span>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-bold text-[#161C25] leading-tight">Mumbai Advisory HQ</span>
-                      <span className="text-[10px] text-[#161C25]/60">Mon – Sat (10 AM - 7 PM)</span>
-                    </div>
-                  </div>
-
-                  <a
-                    href="tel:+919820433220"
-                    className="px-3 py-1.5 rounded-full bg-[#161C25] hover:bg-black text-white text-[11px] font-bold transition-all shadow-xs flex items-center gap-1 cursor-pointer"
-                  >
-                    <span className="material-symbols-outlined text-[13px] text-[#FD6702]">call</span>
-                    <span>Call Desk</span>
-                  </a>
-                </div>
-
-              </div>
-
+            {/* Hero Right Column: Interactive 3D Sphere Network with Services Cards */}
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center">
+              <HeroSphereNetwork 
+                onOpenSchedule={onOpenSchedule} 
+                setActivePage={setActivePage} 
+              />
             </div>
 
           </div>
