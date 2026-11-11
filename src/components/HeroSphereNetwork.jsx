@@ -1,61 +1,47 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 
-// Service nodes data matching the reference image layout
+// 7 Service nodes with 3D normalized coordinates orbiting the central OE sphere
 const SERVICE_NODES = [
   {
     id: 'mutual-funds',
     label: 'Mutual Funds',
-    position: 'top',
-    style: { top: '6%', left: '50%', transform: 'translateX(-50%)' },
-    depth: 1.1,
+    coords: [0.0, -0.95, 0.32],
     serviceName: 'Mutual Funds Advisory',
   },
   {
     id: 'portfolio-advisory',
     label: 'Portfolio Advisory',
-    position: 'top-right',
-    style: { top: '20%', right: '2%' },
-    depth: 1.25,
+    coords: [0.86, -0.45, 0.28],
     serviceName: 'Portfolio Management',
   },
   {
     id: 'sip-planning',
     label: 'SIP & Wealth Planning',
-    position: 'mid-left',
-    style: { top: '44%', left: '1%' },
-    depth: 1.15,
+    coords: [-0.92, -0.18, -0.35],
     serviceName: 'SIP & STP Planning',
   },
   {
     id: 'tax-optimization',
     label: 'Tax Optimization',
-    position: 'mid-right',
-    style: { top: '48%', right: '3%' },
-    depth: 0.95,
+    coords: [0.84, 0.15, 0.52],
     serviceName: 'Tax Optimization',
   },
   {
     id: 'retirement',
     label: 'Retirement Planning',
-    position: 'bottom-left',
-    style: { bottom: '12%', left: '3%' },
-    depth: 1.2,
+    coords: [-0.78, 0.58, -0.28],
     serviceName: 'Retirement Advisory',
   },
   {
     id: 'wealth-architecture',
     label: 'Wealth Architecture',
-    position: 'bottom-center',
-    style: { bottom: '2%', left: '40%', transform: 'translateX(-50%)' },
-    depth: 1.05,
+    coords: [-0.15, 0.94, -0.32],
     serviceName: 'Financial Architecture',
   },
   {
     id: 'life-health',
     label: 'Life & Health Cover',
-    position: 'bottom-right',
-    style: { bottom: '8%', right: '5%' },
-    depth: 1.18,
+    coords: [0.72, 0.60, 0.36],
     serviceName: 'Insurance Solutions',
   },
 ];
@@ -63,15 +49,19 @@ const SERVICE_NODES = [
 export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
+  const cardElementsRef = useRef([]);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
-  const rotationRef = useRef({ x: 0.25, y: 0.35 });
-  const velocityRef = useRef({ x: 0.0025, y: 0.0045 });
+  const dragMovedRef = useRef(false);
+  const rotationRef = useRef({ x: 0.15, y: 0.25 });
+  const velocityRef = useRef({ x: 0.0018, y: 0.0035 });
 
   // Handle card click
   const handleCardClick = (node) => {
+    // If it was a drag, don't trigger click action
+    if (dragMovedRef.current) return;
+
     if (node.id === 'sip-planning') {
       if (setActivePage) {
         setActivePage('services');
@@ -82,15 +72,36 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
     }
   };
 
-  // Mouse & Touch interaction for 3D dragging & parallax
+  // Mouse & Touch interaction for 3D dragging
   const handlePointerDown = (e) => {
+    dragMovedRef.current = false;
     setIsDragging(true);
     const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
     const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
     dragStartRef.current = { x: clientX, y: clientY };
+  };
 
-    // Check if clicked near center orb
-    if (containerRef.current) {
+  const handlePointerMove = useCallback((e) => {
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+
+    if (isDragging) {
+      const dx = clientX - dragStartRef.current.x;
+      const dy = clientY - dragStartRef.current.y;
+      if (Math.hypot(dx, dy) > 4) {
+        dragMovedRef.current = true;
+      }
+      rotationRef.current.y += dx * 0.007;
+      rotationRef.current.x -= dy * 0.007;
+      dragStartRef.current = { x: clientX, y: clientY };
+    }
+  }, [isDragging]);
+
+  const handlePointerUp = (e) => {
+    // Check if clicked near center orb without dragging
+    if (!dragMovedRef.current && containerRef.current) {
+      const clientX = e.clientX || (e.changedTouches && e.changedTouches[0].clientX) || 0;
+      const clientY = e.clientY || (e.changedTouches && e.changedTouches[0].clientY) || 0;
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -100,33 +111,10 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
         onOpenSchedule('General Advisory');
       }
     }
-  };
-
-  const handlePointerMove = useCallback((e) => {
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const relativeX = (clientX - rect.left) / rect.width - 0.5;
-      const relativeY = (clientY - rect.top) / rect.height - 0.5;
-      setMouseOffset({ x: relativeX * 24, y: relativeY * 24 });
-    }
-
-    if (isDragging) {
-      const dx = clientX - dragStartRef.current.x;
-      const dy = clientY - dragStartRef.current.y;
-      rotationRef.current.y += dx * 0.008;
-      rotationRef.current.x -= dy * 0.008;
-      dragStartRef.current = { x: clientX, y: clientY };
-    }
-  }, [isDragging]);
-
-  const handlePointerUp = () => {
     setIsDragging(false);
   };
 
-  // 3D Geodesic Wireframe Sphere Engine (Canvas with True Depth: Back Edges -> Center Sphere -> Front Edges)
+  // 3D Geodesic Wireframe Sphere Engine & Real-Time Card Orbiting
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -144,7 +132,7 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       return [x / len, y / len, z / len];
     });
 
-    // Subdivide edges for geodesic density (like in reference image)
+    // Subdivide edges for geodesic density
     const vertices = [...baseVertices];
     const edges = [];
     const threshold = 1.15;
@@ -181,7 +169,7 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       }
     }
 
-    // Set canvas dimensions with high-DPI scaling
+    // Set canvas dimensions
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
@@ -199,12 +187,13 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       const height = rect.height;
       const centerX = width / 2;
       const centerY = height / 2;
-      const sphereRadius = Math.min(width, height) * 0.39;
+      const sphereRadius = Math.min(width, height) * 0.35;
+      const cardOrbitRadius = Math.min(width, height) * 0.46;
 
       ctx.clearRect(0, 0, width, height);
 
-      // Auto-rotation when not dragging
-      if (!isDragging) {
+      // Auto-rotation when not dragging and not hovering a card
+      if (!isDragging && !hoveredCard) {
         rotationRef.current.y += velocityRef.current.y;
         rotationRef.current.x += velocityRef.current.x;
       }
@@ -216,12 +205,10 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       const cosY = Math.cos(ry);
       const sinY = Math.sin(ry);
 
-      // Project vertices to 2D screen coordinates
+      // Project wireframe vertices
       const projected = vertices.map(([vx, vy, vz]) => {
-        // Rotate around Y
         const x1 = vx * cosY + vz * sinY;
         const z1 = -vx * sinY + vz * cosY;
-        // Rotate around X
         const y2 = vy * cosX - z1 * sinX;
         const z2 = vy * sinX + z1 * cosX;
 
@@ -233,6 +220,34 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
           z: z2,
           scale,
         };
+      });
+
+      // Calculate 3D projected positions for all 7 service cards in real-time
+      const projectedCards = SERVICE_NODES.map((node, idx) => {
+        const [vx, vy, vz] = node.coords;
+        const x1 = vx * cosY + vz * sinY;
+        const z1 = -vx * sinY + vz * cosY;
+        const y2 = vy * cosX - z1 * sinX;
+        const z2 = vy * sinX + z1 * cosX;
+
+        const fov = 3.2;
+        const scale = fov / (fov + z2);
+        const px = centerX + x1 * cardOrbitRadius * scale;
+        const py = centerY + y2 * cardOrbitRadius * scale;
+
+        // Update corresponding DOM element directly at 60 FPS
+        const el = cardElementsRef.current[idx];
+        if (el) {
+          const depthScale = Math.max(0.8, Math.min(1.12, 0.94 + z2 * 0.22));
+          const opacity = Math.max(0.55, Math.min(1.0, 0.78 + z2 * 0.32));
+          const zIndex = z2 > 0 ? 40 : 15;
+
+          el.style.transform = `translate3d(${px}px, ${py}px, 0) translate(-50%, -50%) scale(${depthScale})`;
+          el.style.opacity = hoveredCard === node.id ? '1' : `${opacity}`;
+          el.style.zIndex = hoveredCard === node.id ? '50' : `${zIndex}`;
+        }
+
+        return { x: px, y: py, z: z2, scale, id: node.id };
       });
 
       // Helper function to draw an edge
@@ -259,13 +274,11 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
         const alpha = isFront ? Math.max(0.4, (p.z + 1) * 0.55) : 0.2;
         const radius = Math.max(1.5, (isFront ? 3.0 : 1.8) * p.scale);
 
-        // Main node dot
         ctx.fillStyle = `rgba(0, 195, 255, ${alpha})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Extra glowing aura on front nodes
         if (isFront && p.z > 0.15) {
           ctx.fillStyle = `rgba(253, 103, 2, ${alpha * 0.45})`;
           ctx.beginPath();
@@ -290,6 +303,19 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       for (const p of projected) {
         if (p.z < 0) {
           drawNode(p, false);
+        }
+      }
+
+      // Draw faint connecting constellation lines to background cards
+      for (const card of projectedCards) {
+        if (card.z < 0) {
+          const lineAlpha = 0.12;
+          ctx.strokeStyle = `rgba(147, 197, 253, ${lineAlpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(card.x, card.y);
+          ctx.stroke();
         }
       }
 
@@ -368,6 +394,25 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
         }
       }
 
+      // Draw connecting constellation lines to foreground cards
+      for (const card of projectedCards) {
+        if (card.z >= 0) {
+          const isCardHovered = hoveredCard === card.id;
+          const lineAlpha = isCardHovered ? 0.8 : Math.max(0.2, (card.z + 1) * 0.25);
+          
+          const lineGrad = ctx.createLinearGradient(centerX, centerY, card.x, card.y);
+          lineGrad.addColorStop(0, `rgba(37, 99, 235, ${lineAlpha})`);
+          lineGrad.addColorStop(1, isCardHovered ? 'rgba(253, 103, 2, 0.85)' : `rgba(0, 195, 255, ${lineAlpha})`);
+
+          ctx.strokeStyle = lineGrad;
+          ctx.lineWidth = isCardHovered ? 1.8 : 1.0;
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(card.x, card.y);
+          ctx.stroke();
+        }
+      }
+
       animationFrameId = requestAnimationFrame(render);
     };
 
@@ -377,7 +422,7 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, [isDragging]);
+  }, [isDragging, hoveredCard]);
 
   return (
     <div
@@ -386,9 +431,9 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-      className="relative w-full aspect-square max-w-[440px] sm:max-w-[480px] lg:max-w-[520px] mx-auto select-none cursor-grab active:cursor-grabbing touch-none flex items-center justify-center"
+      className="relative w-full aspect-square max-w-[460px] sm:max-w-[500px] lg:max-w-[540px] mx-auto select-none cursor-grab active:cursor-grabbing touch-none flex items-center justify-center overflow-visible"
       style={{ perspective: '1000px' }}
-      title="Interactive 3D Network: Drag or hover to rotate"
+      title="Interactive 3D Galaxy: Drag anywhere to rotate the sphere and all service cards in 3D!"
     >
       {/* Blueprint Grid Background Pattern (matching reference image) */}
       <div 
@@ -414,87 +459,63 @@ export default function HeroSphereNetwork({ onOpenSchedule, setActivePage }) {
       />
 
       {/* =========================================================================
-          FLOATING SERVICE PILL CARDS (Movable, Interactive & Animated around sphere)
+          MOVABLE 3D ORBITING SERVICE CARDS
+          Dynamically positioned in 3D space by requestAnimationFrame!
           ========================================================================= */}
       {SERVICE_NODES.map((node, index) => {
         const isHovered = hoveredCard === node.id;
-        // Parallax depth calculation
-        const parallaxX = mouseOffset.x * node.depth;
-        const parallaxY = mouseOffset.y * node.depth;
-
-        // Custom organic float delays for each card
-        const floatDelay = `${(index * 0.45).toFixed(2)}s`;
-        const floatDuration = `${(3.6 + (index % 3) * 0.6).toFixed(1)}s`;
 
         return (
           <div
             key={node.id}
+            ref={(el) => {
+              cardElementsRef.current[index] = el;
+            }}
             onClick={() => handleCardClick(node)}
             onMouseEnter={() => setHoveredCard(node.id)}
             onMouseLeave={() => setHoveredCard(null)}
-            className="absolute z-30 transition-transform duration-150 ease-out"
+            className="absolute top-0 left-0 transition-opacity duration-200 pointer-events-auto will-change-transform"
             style={{
-              ...node.style,
-              transform: `translate3d(${parallaxX}px, ${parallaxY}px, 0)`,
+              transform: 'translate3d(0, 0, 0)',
             }}
           >
-            {/* Smooth Floating Wrapper */}
-            <div
-              className="transition-all duration-300"
+            <button
+              type="button"
+              className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 backdrop-blur-md transition-all duration-200 cursor-pointer ${
+                isHovered
+                  ? 'scale-110 shadow-2xl border-[#FD6702] text-[#FD6702] ring-2 ring-[#FD6702]/30'
+                  : 'shadow-md hover:shadow-lg border border-slate-200/90 text-[#161C25]'
+              }`}
               style={{
-                animation: `heroFloat ${floatDuration} ease-in-out ${floatDelay} infinite alternate`,
+                boxShadow: isHovered
+                  ? '0 16px 32px -4px rgba(253, 103, 2, 0.3), 0 4px 12px -2px rgba(0, 0, 0, 0.1)'
+                  : '0 8px 20px -3px rgba(0, 0, 0, 0.08), 0 3px 6px -1px rgba(0, 0, 0, 0.04)',
               }}
             >
-              <button
-                type="button"
-                className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 backdrop-blur-md transition-all duration-300 cursor-pointer ${
-                  isHovered
-                    ? 'scale-108 shadow-xl border-[#FD6702] text-[#FD6702] ring-2 ring-[#FD6702]/25'
-                    : 'shadow-md hover:shadow-lg border border-slate-200/80 text-[#161C25]'
-                }`}
-                style={{
-                  boxShadow: isHovered
-                    ? '0 12px 28px -4px rgba(253, 103, 2, 0.25), 0 4px 12px -2px rgba(0, 0, 0, 0.08)'
-                    : '0 8px 20px -3px rgba(0, 0, 0, 0.08), 0 3px 6px -1px rgba(0, 0, 0, 0.04)',
-                }}
-              >
-                {/* Tiny Status Dot */}
-                <span 
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                    isHovered ? 'bg-[#FD6702] animate-ping' : 'bg-primary/80'
-                  }`} 
-                />
-                
-                {/* Service Label (Clean typography matching reference) */}
-                <span className="text-xs sm:text-sm font-semibold tracking-tight whitespace-nowrap">
-                  {node.label}
-                </span>
+              {/* Status Dot */}
+              <span 
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                  isHovered ? 'bg-[#FD6702] animate-ping' : 'bg-primary/80'
+                }`} 
+              />
+              
+              {/* Service Label */}
+              <span className="text-xs sm:text-sm font-semibold tracking-tight whitespace-nowrap">
+                {node.label}
+              </span>
 
-                {/* Subtle Hover Action Arrow */}
-                {isHovered && (
-                  <span className="material-symbols-outlined text-[14px] text-[#FD6702] animate-bounce-x">
-                    arrow_forward
-                  </span>
-                )}
-              </button>
-            </div>
+              {/* Hover Indicator */}
+              {isHovered && (
+                <span className="material-symbols-outlined text-[14px] text-[#FD6702] animate-bounce-x">
+                  arrow_forward
+                </span>
+              )}
+            </button>
           </div>
         );
       })}
 
-      {/* Floating Animation Keyframes */}
       <style>{`
-        @keyframes heroFloat {
-          0% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-5px) rotate(0.4deg);
-          }
-          100% {
-            transform: translateY(4px) rotate(-0.3deg);
-          }
-        }
         @keyframes bounceX {
           0%, 100% { transform: translateX(0); }
           50% { transform: translateX(3px); }
