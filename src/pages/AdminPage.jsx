@@ -116,9 +116,19 @@ export default function AdminPage({ setActivePage }) {
   // Filter current active list by search query
   const currentList = useMemo(() => {
     let rawList = [];
-    if (activeTab === 'appointments') rawList = appointments;
-    else if (activeTab === 'inquiries') rawList = inquiries;
-    else if (activeTab === 'intakes') rawList = intakes;
+    if (activeTab === 'appointments') {
+      rawList = appointments.map((item, idx) => ({ ...item, _storageKey: 'oe_appointments', _origIdx: idx, _categoryType: 'Consultation' }));
+    } else if (activeTab === 'inquiries') {
+      rawList = inquiries.map((item, idx) => ({ ...item, _storageKey: 'oe_inquiries', _origIdx: idx, _categoryType: 'Inquiry' }));
+    } else if (activeTab === 'intakes') {
+      rawList = intakes.map((item, idx) => ({ ...item, _storageKey: 'oe_intakes', _origIdx: idx, _categoryType: 'Wealth Intake' }));
+    } else if (activeTab === 'all') {
+      rawList = [
+        ...appointments.map((item, idx) => ({ ...item, _storageKey: 'oe_appointments', _origIdx: idx, _categoryType: 'Consultation' })),
+        ...inquiries.map((item, idx) => ({ ...item, _storageKey: 'oe_inquiries', _origIdx: idx, _categoryType: 'Inquiry' })),
+        ...intakes.map((item, idx) => ({ ...item, _storageKey: 'oe_intakes', _origIdx: idx, _categoryType: 'Wealth Intake' })),
+      ].sort((a, b) => new Date(b.submittedAt || 0) - new Date(a.submittedAt || 0));
+    }
 
     if (!searchQuery.trim()) return rawList;
 
@@ -127,7 +137,7 @@ export default function AdminPage({ setActivePage }) {
       const name = (item.name || '').toLowerCase();
       const email = (item.email || '').toLowerCase();
       const phone = (item.phone || '').toLowerCase();
-      const service = (item.service || item.goals || '').toLowerCase();
+      const service = (item.service || item.goals || item.message || '').toLowerCase();
       return name.includes(query) || email.includes(query) || phone.includes(query) || service.includes(query);
     });
   }, [activeTab, appointments, inquiries, intakes, searchQuery]);
@@ -152,6 +162,16 @@ export default function AdminPage({ setActivePage }) {
 
   // Bulk clear
   const handleClearCategory = (storageKey, categoryName) => {
+    if (categoryName === 'all' || !storageKey) {
+      if (window.confirm('Are you sure you want to permanently delete ALL client leads across consultations, inquiries, and intakes? This cannot be undone.')) {
+        localStorage.removeItem('oe_appointments');
+        localStorage.removeItem('oe_inquiries');
+        localStorage.removeItem('oe_intakes');
+        refreshData();
+        setSelectedLead(null);
+      }
+      return;
+    }
     if (window.confirm(`Are you sure you want to permanently delete all ${categoryName}? This cannot be undone.`)) {
       localStorage.removeItem(storageKey);
       refreshData();
@@ -430,101 +450,101 @@ export default function AdminPage({ setActivePage }) {
         </div>
 
         {/* =========================================================================
-            KPI ANALYTICS CARDS STRIP
+            KPI ANALYTICS CARDS STRIP (100% Unified Design Across All 4 Cards)
             ========================================================================= */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {/* Card 1: Total Appointments */}
-          <div 
-            onClick={() => setActiveTab('appointments')}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-              activeTab === 'appointments'
-                ? 'bg-white border-[#FD6702] shadow-md ring-2 ring-[#FD6702]/20'
-                : 'bg-white/80 border-[#E8D5C2] hover:bg-white hover:border-[#FD6702]/50 shadow-2xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-[#161C25]/70 uppercase tracking-wider">
-                Consultations
-              </span>
-              <span className="w-8 h-8 rounded-lg bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center">
-                <span className="material-symbols-outlined text-[18px]">calendar_month</span>
-              </span>
-            </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-[#161C25]">
-              {appointments.length}
-            </div>
-            <div className="text-[11px] text-[#161C25]/60 mt-1">
-              Scheduled client bookings
-            </div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+          {[
+            {
+              id: 'appointments',
+              title: 'Consultations',
+              count: appointments.length,
+              icon: 'calendar_month',
+              subtitle: 'Scheduled client bookings',
+            },
+            {
+              id: 'inquiries',
+              title: 'Inquiries',
+              count: inquiries.length,
+              icon: 'mail',
+              subtitle: 'Contact & salon submissions',
+            },
+            {
+              id: 'intakes',
+              title: 'Wealth Intakes',
+              count: intakes.length,
+              icon: 'assignment_turned_in',
+              subtitle: 'Investor profile evaluations',
+            },
+            {
+              id: 'all',
+              title: 'Total Leads',
+              count: totalCount,
+              icon: 'leaderboard',
+              subtitle: 'All combined client records',
+            },
+          ].map((card) => {
+            const isActive = activeTab === card.id;
+            return (
+              <div 
+                key={card.id}
+                onClick={() => setActiveTab(card.id)}
+                className={`p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between relative overflow-hidden group select-none ${
+                  isActive
+                    ? 'bg-gradient-to-b from-[#FFF5EA] via-white to-white border-[#FD6702] shadow-md ring-2 ring-[#FD6702]/25'
+                    : 'bg-white border-[#E8D5C2] hover:bg-white hover:border-[#FD6702]/60 hover:shadow-md hover:-translate-y-0.5 shadow-2xs'
+                }`}
+              >
+                {/* Top Accent Indicator Line for Active Card */}
+                {isActive && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#FD6702]" />
+                )}
 
-          {/* Card 2: Contact Inquiries */}
-          <div 
-            onClick={() => setActiveTab('inquiries')}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-              activeTab === 'inquiries'
-                ? 'bg-white border-[#FD6702] shadow-md ring-2 ring-[#FD6702]/20'
-                : 'bg-white/80 border-[#E8D5C2] hover:bg-white hover:border-[#FD6702]/50 shadow-2xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-[#161C25]/70 uppercase tracking-wider">
-                Inquiries
-              </span>
-              <span className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
-                <span className="material-symbols-outlined text-[18px]">mail</span>
-              </span>
-            </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-[#161C25]">
-              {inquiries.length}
-            </div>
-            <div className="text-[11px] text-[#161C25]/60 mt-1">
-              Contact & salon submissions
-            </div>
-          </div>
+                <div>
+                  {/* Card Top Row: Label and Unified Icon Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] sm:text-xs font-bold text-[#161C25]/70 uppercase tracking-wider">
+                      {card.title}
+                    </span>
+                    <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0 ${
+                      isActive
+                        ? 'bg-[#FD6702] text-white shadow-xs'
+                        : 'bg-[#FD6702]/10 text-[#FD6702] group-hover:bg-[#FD6702]/20'
+                    }`}>
+                      <span className="material-symbols-outlined text-[20px] sm:text-[22px]">
+                        {card.icon}
+                      </span>
+                    </div>
+                  </div>
 
-          {/* Card 3: Wealth Intakes */}
-          <div 
-            onClick={() => setActiveTab('intakes')}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
-              activeTab === 'intakes'
-                ? 'bg-white border-[#FD6702] shadow-md ring-2 ring-[#FD6702]/20'
-                : 'bg-white/80 border-[#E8D5C2] hover:bg-white hover:border-[#FD6702]/50 shadow-2xs'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-[#161C25]/70 uppercase tracking-wider">
-                Wealth Intakes
-              </span>
-              <span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-                <span className="material-symbols-outlined text-[18px]">assignment_turned_in</span>
-              </span>
-            </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-[#161C25]">
-              {intakes.length}
-            </div>
-            <div className="text-[11px] text-[#161C25]/60 mt-1">
-              Investor profile evaluations
-            </div>
-          </div>
+                  {/* Large Metric Value */}
+                  <div className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${
+                    isActive ? 'text-[#FD6702]' : 'text-[#161C25]'
+                  }`}>
+                    {card.count}
+                  </div>
 
-          {/* Card 4: Total Combined Leads */}
-          <div className="p-4 rounded-2xl border border-[#E8D5C2] bg-gradient-to-tr from-[#161C25] to-[#2A3445] text-white shadow-sm">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-bold text-white/75 uppercase tracking-wider">
-                Total Leads
-              </span>
-              <span className="w-8 h-8 rounded-lg bg-white/10 text-white flex items-center justify-center">
-                <span className="material-symbols-outlined text-[18px]">leaderboard</span>
-              </span>
-            </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-[#FD6702]">
-              {totalCount}
-            </div>
-            <div className="text-[11px] text-white/70 mt-1">
-              Stored locally on this device
-            </div>
-          </div>
+                  {/* Subtitle Description */}
+                  <p className="text-[11px] sm:text-xs text-[#161C25]/60 mt-1 line-clamp-1">
+                    {card.subtitle}
+                  </p>
+                </div>
+
+                {/* Bottom Interactive Filter Indicator */}
+                <div className="mt-3.5 pt-2.5 border-t border-[#F0DCB]/70 flex items-center justify-between text-[11px] font-semibold">
+                  <span className={isActive ? 'text-[#FD6702]' : 'text-[#161C25]/50 group-hover:text-[#FD6702] transition-colors'}>
+                    {isActive ? 'Viewing Active Tab' : 'Click to filter'}
+                  </span>
+                  <span className={`material-symbols-outlined text-[15px] transition-all duration-200 ${
+                    isActive
+                      ? 'text-[#FD6702] translate-x-1'
+                      : 'text-[#161C25]/35 group-hover:text-[#FD6702] group-hover:translate-x-1'
+                  }`}>
+                    arrow_forward
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* =========================================================================
@@ -535,11 +555,22 @@ export default function AdminPage({ setActivePage }) {
           {/* Table Controls Header */}
           <div className="p-4 sm:p-5 border-b border-[#F0DCB] flex flex-col md:flex-row md:items-center justify-between gap-4">
             
-            {/* Tab Selector */}
-            <div className="flex items-center gap-1.5 p-1 bg-[#FFF4E8] rounded-xl border border-[#E8D5C2]/70 w-fit">
+            {/* Tab Selector (Unified with 4 KPI Cards) */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#FFF4E8] rounded-xl border border-[#E8D5C2]/70 w-fit">
+              <button
+                onClick={() => setActiveTab('all')}
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === 'all'
+                    ? 'bg-[#161C25] text-white shadow-xs'
+                    : 'text-[#161C25]/80 hover:text-[#FD6702]'
+                }`}
+              >
+                All Leads ({totalCount})
+              </button>
+
               <button
                 onClick={() => setActiveTab('appointments')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   activeTab === 'appointments'
                     ? 'bg-[#161C25] text-white shadow-xs'
                     : 'text-[#161C25]/80 hover:text-[#FD6702]'
@@ -550,7 +581,7 @@ export default function AdminPage({ setActivePage }) {
 
               <button
                 onClick={() => setActiveTab('inquiries')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   activeTab === 'inquiries'
                     ? 'bg-[#161C25] text-white shadow-xs'
                     : 'text-[#161C25]/80 hover:text-[#FD6702]'
@@ -561,7 +592,7 @@ export default function AdminPage({ setActivePage }) {
 
               <button
                 onClick={() => setActiveTab('intakes')}
-                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   activeTab === 'intakes'
                     ? 'bg-[#161C25] text-white shadow-xs'
                     : 'text-[#161C25]/80 hover:text-[#FD6702]'
@@ -590,7 +621,7 @@ export default function AdminPage({ setActivePage }) {
                 <>
                   <button
                     onClick={() => exportToCSV(currentList, `Orange_Enterprise_${activeTab}`)}
-                    title="Export current tab to CSV"
+                    title="Export current list to CSV"
                     className="p-2 rounded-xl bg-white hover:bg-[#FD6702]/8 text-[#161C25] border border-[#E8D5C2] flex items-center justify-center transition-colors cursor-pointer"
                   >
                     <span className="material-symbols-outlined text-[18px] text-[#FD6702]">download</span>
@@ -602,10 +633,11 @@ export default function AdminPage({ setActivePage }) {
                         appointments: 'oe_appointments',
                         inquiries: 'oe_inquiries',
                         intakes: 'oe_intakes',
+                        all: null,
                       };
                       handleClearCategory(keyMap[activeTab], activeTab);
                     }}
-                    title="Clear all leads in this category"
+                    title="Clear leads in this category"
                     className="p-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 flex items-center justify-center transition-colors cursor-pointer"
                   >
                     <span className="material-symbols-outlined text-[18px]">delete_sweep</span>
@@ -624,7 +656,7 @@ export default function AdminPage({ setActivePage }) {
                   <span className="material-symbols-outlined text-[32px]">folder_open</span>
                 </div>
                 <h3 className="text-base font-bold text-[#161C25]">
-                  {searchQuery ? 'No matching leads found' : `No ${activeTab} recorded yet`}
+                  {searchQuery ? 'No matching leads found' : `No ${activeTab === 'all' ? 'leads' : activeTab} recorded yet`}
                 </h3>
                 <p className="text-xs text-[#161C25]/60 max-w-sm mt-1">
                   {searchQuery
@@ -639,7 +671,13 @@ export default function AdminPage({ setActivePage }) {
                     <th className="py-3 px-4">Client Name</th>
                     <th className="py-3 px-4">Contact Info</th>
                     <th className="py-3 px-4">
-                      {activeTab === 'appointments' ? 'Service / Slot' : activeTab === 'intakes' ? 'Portfolio / Risk' : 'Topic / Source'}
+                      {activeTab === 'all'
+                        ? 'Category & Details'
+                        : activeTab === 'appointments'
+                        ? 'Service / Slot'
+                        : activeTab === 'intakes'
+                        ? 'Portfolio / Risk'
+                        : 'Topic / Source'}
                     </th>
                     <th className="py-3 px-4">Date Submitted</th>
                     <th className="py-3 px-4 text-right">Actions</th>
@@ -678,34 +716,55 @@ export default function AdminPage({ setActivePage }) {
 
                         {/* Details Column */}
                         <td className="py-3.5 px-4">
-                          {activeTab === 'appointments' && (
+                          {lead._categoryType === 'Consultation' && (
                             <div className="flex flex-col">
-                              <span className="font-semibold text-[#FD6702]">
-                                {lead.service || 'General Advisory'}
-                              </span>
-                              <span className="text-[11px] text-[#161C25]/60">
+                              <div className="flex items-center gap-1.5">
+                                {activeTab === 'all' && (
+                                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#FD6702]/10 text-[#FD6702]">
+                                    Consultation
+                                  </span>
+                                )}
+                                <span className="font-semibold text-[#FD6702]">
+                                  {lead.service || 'General Advisory'}
+                                </span>
+                              </div>
+                              <span className="text-[11px] text-[#161C25]/60 mt-0.5">
                                 {lead.date || 'Anytime'} • {lead.timeSlot || 'Flexible'}
                               </span>
                             </div>
                           )}
 
-                          {activeTab === 'inquiries' && (
+                          {lead._categoryType === 'Inquiry' && (
                             <div className="flex flex-col">
-                              <span className="font-semibold text-[#161C25]">
-                                {lead.source || 'Contact Form'}
-                              </span>
-                              <span className="text-[11px] text-[#161C25]/60 truncate max-w-[200px]">
+                              <div className="flex items-center gap-1.5">
+                                {activeTab === 'all' && (
+                                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-500/10 text-blue-600">
+                                    Inquiry
+                                  </span>
+                                )}
+                                <span className="font-semibold text-[#161C25]">
+                                  {lead.source || 'Contact Form'}
+                                </span>
+                              </div>
+                              <span className="text-[11px] text-[#161C25]/60 truncate max-w-[200px] mt-0.5">
                                 {lead.message || 'No message attached'}
                               </span>
                             </div>
                           )}
 
-                          {activeTab === 'intakes' && (
+                          {lead._categoryType === 'Wealth Intake' && (
                             <div className="flex flex-col">
-                              <span className="font-semibold text-emerald-600">
-                                {lead.portfolioSize || 'HNW Portfolio'}
-                              </span>
-                              <span className="text-[11px] text-[#161C25]/60">
+                              <div className="flex items-center gap-1.5">
+                                {activeTab === 'all' && (
+                                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 text-emerald-700">
+                                    Intake
+                                  </span>
+                                )}
+                                <span className="font-semibold text-emerald-600">
+                                  {lead.portfolioSize || 'HNW Portfolio'}
+                                </span>
+                              </div>
+                              <span className="text-[11px] text-[#161C25]/60 mt-0.5">
                                 {lead.riskTolerance || 'Balanced'} • {lead.goals || 'Wealth Preservation'}
                               </span>
                             </div>
@@ -761,7 +820,9 @@ export default function AdminPage({ setActivePage }) {
                                   inquiries: 'oe_inquiries',
                                   intakes: 'oe_intakes',
                                 };
-                                handleDeleteLead(keyMap[activeTab], idx);
+                                const targetKey = lead._storageKey || keyMap[activeTab];
+                                const targetIdx = lead._origIdx !== undefined ? lead._origIdx : idx;
+                                handleDeleteLead(targetKey, targetIdx);
                               }}
                               title="Delete this lead"
                               className="w-8 h-8 rounded-lg bg-red-50 hover:bg-red-600 hover:text-white text-red-600 flex items-center justify-center transition-colors cursor-pointer"
@@ -827,16 +888,18 @@ export default function AdminPage({ setActivePage }) {
 
             {/* Field Grid */}
             <div className="flex flex-col gap-2.5 text-xs sm:text-sm max-h-[60vh] overflow-y-auto pr-1">
-              {Object.entries(selectedLead).map(([key, val]) => (
-                <div key={key} className="flex flex-col p-2.5 rounded-xl bg-[#FFFDF9] border border-[#F0DCB]/70">
-                  <span className="text-[10px] uppercase font-bold text-[#161C25]/50 tracking-wider">
-                    {key}
-                  </span>
-                  <span className="text-xs sm:text-sm font-semibold text-[#161C25] mt-0.5 break-words">
-                    {typeof val === 'boolean' ? (val ? 'Yes' : 'No') : (val ? String(val) : 'N/A')}
-                  </span>
-                </div>
-              ))}
+              {Object.entries(selectedLead)
+                .filter(([key]) => !key.startsWith('_'))
+                .map(([key, val]) => (
+                  <div key={key} className="flex flex-col p-2.5 rounded-xl bg-[#FFFDF9] border border-[#F0DCB]/70">
+                    <span className="text-[10px] uppercase font-bold text-[#161C25]/50 tracking-wider">
+                      {key}
+                    </span>
+                    <span className="text-xs sm:text-sm font-semibold text-[#161C25] mt-0.5 break-words">
+                      {typeof val === 'boolean' ? (val ? 'Yes' : 'No') : (val ? String(val) : 'N/A')}
+                    </span>
+                  </div>
+                ))}
             </div>
 
             {/* Footer Direct Actions */}
