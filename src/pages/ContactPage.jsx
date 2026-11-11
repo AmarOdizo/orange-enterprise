@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const OFFICE_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuAty7-pgvdhi7Vptux7Gb-tUjtRrBIapT2UmJwXWgZrsr9Oaw0qTfy_hL-etkJfjzMLip59pQil55uGaC5L5y73WHmxgkVflkuW6g5NZ4peta-KUENws1XFPdXjQWlxFnPcFiTllzdkl-FUoEw5TyEepI1iZYO5HksttOw-gKyV20eqCIdAhdnl3n7d2IlKjIiVgIIQpoa5wQmYZumSmeB__7peGDWNlzBqHFnGgmJW";
 
-export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -260,38 +260,7 @@ export default function ContactPage({ onOpenSchedule, onOpenIntake }) {
                 </div>
               </div>
 
-              {/* Quick Engagement Action Tiles */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  onClick={() => onOpenSchedule('Contact Page Appointment')}
-                  className="text-left flex flex-col p-4 rounded-2xl bg-[#161C25] text-white hover:bg-black transition-all group shadow-xs cursor-pointer border border-[#161C25]"
-                >
-                  <span className="material-symbols-outlined text-[20px] text-[#FD6702] mb-1 group-hover:translate-x-1 transition-transform">
-                    event_available
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold">
-                    Book Consultation
-                  </span>
-                  <span className="text-[11px] text-white/70 mt-1 leading-snug">
-                    Reserve dedicated private salon consultation slot.
-                  </span>
-                </button>
 
-                <button
-                  onClick={() => onOpenIntake()}
-                  className="text-left flex flex-col p-4 rounded-2xl bg-white hover:bg-[#FFFDF9] text-[#161C25] border border-[#E8D5C2] transition-all group shadow-xs cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[20px] text-[#FD6702] mb-1 group-hover:translate-x-1 transition-transform">
-                    assignment
-                  </span>
-                  <span className="text-xs sm:text-sm text-[#161C25] font-bold">
-                    Complete Intake
-                  </span>
-                  <span className="text-[11px] text-[#161C25]/65 mt-1 leading-snug">
-                    Submit risk profile and current allocation notes.
-                  </span>
-                </button>
-              </div>
 
             </div>
 
