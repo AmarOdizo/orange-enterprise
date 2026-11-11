@@ -454,7 +454,7 @@ export default function HeroSphereNetwork() {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-      className="relative w-full aspect-square max-w-[460px] sm:max-w-[500px] lg:max-w-[530px] mx-auto select-none cursor-grab active:cursor-grabbing touch-none flex items-center justify-center overflow-visible"
+      className="relative w-full aspect-square max-w-[340px] sm:max-w-[380px] md:max-w-[400px] lg:max-w-[430px] xl:max-w-[460px] mx-auto select-none cursor-grab active:cursor-grabbing touch-none flex items-center justify-center overflow-visible"
       style={{ perspective: '1000px' }}
       title="3D Wealth Galaxy: Drag in any direction to rotate the sphere and service cards"
     >
