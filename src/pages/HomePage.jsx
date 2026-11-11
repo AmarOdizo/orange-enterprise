@@ -30,118 +30,232 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
   return (
     <div className="flex flex-col w-full">
       {/* =========================================================================
-          HERO SECTION (Compact & Proportional)
+          HERO SECTION (User-Friendly, High-Conversion & Warm Cream)
           ========================================================================= */}
-      <section className="relative w-full overflow-hidden bg-surface-container-low py-8 sm:py-12 lg:py-16">
-        {/* Subtle Architectural Ambient Backdrop Gradients */}
-        <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-primary-fixed/25 blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-secondary-fixed/20 blur-3xl pointer-events-none"></div>
+      <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFF4E8] via-[#FFF9F2] to-[#FDFBF7] py-10 sm:py-14 lg:py-16 border-b border-[#F0DCB]/70">
+        {/* Ambient Decorative Lighting */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#FD6702]/8 blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/2 -right-20 w-80 h-80 rounded-full bg-[#FD6702]/6 blur-3xl pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Hero Left Column: Editorial Typography */}
+            {/* Hero Left Column: Editorial Typography & Primary CTAs */}
             <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest shadow-xs mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-                <span className="text-[10px] uppercase tracking-wider text-primary font-bold">
-                  ORANGE ENTERPRISE • ARN 83312 • MUMBAI
+              
+              {/* Trust Badge with Live Active Dot */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-[#E8D5C2] shadow-2xs mb-4">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#161C25]/90 font-bold">
+                  ORANGE ENTERPRISE • AMFI ARN 83312 • MUMBAI
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight font-extrabold max-w-xl leading-tight">
-                Wealth management <span className="text-primary-container">redefined</span>.
-                <span className="block text-lg sm:text-xl lg:text-2xl font-bold text-on-surface/85 mt-1">
-                  Building Tomorrow, Together.
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl text-[#161C25] tracking-tight font-extrabold max-w-2xl leading-[1.15]">
+                Wealth management{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FD6702] to-[#FF7A1A]">
+                  redefined
+                </span>.
+                <span className="block text-xl sm:text-2xl lg:text-3xl font-bold text-[#161C25]/85 mt-2">
+                  Building Tomorrow, Today.
                 </span>
               </h1>
 
-              <p className="text-xs sm:text-sm text-on-surface-variant mt-2.5 max-w-lg leading-relaxed">
-                Strategic wealth management solutions, bespoke mutual fund advisory, and disciplined fiduciary architecture designed for families, entrepreneurs, and institutions in Mumbai.
+              {/* Supporting Subtext */}
+              <p className="text-sm sm:text-base text-[#161C25]/75 mt-3.5 max-w-xl leading-relaxed">
+                Strategic financial architecture, bespoke mutual fund advisory, and disciplined fiduciary management designed for families, business owners, and senior executives in Mumbai.
               </p>
 
-              {/* Executive CTA Suite */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 mt-5 w-full sm:w-auto">
+              {/* Action Buttons Suite */}
+              <div className="flex flex-wrap items-center gap-3 mt-6 w-full sm:w-auto">
+                <button
+                  onClick={() => onOpenSchedule('Hero Free Consultation')}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                >
+                  <span>Book Free Consultation</span>
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </button>
+
                 <button
                   onClick={() => {
                     setActivePage('services');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-primary-container text-on-primary text-xs sm:text-sm rounded-md shadow-xs hover:bg-primary transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer font-semibold text-center"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full text-xs sm:text-sm font-semibold bg-white/90 hover:bg-white text-[#161C25] hover:text-[#FD6702] border border-[#E8D5C2] hover:border-[#FD6702]/60 shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer"
                 >
-                  <span>View services</span>
-                  <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+                  <span>Explore Services</span>
+                  <span className="material-symbols-outlined text-[17px] text-[#FD6702]">calculate</span>
                 </button>
 
-                <button
-                  onClick={() => {
-                    setActivePage('contact');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="inline-flex items-center justify-center px-4 py-2 bg-inverse-surface text-inverse-on-surface text-xs sm:text-sm rounded-md shadow-xs hover:bg-on-background transition-all duration-200 cursor-pointer font-semibold text-center"
+                <a
+                  href="https://wa.me/919820433220?text=Hi%20Orange%20Enterprise,%20I%20would%20like%20to%20know%20more%20about%20your%20wealth%20management%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-3 rounded-full text-xs sm:text-sm font-semibold bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] border border-[#25D366]/25 transition-all cursor-pointer"
+                  title="Chat directly on WhatsApp"
                 >
-                  Get in touch
-                </button>
+                  <span className="material-symbols-outlined text-[18px] text-[#25D366]">chat</span>
+                  <span>WhatsApp Desk</span>
+                </a>
               </div>
 
-              {/* Telemetry & Trust Badges Strip (Scaled Down) */}
-              <div className="grid grid-cols-3 gap-2 w-full max-w-md mt-5 pt-3 bg-surface-container-lowest/90 p-2.5 sm:p-3 rounded-lg backdrop-blur-sm shadow-xs border border-surface-container">
-                <div className="flex flex-col">
-                  <span className="text-sm sm:text-base text-on-surface font-bold truncate">
+              {/* Trust Metric Pillars Strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-xl mt-7 pt-4 border-t border-[#E8D5C2]/70">
+                <div className="flex flex-col bg-white/70 p-2.5 rounded-xl border border-[#E8D5C2]/60 shadow-2xs">
+                  <span className="text-sm sm:text-base text-[#161C25] font-extrabold truncate">
                     ARN 83312
                   </span>
-                  <span className="text-[9px] text-on-surface-variant uppercase mt-0.5">
+                  <span className="text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
                     AMFI Registered
                   </span>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-sm sm:text-base text-primary-container font-bold">
-                    100%
+
+                <div className="flex flex-col bg-white/70 p-2.5 rounded-xl border border-[#E8D5C2]/60 shadow-2xs">
+                  <span className="text-sm sm:text-base text-[#FD6702] font-extrabold">
+                    ₹250+ Cr
                   </span>
-                  <span className="text-[9px] text-on-surface-variant uppercase mt-0.5">
-                    Fiduciary Focus
+                  <span className="text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
+                    Assets Guided
                   </span>
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-sm sm:text-base text-on-surface font-bold">
-                    Mumbai
+
+                <div className="flex flex-col bg-white/70 p-2.5 rounded-xl border border-[#E8D5C2]/60 shadow-2xs">
+                  <span className="text-sm sm:text-base text-[#161C25] font-extrabold">
+                    15+ Years
                   </span>
-                  <span className="text-[9px] text-on-surface-variant uppercase mt-0.5">
-                    Financial Capital
+                  <span className="text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
+                    Advisory Trust
+                  </span>
+                </div>
+
+                <div className="flex flex-col bg-white/70 p-2.5 rounded-xl border border-[#E8D5C2]/60 shadow-2xs">
+                  <span className="text-sm sm:text-base text-[#161C25] font-extrabold">
+                    Mumbai HQ
+                  </span>
+                  <span className="text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
+                    Financial Hub
                   </span>
                 </div>
               </div>
+
             </div>
 
-            {/* Hero Right Column: Compact High-Fidelity Visual */}
-            <div className="lg:col-span-5 relative mt-4 lg:mt-0">
-              <div className="relative w-full rounded-xl overflow-hidden shadow-lg bg-surface-container-highest max-h-[260px] sm:max-h-[300px] lg:max-h-[320px] aspect-[16/10]">
-                <img 
-                  className="w-full h-full object-cover" 
-                  alt="Orange Enterprise executive wealth advisory session in Mumbai" 
-                  src={HERO_IMG} 
-                />
+            {/* Hero Right Column: User-Friendly Interactive Wealth Showcase Card */}
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+              
+              <div className="relative w-full rounded-2xl bg-white/95 backdrop-blur-md border border-[#E8D5C2] shadow-xl p-5 sm:p-6 flex flex-col gap-4 text-[#161C25]">
                 
-                {/* Compact Architectural Glass Tag */}
-                <div className="absolute bottom-2.5 left-2.5 right-2.5 p-2 sm:p-2.5 bg-surface-container-lowest/95 backdrop-blur-md rounded-lg shadow-md flex items-center justify-between border border-surface-container gap-2">
-                  <div className="flex items-center gap-2 min-w-0">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary-container flex items-center justify-center text-on-primary shrink-0">
-                      <span className="material-symbols-outlined text-[16px] sm:text-[18px]">verified</span>
+                {/* Card Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-[#F2DECA]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#FD6702]/10 border border-[#FD6702]/30 flex items-center justify-center text-[#FD6702]">
+                      <span className="material-symbols-outlined text-[20px]">account_balance</span>
                     </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-xs text-on-surface font-semibold truncate leading-tight">
-                        Trusted Wealth Advisory
-                      </span>
-                      <span className="text-[10px] text-on-surface-variant truncate">
-                        Mumbai • HNW Client Salon
-                      </span>
+                    <div>
+                      <h3 className="text-xs sm:text-sm font-bold text-[#161C25] leading-tight">
+                        Wealth Architecture
+                      </h3>
+                      <p className="text-[10px] text-[#161C25]/60">
+                        Tailored Asset Allocation
+                      </p>
                     </div>
                   </div>
-                  <span className="text-[9px] uppercase text-primary bg-primary-fixed px-2 py-0.5 rounded-full font-bold shrink-0">
-                    Active
-                  </span>
+
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 text-[10px] font-bold border border-emerald-500/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Desk Live</span>
+                  </div>
                 </div>
+
+                {/* Visual Asset Allocation Architecture */}
+                <div className="bg-[#FFF4E8]/60 p-3.5 rounded-xl border border-[#F2DECA]">
+                  <div className="flex items-center justify-between text-xs font-semibold mb-2">
+                    <span className="text-[#161C25]">Strategic Portfolio Mix</span>
+                    <span className="text-[#FD6702] font-bold">12-14% Target CAGR</span>
+                  </div>
+                  
+                  {/* Multi-segment Progress Bar */}
+                  <div className="w-full h-2.5 rounded-full bg-[#E8D5C2]/40 overflow-hidden flex shadow-inner">
+                    <div className="bg-[#FD6702] h-full" style={{ width: '65%' }} title="Equity & Index: 65%"></div>
+                    <div className="bg-[#161C25] h-full" style={{ width: '25%' }} title="Debt & Arbitrage: 25%"></div>
+                    <div className="bg-[#F59E0B] h-full" style={{ width: '10%' }} title="Gold & Liquid: 10%"></div>
+                  </div>
+
+                  {/* Legend */}
+                  <div className="flex items-center justify-between text-[10px] text-[#161C25]/80 font-medium mt-2 pt-1 border-t border-[#F2DECA]/60">
+                    <span className="flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-[#FD6702]"></span>
+                      Equity (65%)
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-[#161C25]"></span>
+                      Debt (25%)
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]"></span>
+                      Gold (10%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* 2 Quick Action Interactive Tiles */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {/* Tile 1: Portfolio Audit */}
+                  <button
+                    onClick={() => onOpenSchedule('15-Min Portfolio Audit')}
+                    className="p-3 rounded-xl bg-white hover:bg-[#FD6702]/5 border border-[#E8D5C2] hover:border-[#FD6702]/50 text-left transition-all duration-200 cursor-pointer shadow-2xs group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="material-symbols-outlined text-[20px] text-[#FD6702] group-hover:scale-110 transition-transform">
+                        troubleshoot
+                      </span>
+                      <span className="text-[10px] text-[#FD6702] font-bold">Free</span>
+                    </div>
+                    <div className="text-xs font-bold text-[#161C25]">15-Min Portfolio Audit</div>
+                    <div className="text-[10px] text-[#161C25]/60 mt-0.5 leading-tight">Review funds & cut hidden costs</div>
+                  </button>
+
+                  {/* Tile 2: Client Wealth Intake */}
+                  <button
+                    onClick={() => onOpenIntake && onOpenIntake()}
+                    className="p-3 rounded-xl bg-white hover:bg-[#FD6702]/5 border border-[#E8D5C2] hover:border-[#FD6702]/50 text-left transition-all duration-200 cursor-pointer shadow-2xs group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="material-symbols-outlined text-[20px] text-[#161C25] group-hover:text-[#FD6702] group-hover:scale-110 transition-transform">
+                        assignment_turned_in
+                      </span>
+                      <span className="text-[10px] text-emerald-600 font-bold">Confidential</span>
+                    </div>
+                    <div className="text-xs font-bold text-[#161C25]">Wealth Intake Form</div>
+                    <div className="text-[10px] text-[#161C25]/60 mt-0.5 leading-tight">Customized financial blueprint</div>
+                  </button>
+                </div>
+
+                {/* Direct Verified Desk Contact Strip */}
+                <div className="pt-2 border-t border-[#F2DECA] flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[18px] text-[#FD6702]">verified</span>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-[#161C25] leading-tight">Mumbai Advisory HQ</span>
+                      <span className="text-[10px] text-[#161C25]/60">Mon – Sat (10 AM - 7 PM)</span>
+                    </div>
+                  </div>
+
+                  <a
+                    href="tel:+919820433220"
+                    className="px-3 py-1.5 rounded-full bg-[#161C25] hover:bg-black text-white text-[11px] font-bold transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-[13px] text-[#FD6702]">call</span>
+                    <span>Call Desk</span>
+                  </a>
+                </div>
+
               </div>
+
             </div>
 
           </div>
