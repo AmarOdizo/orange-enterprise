@@ -397,119 +397,125 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
-            {/* Left Column: Contact Details Card (Compact) */}
+            {/* Left Column: Contact Details Card (Warm Luxury Cream & Cohesive) */}
             <div className="lg:col-span-5 flex flex-col gap-3">
-              <div className="bg-inverse-surface text-inverse-on-surface p-4 sm:p-5 rounded-xl shadow-lg flex flex-col">
-                <span className="text-[10px] uppercase text-primary-container tracking-wider font-bold">
+              <div className="bg-gradient-to-br from-[#FFF8F0] via-white to-[#FFF3E5] text-[#161C25] p-5 sm:p-6 rounded-2xl shadow-md border border-[#E8D5C2] flex flex-col relative overflow-hidden">
+                {/* Decorative Ambient Corner Glow */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-[#FD6702]/10 blur-2xl pointer-events-none" />
+
+                <span className="text-[10px] uppercase text-[#FD6702] tracking-wider font-bold">
                   Orange Enterprise Desk
                 </span>
-                <h3 className="text-base sm:text-lg text-inverse-on-surface font-semibold mt-0.5">
+                <h3 className="text-base sm:text-lg text-[#161C25] font-extrabold mt-0.5">
                   Direct Advisory & Salon
                 </h3>
 
-                <div className="flex flex-col gap-3 mt-4 text-xs text-inverse-on-surface/90">
+                <div className="flex flex-col gap-3.5 mt-4 text-xs text-[#161C25]/85">
                   {/* Phone */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-md bg-inverse-on-surface/10 flex items-center justify-center shrink-0">
-                      <span className="material-symbols-outlined text-[18px] text-primary-container">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <span className="material-symbols-outlined text-[19px]">
                         phone
                       </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] uppercase text-inverse-on-surface/60 font-semibold">
+                      <span className="text-[9px] uppercase text-[#161C25]/55 font-bold tracking-wider">
                         Phone Consultation
                       </span>
-                      <a className="text-xs sm:text-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold truncate" href="tel:+919820433220">
+                      <a className="text-xs sm:text-sm text-[#161C25] hover:text-[#FD6702] transition-colors font-bold truncate" href="tel:+919820433220">
                         +91 98204 33220
                       </a>
                     </div>
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-md bg-inverse-on-surface/10 flex items-center justify-center shrink-0">
-                      <span className="material-symbols-outlined text-[18px] text-primary-container">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <span className="material-symbols-outlined text-[19px]">
                         mail
                       </span>
                     </div>
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[9px] uppercase text-inverse-on-surface/60 font-semibold">
+                      <span className="text-[9px] uppercase text-[#161C25]/55 font-bold tracking-wider">
                         Electronic Dispatch
                       </span>
-                      <a className="text-xs sm:text-sm text-inverse-on-surface hover:text-primary-container transition-colors font-semibold truncate" href="mailto:wlthwrks@gmail.com">
+                      <a className="text-xs sm:text-sm text-[#161C25] hover:text-[#FD6702] transition-colors font-bold truncate" href="mailto:wlthwrks@gmail.com">
                         wlthwrks@gmail.com
                       </a>
                     </div>
                   </div>
 
                   {/* Location */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-md bg-inverse-on-surface/10 flex items-center justify-center shrink-0">
-                      <span className="material-symbols-outlined text-[18px] text-primary-container">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <span className="material-symbols-outlined text-[19px]">
                         location_on
                       </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] uppercase text-inverse-on-surface/60 font-semibold">
+                      <span className="text-[9px] uppercase text-[#161C25]/55 font-bold tracking-wider">
                         Location Headquarters
                       </span>
-                      <span className="text-xs text-inverse-on-surface font-semibold">
+                      <span className="text-xs text-[#161C25] font-bold">
                         Mumbai, MH India
                       </span>
                     </div>
                   </div>
 
-                  {/* Hours Schedule Breakdown (Compact) */}
-                  <div className="flex items-start gap-2.5 pt-2.5 border-t border-inverse-on-surface/15">
-                    <div className="w-8 h-8 rounded-md bg-inverse-on-surface/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="material-symbols-outlined text-[18px] text-primary-container">
+                  {/* Hours Schedule Breakdown (Warm Card) */}
+                  <div className="flex items-start gap-3 pt-3 border-t border-[#E8D5C2]/80">
+                    <div className="w-9 h-9 rounded-xl bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                      <span className="material-symbols-outlined text-[19px]">
                         schedule
                       </span>
                     </div>
-                    <div className="flex flex-col w-full text-[11px]">
-                      <span className="text-[9px] uppercase text-inverse-on-surface/60 font-semibold mb-0.5">
+                    <div className="flex flex-col w-full text-[11px] bg-white/80 p-2.5 rounded-xl border border-[#E8D5C2]/70 shadow-2xs">
+                      <span className="text-[9px] uppercase text-[#161C25]/60 font-bold tracking-wider mb-1">
                         Advisory Operating Hours
                       </span>
-                      <div className="flex justify-between py-0.5 text-inverse-on-surface/80">
+                      <div className="flex justify-between py-0.5 text-[#161C25]/75">
                         <span>Monday – Friday</span>
-                        <span className="font-medium text-inverse-on-surface">9:00am – 10:00pm</span>
+                        <span className="font-bold text-[#161C25]">9:00am – 10:00pm</span>
                       </div>
-                      <div className="flex justify-between py-0.5 text-inverse-on-surface/80">
+                      <div className="flex justify-between py-0.5 text-[#161C25]/75">
                         <span>Saturday</span>
-                        <span className="font-medium text-inverse-on-surface">9:00am – 6:00pm</span>
+                        <span className="font-bold text-[#161C25]">9:00am – 6:00pm</span>
                       </div>
-                      <div className="flex justify-between py-0.5 text-inverse-on-surface/80">
+                      <div className="flex justify-between py-0.5 text-[#161C25]/75">
                         <span>Sunday</span>
-                        <span className="font-medium text-inverse-on-surface">9:00am – 12:00pm</span>
+                        <span className="font-bold text-[#161C25]">9:00am – 12:00pm</span>
                       </div>
                     </div>
                   </div>
 
                   {/* LinkedIn Connect */}
-                  <div className="pt-2 border-t border-inverse-on-surface/15">
+                  <div className="pt-2 border-t border-[#E8D5C2]/80 flex items-center justify-between">
                     <a 
-                      className="inline-flex items-center gap-1.5 text-xs text-primary-container hover:underline font-semibold" 
+                      className="inline-flex items-center gap-1.5 text-xs text-[#FD6702] hover:text-[#E55A00] hover:underline font-bold" 
                       href="http://www.linkedin.com/in/pbd09" 
                       rel="noopener noreferrer" 
                       target="_blank"
                     >
-                      <span className="material-symbols-outlined text-[16px]">account_circle</span>
+                      <span className="material-symbols-outlined text-[17px]">account_circle</span>
                       <span>Connect on LinkedIn</span>
                     </a>
+                    <span className="text-[10px] font-semibold text-[#161C25]/50 uppercase">
+                      ARN 83312
+                    </span>
                   </div>
                 </div>
 
                 {/* Direct Action Buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5 pt-3 border-t border-[#E8D5C2]/80">
                   <button
                     onClick={() => onOpenSchedule('Quick Consultation')}
-                    className="inline-flex items-center justify-center py-2 px-3 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-inverse-on-surface text-xs rounded-md transition-colors text-center cursor-pointer font-semibold"
+                    className="inline-flex items-center justify-center py-2.5 px-3 bg-white hover:bg-[#FD6702]/8 text-[#161C25] hover:text-[#FD6702] border border-[#E8D5C2] text-xs rounded-xl transition-all text-center cursor-pointer font-bold shadow-2xs"
                   >
                     Book consultation
                   </button>
                   <button
                     onClick={() => onOpenIntake()}
-                    className="inline-flex items-center justify-center py-2 px-3 bg-primary-container hover:bg-primary text-on-primary text-xs rounded-md transition-colors text-center cursor-pointer font-semibold"
+                    className="inline-flex items-center justify-center py-2.5 px-3 bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs rounded-xl transition-all text-center cursor-pointer font-bold shadow-xs hover:shadow-sm hover:scale-[1.01] active:scale-[0.99]"
                   >
                     Complete intake
                   </button>
