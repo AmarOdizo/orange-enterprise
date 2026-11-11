@@ -144,12 +144,9 @@ export default function HomePage({ setActivePage, onOpenSchedule, onOpenIntake }
 
             </div>
 
-            {/* Hero Right Column: Interactive 3D Sphere Network with Services Cards */}
+            {/* Hero Right Column: Interactive 3D Sphere Network with Services Cards (Visual & Movable) */}
             <div className="lg:col-span-5 relative mt-6 lg:mt-0 flex items-center justify-center">
-              <HeroSphereNetwork 
-                onOpenSchedule={onOpenSchedule} 
-                setActivePage={setActivePage} 
-              />
+              <HeroSphereNetwork />
             </div>
 
           </div>
