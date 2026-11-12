@@ -116,7 +116,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                       handleNavClick(item.id);
                     }
                   }}
-                  className={`px-3.5 lg:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  className={`px-2.5 lg:px-3.5 xl:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive 
                       ? 'bg-[#FD6702] text-white shadow-xs font-bold' 
                       : 'text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/10'
@@ -130,16 +130,16 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
 
           {/* Action Center & Local Storage on Right */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Direct Phone Link (Laptop & Desktop) */}
+            {/* Direct Phone Link (Visible at 100% zoom on laptop/desktop: lg and up) */}
             <a 
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/8 font-semibold transition-colors" 
+              className="hidden lg:inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/8 font-semibold transition-colors shrink-0" 
               href="tel:+919820433220"
               title="Call Mumbai Advisory Desk"
             >
               <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
                 phone
               </span>
-              <span>+91 98204 33220</span>
+              <span className="whitespace-nowrap font-semibold">+91 98204 33220</span>
             </a>
 
             {/* Admin Desk Portal Button (Right) */}
@@ -163,11 +163,11 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               )}
             </button>
 
-            {/* Mobile Call Icon Button (< sm) */}
+            {/* Quick Call Icon Button (Mobile & Tablet: < lg) */}
             <a
               href="tel:+919820433220"
-              className="sm:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs"
-              title="Call Advisor Desk"
+              className="lg:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs shrink-0"
+              title="Call Advisor Desk (+91 98204 33220)"
               aria-label="Call +91 98204 33220"
             >
               <span className="material-symbols-outlined text-[18px]">phone</span>
