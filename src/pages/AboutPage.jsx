@@ -2,34 +2,9 @@ import React from 'react';
 
 const BOARDROOM_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuAROJossp1IyQ3YhEacDA1ncwPuFTsSnCGyxAgjpq6BjqM7B8DJ9lsSG0UEsIFvoNmhQgA-RkjfZ1N-_-mUbROY1oGo3FPy5pIX17uyG4-qimhhnBdGXp6JPKL0YG2GZcdvugt9LuL8gz3cfRkiaBxqQtN4yfSQV9_aiUon5waHOzcpWgOQPO6Bw11EEr32k-PA2jRAxG4nlNmeT1pOxh5vX8UWFoPKECxkCD7Rh2c8";
 
-export default function AboutPage({ setActivePage, onOpenSchedule }) {
+export default function AboutPage({ onOpenSchedule }) {
   return (
     <div className="flex flex-col w-full">
-      {/* Top Subtle Architectural Bar & Navigation Tracker */}
-      <section className="w-full bg-surface-container-low py-2 sm:py-2.5 border-b border-surface-container">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-on-surface-variant text-xs">
-          <div className="flex items-center gap-1.5">
-            <button 
-              onClick={() => {
-                setActivePage('home');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="hover:text-primary transition-colors cursor-pointer"
-            >
-              Home
-            </button>
-            <span className="text-outline-variant">/</span>
-            <span className="text-on-surface font-semibold">About Institution</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-3">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-[11px] text-on-surface font-semibold tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-              AMFI REGISTRATION ARN 83312
-            </span>
-            <span className="text-on-surface-variant text-xs">Mumbai Financial District</span>
-          </div>
-        </div>
-      </section>
 
       {/* Section 1: Executive Header with Compact Editorial Scale */}
       <section className="relative w-full bg-surface py-8 sm:py-12 lg:py-14 overflow-hidden">
