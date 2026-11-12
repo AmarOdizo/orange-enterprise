@@ -182,6 +182,8 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                   className="w-full h-full object-cover" 
                   alt="Financial strategist reviewing mutual fund portfolio" 
                   src={ABOUT_IMG} 
+                  loading="lazy"
+                  decoding="async"
                 />
                 
                 {/* Clean Compliance Badge Overlay */}
@@ -1011,11 +1013,22 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
 
                 {/* Submission Success Banner */}
                 {formSubmitted && (
-                  <div className="p-3 rounded-md bg-emerald-50 text-emerald-800 flex items-center gap-2 border border-emerald-200 text-xs">
-                    <span className="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
-                    <span className="font-semibold">
-                      Thank you. Parag will get back to you within one working day.
-                    </span>
+                  <div className="p-3 rounded-md bg-emerald-50 text-emerald-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border border-emerald-200 text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
+                      <span className="font-semibold">
+                        Thank you. Parag will get back to you within one working day.
+                      </span>
+                    </div>
+                    <a
+                      href="https://wa.me/919820433220?text=Hello%20Parag%2C%20I%20found%20your%20website%20and%20would%20like%20to%20talk."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-md font-bold text-[11px] shadow-2xs shrink-0 w-fit"
+                    >
+                      <span>Also send on WhatsApp</span>
+                      <span className="material-symbols-outlined text-[14px]">send</span>
+                    </a>
                   </div>
                 )}
 

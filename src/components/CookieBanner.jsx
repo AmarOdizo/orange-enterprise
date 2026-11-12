@@ -18,6 +18,15 @@ export default function CookieBanner({ onOpenLegal }) {
     setIsVisible(false);
   };
 
+  const handleDecline = () => {
+    try {
+      localStorage.setItem('oe_cookie_consent', 'essential_only');
+    } catch {
+      // ignore storage errors
+    }
+    setIsVisible(false);
+  };
+
   if (!isVisible) return null;
 
   return (
@@ -41,10 +50,10 @@ export default function CookieBanner({ onOpenLegal }) {
 
         <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
           <button
-            onClick={() => onOpenLegal('Cookie Policy')}
-            className="px-2.5 py-1 rounded text-secondary-fixed hover:text-white text-xs transition-colors cursor-pointer"
+            onClick={handleDecline}
+            className="px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-white text-xs transition-colors cursor-pointer"
           >
-            Preferences
+            Decline non-essential
           </button>
           <button
             onClick={handleAccept}

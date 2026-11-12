@@ -77,6 +77,8 @@ export default function AboutPage({ onOpenSchedule }) {
                   alt="Orange Enterprise office overlooking Mumbai" 
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
                   src={BOARDROOM_IMG} 
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-on-secondary-fixed/90 via-on-secondary-fixed/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-on-primary flex flex-col gap-1">

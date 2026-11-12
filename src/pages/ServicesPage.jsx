@@ -274,6 +274,8 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
                   className="w-full h-full object-cover" 
                   alt="Investment planning session in Mumbai" 
                   src={WEALTH_IMG} 
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent flex items-end p-3">
                   <span className="text-xs text-surface-container-lowest font-semibold">
@@ -516,6 +518,8 @@ export default function ServicesPage({ onOpenSchedule, onOpenIntake }) {
                   className="w-full h-full object-cover" 
                   alt="Corporate skyline of Mumbai financial district Bandra Kurla Complex at dusk" 
                   src={FINANCE_IMG} 
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

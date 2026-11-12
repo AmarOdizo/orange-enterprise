@@ -322,14 +322,25 @@ export default function ContactPage() {
 
                 {/* Success Banner */}
                 {isSubmitted && (
-                  <div className="mb-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 flex items-start gap-3 border border-emerald-200 text-xs sm:text-sm animate-fade-in">
-                    <span className="material-symbols-outlined text-[22px] text-emerald-600 shrink-0 mt-0.5">task_alt</span>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-emerald-900 text-sm sm:text-base">Inquiry Successfully Sent</span>
-                      <span className="text-emerald-700 mt-0.5 leading-relaxed">
-                        Thank you. Parag will get back to you within one working day.
-                      </span>
+                  <div className="mb-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-emerald-200 text-xs sm:text-sm animate-fade-in">
+                    <div className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[22px] text-emerald-600 shrink-0 mt-0.5">task_alt</span>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-emerald-900 text-sm sm:text-base">Inquiry Successfully Sent</span>
+                        <span className="text-emerald-700 mt-0.5 leading-relaxed">
+                          Thank you. Parag will get back to you within one working day.
+                        </span>
+                      </div>
                     </div>
+                    <a
+                      href="https://wa.me/919820433220?text=Hello%20Parag%2C%20I%20found%20your%20website%20and%20would%20like%20to%20talk."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-bold shadow-xs shrink-0 w-fit"
+                    >
+                      <span>Also send on WhatsApp</span>
+                      <span className="material-symbols-outlined text-[15px]">send</span>
+                    </a>
                   </div>
                 )}
 
@@ -592,6 +603,8 @@ export default function ContactPage() {
                   className="w-full h-full object-cover" 
                   alt="Modern meeting space in Mumbai" 
                   src={OFFICE_IMG} 
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#161C25]/90 via-[#161C25]/30 to-transparent"></div>
               </div>
