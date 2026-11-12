@@ -26,6 +26,8 @@ export default function App() {
       }
       const hash = window.location.hash.replace('#', '').toLowerCase();
       if (VALID_PAGES.includes(hash)) {
+        const cleanPath = hash === 'home' ? '/' : `/${hash}`;
+        window.history.replaceState({ page: hash }, '', cleanPath);
         return hash;
       }
     }
@@ -40,31 +42,52 @@ export default function App() {
   const [legalTopic, setLegalTopic] = useState('Privacy Policy');
   const [deskModalOpen, setDeskModalOpen] = useState(false);
 
-  // Sync active page with URL hash for browser history & bookmarking
+  // Sync active page with clean HTML5 URL path (Zero # in URLs)
   const setActivePage = (page) => {
     if (VALID_PAGES.includes(page)) {
       setActivePageState(page);
-      if (window.location.hash !== `#${page}`) {
-        window.location.hash = page;
+      const newPath = page === 'home' ? '/' : `/${page}`;
+      if (window.location.pathname !== newPath || window.location.hash) {
+        window.history.pushState({ page }, '', newPath);
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!['insights', 'parag', 'how-we-work'].includes(page)) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
+  // Support browser Back and Forward navigation without #
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (VALID_PAGES.includes(hash) && hash !== activePage) {
-        setActivePageState(hash);
+    const handlePopState = () => {
+      const path = window.location.pathname.replace(/^\//, '').toLowerCase();
+      const page = VALID_PAGES.includes(path) ? path : 'home';
+      setActivePageState(page);
+      if (['insights', 'parag', 'how-we-work'].includes(page)) {
+        setTimeout(() => {
+          const el = document.getElementById(page);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [activePage]);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
-  // Smooth scroll to anchor if loaded via hash
+  // Remove any remaining hash if present on mount
+  useEffect(() => {
+    if (window.location.hash) {
+      const hashPage = window.location.hash.replace('#', '').toLowerCase();
+      const cleanPath = VALID_PAGES.includes(hashPage) 
+        ? (hashPage === 'home' ? '/' : `/${hashPage}`) 
+        : window.location.pathname;
+      window.history.replaceState({}, '', cleanPath);
+    }
+  }, []);
+
+  // Smooth scroll to section if loaded via section path
   useEffect(() => {
     if (['insights', 'parag', 'how-we-work'].includes(activePage)) {
       const timer = setTimeout(() => {
@@ -153,6 +176,7 @@ export default function App() {
 
         {activePage === 'contact' && (
           <ContactPage 
+            setActivePage={setActivePage}
             onOpenSchedule={handleOpenSchedule}
             onOpenIntake={handleOpenIntake}
           />

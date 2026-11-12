@@ -7,40 +7,39 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#about</loc>
+    <loc>https://orangeenterprise.in/about</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#services</loc>
+    <loc>https://orangeenterprise.in/services</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#insights</loc>
+    <loc>https://orangeenterprise.in/insights</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#contact</loc>
+    <loc>https://orangeenterprise.in/contact</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#disclaimer</loc>
+    <loc>https://orangeenterprise.in/disclaimer</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://orangeenterprise.in/#privacy</loc>
+    <loc>https://orangeenterprise.in/privacy</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
-

@@ -4,7 +4,18 @@ import { getInsights } from '../data/insightsData';
 
 const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD09XHqfHAACiOMMGHuNRecvitZyr8cxEByV7I5wECGIxyHAA2rOMsyI1pC-SpJTNfptv32rgLX-PYdHprzjwrRUKRE0_KNekqTHK1EjL7bgtzBNz7nbyj7sRSDm88_kvWqZuvr-JTayB-dbtmS9KeShpTh_59aRXUwtjrnJQLJ6sHmxHxva7XzhfrNTWTrzwqEgaHYdCQFtB9APdpQnT3yhC5FbPmOn6xILhusY8kL";
 
-export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake }) {
+export default function HomePage({ setActivePage, onOpenSchedule, _onOpenIntake }) {
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (typeof window !== 'undefined') {
+      const cleanPath = id === 'home' ? '/' : `/${id}`;
+      window.history.pushState({ page: id }, '', cleanPath);
+    }
+  };
+
   const insights = useMemo(() => getInsights(), []);
   const [formData, setFormData] = useState({
     name: '',
@@ -109,13 +120,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                   <span>Book a consultation</span>
                   <span className="material-symbols-outlined text-[17px]">calendar_today</span>
                 </button>
-                <a
-                  href="#about"
+                <button
+                  onClick={() => scrollToSection('parag')}
                   className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold bg-white text-[#161C25] hover:bg-[#FFF4E8] border border-[#E8D5C2] shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer"
                 >
                   <span>Meet Parag</span>
                   <span className="material-symbols-outlined text-[17px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
 
               {/* Trust Metric Pillars Strip (Exactly 4 Compliant Boxes) */}
@@ -254,13 +265,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                   <span className="material-symbols-outlined text-[16px]">calendar_today</span>
                 </button>
 
-                <a
-                  href="#parag"
+                <button
+                  onClick={() => scrollToSection('parag')}
                   className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-white text-[#161C25] hover:bg-[#FFF4E8] text-xs sm:text-sm rounded-full border border-[#E8D5C2] transition-colors cursor-pointer font-semibold text-center"
                 >
                   <span>Meet Parag</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -404,13 +415,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
 
               {/* CTA Button */}
               <div className="mt-6 pt-2">
-                <a
-                  href="#contact"
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className="inline-flex items-center gap-1.5 px-6 py-3 bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs sm:text-sm rounded-full shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer font-bold text-center"
                 >
                   <span>Book a conversation with Parag</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
 
             </div>
@@ -457,13 +468,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                 Mutual fund schemes suited to your goals and risk profile, through SIPs or lump-sum investments, with paperwork and KYC handled for you.
               </p>
               <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold"
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold cursor-pointer"
                 >
                   <span>Talk to Parag</span>
                   <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -479,13 +490,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                 Mutual fund solutions aligned to retirement, children's education and other long-term goals. <span className="text-[#FD6702]/90">[Confirm wording with Parag.]</span>
               </p>
               <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold"
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold cursor-pointer"
                 >
                   <span>Talk to Parag</span>
                   <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -501,13 +512,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                 Regular reviews of your mutual fund holdings, so your investments stay in line with your goals as life changes.
               </p>
               <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold"
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold cursor-pointer"
                 >
                   <span>Talk to Parag</span>
                   <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -523,13 +534,13 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                 For business owners: cash flow, working capital, banking relationships and treasury, drawing on Parag's years as a CFO. <span className="text-[#FD6702]/90">[Confirm Parag offers this.]</span>
               </p>
               <div className="pt-2">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold"
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold cursor-pointer"
                 >
                   <span>Talk to Parag</span>
                   <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -999,7 +1010,16 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                     className="mt-0.5 h-3.5 w-3.5 rounded accent-[#FD6702] cursor-pointer"
                   />
                   <label className="text-[11px] text-on-surface-variant cursor-pointer leading-tight" htmlFor="home-consent-check">
-                    I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the <a href="#privacy" className="underline hover:text-[#FD6702] font-semibold">Privacy Policy</a>. <span className="text-[#FD6702] font-bold">*</span>
+                    I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the{' '}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (setActivePage) setActivePage('privacy');
+                      }}
+                      className="underline hover:text-[#FD6702] font-semibold cursor-pointer"
+                    >
+                      Privacy Policy
+                    </button>. <span className="text-[#FD6702] font-bold">*</span>
                   </label>
                 </div>
 

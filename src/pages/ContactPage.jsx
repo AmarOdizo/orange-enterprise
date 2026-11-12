@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const OFFICE_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuAty7-pgvdhi7Vptux7Gb-tUjtRrBIapT2UmJwXWgZrsr9Oaw0qTfy_hL-etkJfjzMLip59pQil55uGaC5L5y73WHmxgkVflkuW6g5NZ4peta-KUENws1XFPdXjQWlxFnPcFiTllzdkl-FUoEw5TyEepI1iZYO5HksttOw-gKyV20eqCIdAhdnl3n7d2IlKjIiVgIIQpoa5wQmYZumSmeB__7peGDWNlzBqHFnGgmJW";
 
-export default function ContactPage() {
+export default function ContactPage({ setActivePage }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -530,7 +530,16 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col">
                       <label className="text-[11px] text-[#161C25]/80 cursor-pointer select-none leading-snug" htmlFor="input-consent">
-                        I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the <a href="#privacy" className="underline hover:text-[#FD6702] font-semibold">Privacy Policy</a>. <span className="text-[#FD6702] font-bold">*</span>
+                        I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the{' '}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (setActivePage) setActivePage('privacy');
+                          }}
+                          className="underline hover:text-[#FD6702] font-semibold cursor-pointer"
+                        >
+                          Privacy Policy
+                        </button>. <span className="text-[#FD6702] font-bold">*</span>
                       </label>
                       {errors.consent && (
                         <span className="text-[10px] text-red-600 font-semibold mt-0.5">{errors.consent}</span>
