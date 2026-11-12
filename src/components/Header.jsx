@@ -6,17 +6,30 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Navigation Items (Middle Nav - Unified & Consistent)
+  // Navigation Items (Home · About · Services · Insights · Contact)
   const navItems = [
     { id: 'home', label: 'Home', icon: 'home' },
     { id: 'about', label: 'About', icon: 'business' },
     { id: 'services', label: 'Services', icon: 'account_balance_wallet' },
-    { id: 'consultation', label: 'Book Consultation', icon: 'calendar_month', isModal: true },
+    { id: 'insights', label: 'Insights', icon: 'article', isAnchor: true, targetId: 'insights' },
     { id: 'contact', label: 'Contact', icon: 'mail' },
   ];
 
-  const handleNavClick = (id) => {
-    setActivePage(id);
+  const handleNavClick = (id, targetId) => {
+    if (targetId) {
+      if (activePage !== 'home') {
+        setActivePage('home');
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      setActivePage(id);
+    }
     setMobileMenuOpen(false);
   };
 
@@ -82,7 +95,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             </div>
           </div>
 
-          {/* Desktop Navigation (Middle - Home, About, Services, Book Consultation, Contact) */}
+          {/* Desktop Navigation (Middle - Home, About, Services, Insights, Contact) */}
           <nav 
             className="hidden md:flex items-center gap-1 lg:gap-1.5"
             aria-label="Main Navigation"
@@ -93,11 +106,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                 <button
                   key={item.id}
                   onClick={() => {
-                    if (item.isModal) {
-                      onOpenSchedule('Navbar Consultation');
-                    } else {
-                      handleNavClick(item.id);
-                    }
+                    handleNavClick(item.id, item.targetId);
                   }}
                   className={`px-2.5 lg:px-3.5 xl:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     isActive 
@@ -184,12 +193,7 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                   <button
                     key={item.id}
                     onClick={() => {
-                      if (item.isModal) {
-                        onOpenSchedule('Mobile Menu Consultation');
-                        setMobileMenuOpen(false);
-                      } else {
-                        handleNavClick(item.id);
-                      }
+                      handleNavClick(item.id, item.targetId);
                     }}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-sm transition-all duration-200 flex items-center justify-between cursor-pointer border ${
                       isActive

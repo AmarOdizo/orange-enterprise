@@ -131,6 +131,12 @@ export default function Footer({ setActivePage, onOpenSchedule, _onOpenIntake, o
                 Services
               </button>
               <button 
+                onClick={() => handleNav('insights')} 
+                className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
+              >
+                Insights
+              </button>
+              <button 
                 onClick={() => handleNav('contact')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
               >

@@ -13,7 +13,7 @@ import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import AdminDeskModal from './components/AdminDeskModal';
 
-const VALID_PAGES = ['home', 'about', 'services', 'contact', 'admin'];
+const VALID_PAGES = ['home', 'about', 'services', 'contact', 'admin', 'insights', 'parag', 'how-we-work'];
 
 export default function App() {
   const [activePage, setActivePageState] = useState(() => {
@@ -56,6 +56,17 @@ export default function App() {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [activePage]);
+
+  // Smooth scroll to anchor if loaded via hash
+  useEffect(() => {
+    if (['insights', 'parag', 'how-we-work'].includes(activePage)) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(activePage);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+      return () => clearTimeout(timer);
+    }
   }, [activePage]);
 
   const handleOpenSchedule = (serviceName = 'Mutual Fund Consultation') => {
@@ -112,7 +123,7 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className={`w-full flex-1 bg-surface ${activePage !== 'admin' ? 'pt-16 sm:pt-[70px] min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-70px)]' : 'pt-0 min-h-screen'}`}>
-        {activePage === 'home' && (
+        {(activePage === 'home' || activePage === 'insights' || activePage === 'parag' || activePage === 'how-we-work') && (
           <HomePage 
             setActivePage={setActivePage}
             onOpenSchedule={handleOpenSchedule}

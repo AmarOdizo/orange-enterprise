@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import HeroSphereNetwork from '../components/HeroSphereNetwork';
+import { getInsights } from '../data/insightsData';
 
 const ABOUT_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuD09XHqfHAACiOMMGHuNRecvitZyr8cxEByV7I5wECGIxyHAA2rOMsyI1pC-SpJTNfptv32rgLX-PYdHprzjwrRUKRE0_KNekqTHK1EjL7bgtzBNz7nbyj7sRSDm88_kvWqZuvr-JTayB-dbtmS9KeShpTh_59aRXUwtjrnJQLJ6sHmxHxva7XzhfrNTWTrzwqEgaHYdCQFtB9APdpQnT3yhC5FbPmOn6xILhusY8kL";
 
 export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake }) {
+  const insights = useMemo(() => getInsights(), []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -224,13 +226,164 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                 </button>
 
                 <a
-                  href="#contact"
+                  href="#parag"
                   className="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-white text-[#161C25] hover:bg-[#FFF4E8] text-xs sm:text-sm rounded-full border border-[#E8D5C2] transition-colors cursor-pointer font-semibold text-center"
                 >
-                  <span>Speak with Parag</span>
+                  <span>Meet Parag</span>
                   <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </a>
               </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          MEET PARAG DOSHI SECTION
+          ========================================================================= */}
+      <section className="w-full py-10 sm:py-14 lg:py-16 bg-surface border-b border-surface-container" id="parag">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Photo of Parag & Quick Badges */}
+            <div className="lg:col-span-5 flex flex-col gap-4">
+              {/* Photo Frame Placeholder */}
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#F2F4F7] to-[#E4E7EC] border-2 border-dashed border-[#D0D5DD] aspect-[4/5] flex flex-col items-center justify-center p-6 text-center shadow-xs">
+                <div className="w-20 h-20 rounded-2xl bg-white shadow-xs flex items-center justify-center text-[#98A2B3] mb-3">
+                  <span className="material-symbols-outlined text-[40px]">person</span>
+                </div>
+                <span className="text-sm font-bold text-[#344054]">
+                  Photo of Parag
+                </span>
+                <span className="text-xs text-[#667085] max-w-[220px] mt-1 leading-snug">
+                  [3–5 professional photos to be added before launch]
+                </span>
+                <div className="absolute bottom-3 left-3 right-3 py-2 px-3 rounded-xl bg-white/95 backdrop-blur-sm border border-[#E8D5C2] flex items-center justify-between text-[11px] font-semibold text-[#161C25] shadow-2xs">
+                  <span>Parag Doshi, FCA, FCS</span>
+                  <span className="text-[#FD6702] font-bold">ARN-83312</span>
+                </div>
+              </div>
+
+              {/* Languages Line */}
+              <div className="p-3.5 rounded-xl bg-surface-container-low border border-surface-container flex items-center gap-2.5 text-xs text-on-surface">
+                <span className="material-symbols-outlined text-primary text-[18px]">translate</span>
+                <span>
+                  <strong className="font-bold">Languages:</strong> English, Hindi, Marathi, Gujarati
+                </span>
+              </div>
+
+              {/* Quote Card */}
+              <div className="p-4 rounded-xl bg-[#FFF8F0] border border-[#E8D5C2] flex items-start gap-3 shadow-2xs">
+                <span className="material-symbols-outlined text-[#FD6702] text-[24px] shrink-0 mt-0.5">format_quote</span>
+                <p className="text-xs sm:text-sm font-semibold text-[#161C25] italic leading-relaxed">
+                  "Wealth is built through discipline, not by chasing the market."
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Bio, Credentials & Career Timeline */}
+            <div className="lg:col-span-7 flex flex-col items-start">
+              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 mb-2">
+                <span className="text-[10px] uppercase tracking-wider font-bold">
+                  MEET THE FOUNDER
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight font-extrabold">
+                Parag Doshi, FCA, FCS
+              </h2>
+              <span className="text-xs sm:text-sm text-[#FD6702] font-bold mt-1">
+                Founder and CEO, Orange Enterprise
+              </span>
+
+              {/* Bio Paragraphs */}
+              <div className="mt-3.5 flex flex-col gap-2.5 text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                <p>
+                  Parag has spent more than 25 years inside India's financial institutions, from mutual fund houses to research and corporate finance. That experience shapes how he works with clients today: carefully, patiently and with an eye on the long term.
+                </p>
+                <p>
+                  He began his career at A.F. Ferguson & Co., worked in compliance at JM Mutual Fund, and headed AMC finance at Zurich India Mutual Fund, where he was part of the team on two fund acquisitions. He later served as CFO and Company Secretary of JM Financial AMC, and at CRISIL Fund Services worked on fund manager selection and fund research for institutions, receiving CRISIL's award for Outstanding Contribution in 2008.
+                </p>
+                <p>
+                  After working with HNI and retail investors at Reliance Capital, he spent nearly nine years at Garware Hi-Tech Films, rising to Senior GM, Corporate Affairs, including a period as CFO. In 2022 he founded Orange Enterprise to work directly with families and business owners.
+                </p>
+              </div>
+
+              {/* Credentials Badges */}
+              <div className="w-full mt-5 pt-4 border-t border-surface-container">
+                <span className="text-[10px] uppercase text-on-surface-variant font-bold tracking-wider mb-2.5 block">
+                  Credentials & Qualifications
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 rounded-lg bg-surface-container-low border border-surface-container text-xs text-on-surface font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Fellow Chartered Accountant (ICAI)
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-surface-container-low border border-surface-container text-xs text-on-surface font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Fellow Company Secretary (ICSI)
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-surface-container-low border border-surface-container text-xs text-on-surface font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    B.Com, University of Mumbai
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-[#FFF4E8] border border-[#E8D5C2] text-xs text-[#FD6702] font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FD6702]"></span>
+                    CFA Institute Investment Foundations Program (2019)
+                  </span>
+                </div>
+              </div>
+
+              {/* Career Timeline */}
+              <div className="w-full mt-6 pt-5 border-t border-surface-container">
+                <span className="text-[10px] uppercase text-on-surface-variant font-bold tracking-wider mb-3.5 block">
+                  Career Timeline (25+ Years in Financial Services)
+                </span>
+                <div className="relative border-l-2 border-[#E8D5C2] ml-2 pl-4 flex flex-col gap-3.5">
+                  {[
+                    { years: '2022 – present', org: 'Orange Enterprise', role: 'Founder and CEO' },
+                    { years: '2013 – 2022', org: 'Garware Hi-Tech Films Ltd', role: 'GM Finance to Senior GM, Corporate Affairs (incl. CFO, 2019)' },
+                    { years: '2012 – 2013', org: 'Financial advisory firm', role: 'Manager, Finance' },
+                    { years: '2010 – 2011', org: 'Reliance Capital', role: 'Managed HNI and retail investment portfolios' },
+                    { years: '2007 – 2009', org: 'CRISIL Ltd', role: 'Manager, Fund Services · Award for Outstanding Contribution, 2008' },
+                    { years: '2003 – 2006', org: 'JM Financial AMC', role: 'CFO and Company Secretary' },
+                    { years: '1998 – 2003', org: 'Zurich India AMC', role: 'Head of AMC Finance' },
+                    { years: '1997 – 1998', org: 'JM Mutual Fund', role: 'Compliance Manager' },
+                    { years: '1993 – 1996', org: 'A.F. Ferguson & Co.', role: 'Articleship' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="relative group">
+                      <span className="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#FD6702]"></span>
+                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs sm:text-sm font-bold text-on-surface">
+                            {item.org}
+                          </span>
+                          <span className="text-xs text-on-surface-variant font-medium">
+                            — {item.role}
+                          </span>
+                        </div>
+                        <span className="text-[11px] font-semibold text-[#FD6702] shrink-0 bg-[#FFF4E8] px-2 py-0.5 rounded">
+                          {item.years}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="mt-6 pt-2">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 px-6 py-3 bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs sm:text-sm rounded-full shadow-xs hover:shadow-sm transition-all duration-200 cursor-pointer font-bold text-center"
+                >
+                  <span>Book a conversation with Parag</span>
+                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </div>
+
             </div>
 
           </div>
@@ -352,6 +505,188 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          HOW WE WORK SECTION
+          ========================================================================= */}
+      <section className="w-full py-10 sm:py-14 lg:py-16 bg-surface border-b border-surface-container" id="how-we-work">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col items-center text-center max-w-xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 mb-1">
+              <span className="text-[9px] uppercase tracking-wider font-bold">
+                OUR PROCESS
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-on-surface tracking-tight font-extrabold">
+              How we work with you
+            </h2>
+            <p className="text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">
+              Four simple, disciplined steps designed to make mutual fund investing straightforward and goal-aligned.
+            </p>
+          </div>
+
+          {/* 4 Steps: Row on desktop, stacked on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            
+            {/* Step 1 */}
+            <div className="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow relative">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl font-black text-[#FD6702]/30">01</span>
+                  <span className="w-8 h-8 rounded-lg bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[18px]">forum</span>
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-on-surface mb-1.5">
+                  An introductory conversation
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  30 minutes, at no cost, to understand where you are and what you want.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow relative">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl font-black text-[#FD6702]/30">02</span>
+                  <span className="w-8 h-8 rounded-lg bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[18px]">psychology</span>
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-on-surface mb-1.5">
+                  Understanding your profile
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  Your goals, time horizon and comfort with risk, plus KYC.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow relative">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl font-black text-[#FD6702]/30">03</span>
+                  <span className="w-8 h-8 rounded-lg bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[18px]">description</span>
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-on-surface mb-1.5">
+                  Suitable schemes, clearly explained
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  We explain each recommendation and its risks in plain language.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow relative">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl font-black text-[#FD6702]/30">04</span>
+                  <span className="w-8 h-8 rounded-lg bg-[#FD6702]/10 text-[#FD6702] flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[18px]">sync</span>
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-on-surface mb-1.5">
+                  Regular reviews
+                </h3>
+                <p className="text-xs text-on-surface-variant leading-relaxed">
+                  <span className="text-[#FD6702] font-semibold">[half-yearly]</span> reviews, and a conversation whenever your life changes.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => onOpenSchedule('Process Consultation')}
+              className="inline-flex items-center gap-1.5 px-6 py-2.5 bg-white text-[#161C25] hover:bg-[#FFF4E8] text-xs sm:text-sm rounded-full border border-[#E8D5C2] transition-colors cursor-pointer font-bold shadow-2xs"
+            >
+              <span>Schedule your 30-minute introductory call</span>
+              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================================================
+          INSIGHTS SECTION
+          ========================================================================= */}
+      <section className="w-full py-10 sm:py-14 lg:py-16 bg-surface-container-low border-b border-surface-container" id="insights">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col items-center text-center max-w-xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FD6702]/10 text-[#FD6702] border border-[#FD6702]/20 mb-1">
+              <span className="text-[9px] uppercase tracking-wider font-bold">
+                PUBLICATIONS & COMMENTARY
+              </span>
+            </div>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl text-on-surface tracking-tight font-extrabold">
+              Insights from Parag
+            </h2>
+            <p className="text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">
+              Notes on investing, markets and money, written over 25 years.
+            </p>
+          </div>
+
+          {/* 3 Insight Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {insights.map((item) => (
+              <div 
+                key={item.id}
+                className="bg-surface-container-lowest p-5 rounded-2xl border border-surface-container flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-200"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#FFF4E8] text-[#FD6702] text-[10px] font-bold border border-[#E8D5C2]">
+                      {item.tag}
+                    </span>
+                    <span className="text-[10px] text-on-surface-variant font-medium">
+                      {item.date}
+                    </span>
+                  </div>
+
+                  <h3 className="text-sm sm:text-base font-bold text-on-surface mb-2 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-on-surface-variant leading-relaxed mb-4">
+                    {item.summary}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-surface-container flex items-center justify-between">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-[#FD6702] hover:text-[#E55A00] font-bold"
+                  >
+                    <span>{item.linkText}</span>
+                    <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Standard Disclaimer line at the end of Insights */}
+          <div className="mt-8 p-3.5 rounded-xl bg-surface-container-lowest border border-surface-container flex items-start gap-2.5 text-xs text-on-surface-variant max-w-3xl mx-auto text-center justify-center">
+            <span className="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">info</span>
+            <p className="leading-relaxed">
+              Mutual fund investments are subject to market risks, read all scheme related documents carefully. Past publications are for archival and educational awareness only.
+            </p>
+          </div>
+
         </div>
       </section>
 
