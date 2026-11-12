@@ -7,7 +7,7 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
-    topic: 'Wealth & Portfolio Advisory',
+    topic: 'Mutual fund investments',
     message: '',
     consent: true
   });
@@ -73,7 +73,7 @@ export default function ContactPage() {
         name: '',
         email: '',
         phone: '',
-        topic: 'Wealth & Portfolio Advisory',
+        topic: 'Mutual fund investments',
         message: '',
         consent: true
       });
@@ -94,14 +94,14 @@ export default function ContactPage() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFF4E8] border border-[#E8D5C2] w-fit mb-2.5">
                 <span className="w-2 h-2 rounded-full bg-[#FD6702] animate-pulse"></span>
                 <span className="text-[11px] text-[#FD6702] tracking-wider uppercase font-bold">
-                  Direct Advisory Desk • AMFI ARN 83312
+                  MUMBAI DESK • AMFI ARN-83312
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl text-[#161C25] tracking-tight font-extrabold">
-                Get in Touch with Our Fiduciary Team
+                Speak directly with Parag
               </h1>
               <p className="text-xs sm:text-sm text-[#161C25]/70 mt-1.5 leading-relaxed">
-                Connect directly with certified wealth advisors in Mumbai. Private client salons, strategic portfolio reviews, and corporate treasury coordination.
+                Mutual fund investments and practical financial guidance for families, business owners, and senior professionals, handled personally by Parag Doshi, FCA, FCS.
               </p>
             </div>
 
@@ -112,17 +112,17 @@ export default function ContactPage() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-[#161C25] font-bold">
-                  Private Client Salon Active
+                  Direct Access to Parag
                 </span>
                 <span className="text-[11px] text-[#161C25]/60">
-                  Mumbai BKC Financial Center
+                  Mumbai Desk Active
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main Two-Column Advisory Grid */}
+        {/* Main Two-Column Contact Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
 
@@ -133,10 +133,10 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl p-5 shadow-xs border border-[#E8D5C2]">
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F0DCB]">
                   <span className="text-[11px] uppercase text-[#161C25]/60 tracking-wider font-bold">
-                    Direct Access Channels
+                    Direct Channels
                   </span>
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#161C25] text-white font-bold">
-                    Confidential
+                    Direct Access
                   </span>
                 </div>
 
@@ -151,13 +151,13 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-[10px] text-[#161C25]/60 uppercase font-bold tracking-wider">
-                        Telephone Advisory Desk
+                        Phone
                       </span>
                       <span className="text-xs sm:text-sm text-[#161C25] group-hover:text-[#FD6702] transition-colors truncate font-bold">
                         +91 98204 33220
                       </span>
                       <span className="text-[11px] text-[#161C25]/60">
-                        Direct line to primary portfolio desk
+                        Direct line to Parag Doshi
                       </span>
                     </div>
                   </a>
@@ -165,20 +165,20 @@ export default function ContactPage() {
                   {/* Email */}
                   <a
                     className="group flex items-start gap-3 p-3 rounded-xl bg-[#FFFDF9] hover:bg-[#FFF4E8] border border-[#F0DCB]/70 transition-colors"
-                    href="mailto:wlthwrks@gmail.com"
+                    href="mailto:parag@[domain].in"
                   >
                     <div className="w-9 h-9 rounded-xl bg-[#161C25]/5 text-[#161C25] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                       <span className="material-symbols-outlined text-[19px]">alternate_email</span>
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-[10px] text-[#161C25]/60 uppercase font-bold tracking-wider">
-                        Official Communications
+                        Email
                       </span>
                       <span className="text-xs sm:text-sm text-[#161C25] group-hover:text-[#FD6702] transition-colors truncate font-bold">
-                        wlthwrks@gmail.com
+                        parag@[domain].in
                       </span>
                       <span className="text-[11px] text-[#161C25]/60">
-                        Encrypted investor desk email
+                        Direct email to Parag
                       </span>
                     </div>
                   </a>
@@ -190,7 +190,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col min-w-0">
                       <span className="text-[10px] text-[#161C25]/60 uppercase font-bold tracking-wider">
-                        Executive Salon Location
+                        Office
                       </span>
                       <a
                         className="text-xs sm:text-sm text-[#161C25] hover:text-[#FD6702] transition-colors font-bold"
@@ -198,10 +198,10 @@ export default function ContactPage() {
                         rel="noopener noreferrer"
                         target="_blank"
                       >
-                        Mumbai, MH India
+                        Mumbai, Maharashtra
                       </a>
                       <span className="text-[11px] text-[#161C25]/60">
-                        Maharashtra Financial Center District
+                        Available for meetings in Mumbai
                       </span>
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function ContactPage() {
                   {/* LinkedIn Connect */}
                   <a
                     className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#FFF4E8] hover:bg-[#F2DECA] border border-[#E8D5C2] transition-colors group cursor-pointer"
-                    href="http://www.linkedin.com/in/pbd09"
+                    href="https://linkedin.com/in/pbd09"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
@@ -231,7 +231,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-[17px] text-[#FD6702]">schedule</span>
                     <span className="text-[11px] uppercase text-[#161C25]/60 tracking-wider font-bold">
-                      Advisory Operating Hours
+                      Office Hours
                     </span>
                   </div>
                   <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#161C25] text-white text-[10px] font-bold">
@@ -255,12 +255,10 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mt-3 pt-2.5 border-t border-[#F0DCB] flex items-center justify-between text-[#161C25]/60 text-xs">
-                  <span>AMFI Registered Distributor</span>
-                  <span className="font-bold text-[#161C25]">ARN 83312</span>
+                  <span>AMFI-registered Mutual Fund Distributor</span>
+                  <span className="font-bold text-[#161C25]">ARN-83312</span>
                 </div>
               </div>
-
-
 
             </div>
 
@@ -280,14 +278,14 @@ export default function ContactPage() {
                     <div>
                       <div className="flex items-center gap-2">
                         <h2 className="text-base sm:text-lg font-black text-[#161C25] tracking-tight">
-                          Direct Client Inquiry
+                          Book a 30-minute introductory call
                         </h2>
                         <span className="px-2 py-0.5 rounded-full bg-[#161C25] text-white text-[10px] font-bold">
-                          ARN 83312
+                          ARN-83312
                         </span>
                       </div>
                       <p className="text-[11px] sm:text-xs text-[#161C25]/60 mt-0.5">
-                        Submit your confidential inquiry directly to our Mumbai advisory desk.
+                        Reach Parag Doshi directly to discuss your mutual fund investments.
                       </p>
                     </div>
                   </div>
@@ -297,7 +295,7 @@ export default function ContactPage() {
                       Response Window
                     </span>
                     <span className="text-xs text-[#FD6702] font-bold">
-                      ≤ 2 Business Hours
+                      Prompt Callback
                     </span>
                   </div>
                 </div>
@@ -318,9 +316,9 @@ export default function ContactPage() {
                   <div className="mb-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 flex items-start gap-3 border border-emerald-200 text-xs sm:text-sm animate-fade-in">
                     <span className="material-symbols-outlined text-[22px] text-emerald-600 shrink-0 mt-0.5">task_alt</span>
                     <div className="flex flex-col">
-                      <span className="font-bold text-emerald-900 text-sm sm:text-base">Inquiry Successfully Transmitted</span>
+                      <span className="font-bold text-emerald-900 text-sm sm:text-base">Inquiry Successfully Sent</span>
                       <span className="text-emerald-700 mt-0.5 leading-relaxed">
-                        Thank you for reaching out to Orange Enterprise. Your request has been routed to an authorized fiduciary advisor. We will connect with you within 2 business hours.
+                        Thank you for reaching out to Orange Enterprise. Parag Doshi will connect with you shortly.
                       </span>
                     </div>
                   </div>
@@ -390,7 +388,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Row 2: Email Address & Advisory Topic */}
+                  {/* Row 2: Email Address & Topic */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div className="flex flex-col gap-1">
                       <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
@@ -408,7 +406,7 @@ export default function ContactPage() {
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="client@enterprise-advisory.com"
+                          placeholder="name@example.com"
                           className={`w-full pl-11 pr-3.5 h-10 rounded-xl border bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:ring-2 transition-all shadow-2xs ${
                             errors.email 
                               ? 'border-red-400 focus:border-red-500 focus:ring-red-400/20' 
@@ -423,8 +421,8 @@ export default function ContactPage() {
 
                     <div className="flex flex-col gap-1">
                       <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-topic">
-                        <span>Inquiry Focus Area</span>
-                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Category</span>
+                        <span>How can Parag help?</span>
+                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Topic</span>
                       </label>
                       <div className="relative flex items-center">
                         <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
@@ -436,12 +434,11 @@ export default function ContactPage() {
                           onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
                           className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
                         >
-                          <option value="Wealth & Portfolio Advisory">Wealth & Portfolio Advisory</option>
-                          <option value="Mutual Funds & SIP Restructuring">Mutual Funds & SIP Restructuring</option>
-                          <option value="HNW & Family Office Planning">HNW & Family Office Planning</option>
-                          <option value="Tax Optimization & Estate Planning">Tax Optimization & Estate Planning</option>
-                          <option value="Corporate Treasury & Liquidity">Corporate Treasury & Liquidity</option>
-                          <option value="General Fiduciary Inquiry">General Fiduciary Inquiry</option>
+                          <option value="Mutual fund investments">Mutual fund investments</option>
+                          <option value="Investing for retirement or goals">Investing for retirement or goals</option>
+                          <option value="Portfolio review">Portfolio review</option>
+                          <option value="Business finance consulting">Business finance consulting</option>
+                          <option value="Something else">Something else</option>
                         </select>
                         <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
                           expand_more
@@ -455,7 +452,7 @@ export default function ContactPage() {
                     <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-message">
                       <span className="inline-flex items-center gap-1.5">
                         <span className="material-symbols-outlined text-[15px] text-[#FD6702] leading-none">edit_note</span>
-                        <span>Portfolio Requirement or Notes</span>
+                        <span>Investment goals or questions</span>
                       </span>
                       <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Optional</span>
                     </label>
@@ -464,7 +461,7 @@ export default function ContactPage() {
                       rows="3"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Outline current portfolio size, asset goals, question for the desk, or advisory timing preferences..."
+                      placeholder="Share your goals, question for Parag, or preferred meeting times..."
                       className="w-full p-3 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs resize-none"
                     />
                   </div>
@@ -482,7 +479,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col">
                       <label className="text-[11px] text-[#161C25]/80 cursor-pointer select-none leading-snug" htmlFor="input-consent">
-                        I authorize Orange Enterprise to process my submission for confidential wealth consultation under AMFI ARN 83312 and fiduciary guidelines. <span className="text-[#FD6702] font-bold">*</span>
+                        I authorize Orange Enterprise to contact me regarding mutual fund investments and financial consulting under AMFI ARN-83312 guidelines. <span className="text-[#FD6702] font-bold">*</span>
                       </label>
                       {errors.consent && (
                         <span className="text-[10px] text-red-600 font-semibold mt-0.5">{errors.consent}</span>
@@ -498,10 +495,10 @@ export default function ContactPage() {
                       className="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                     >
                       {isSubmitting ? (
-                        <span>Transmitting...</span>
+                        <span>Sending...</span>
                       ) : (
                         <>
-                          <span>Transmit Advisory Inquiry</span>
+                          <span>Send message</span>
                           <span className="material-symbols-outlined text-[17px]">send</span>
                         </>
                       )}
@@ -509,7 +506,7 @@ export default function ContactPage() {
 
                     <div className="flex items-center gap-1.5 text-[#161C25]/55 text-xs">
                       <span className="material-symbols-outlined text-[15px] text-emerald-600">lock</span>
-                      <span>256-bit Encrypted • Zero Spam</span>
+                      <span>AMFI ARN-83312 • Zero Spam</span>
                     </div>
                   </div>
 
@@ -524,10 +521,10 @@ export default function ContactPage() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs text-[#161C25] font-bold">
-                      Data Privacy & SEBI Code of Conduct
+                      AMFI Code of Conduct & Client Privacy
                     </span>
                     <span className="text-[11px] text-[#161C25]/60">
-                      We never share private portfolio discussions with third parties.
+                      We never share private portfolio discussions or contact details with third parties.
                     </span>
                   </div>
                 </div>
@@ -536,7 +533,7 @@ export default function ContactPage() {
                   href="tel:+919820433220"
                 >
                   <span className="material-symbols-outlined text-[15px]">call</span>
-                  <span>Urgent Desk: +91 98204 33220</span>
+                  <span>Call Parag: +91 98204 33220</span>
                 </a>
               </div>
             </div>
@@ -553,7 +550,7 @@ export default function ContactPage() {
               <div className="lg:col-span-7 relative h-56 lg:h-auto overflow-hidden">
                 <img 
                   className="w-full h-full object-cover" 
-                  alt="Modern executive wealth management conference room in Mumbai" 
+                  alt="Modern meeting space in Mumbai" 
                   src={OFFICE_IMG} 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#161C25]/90 via-[#161C25]/30 to-transparent"></div>
@@ -564,34 +561,34 @@ export default function ContactPage() {
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 w-fit text-[#FD6702] border border-white/10">
                   <span className="material-symbols-outlined text-[14px]">domain</span>
                   <span className="text-[10px] uppercase tracking-wider font-bold">
-                    In-Person Consultations
+                    In-Person Meetings
                   </span>
                 </div>
                 
                 <h3 className="text-xl sm:text-2xl text-white font-black tracking-tight">
-                  Private Client Salon in Mumbai
+                  In-Person Meetings in Mumbai
                 </h3>
                 
                 <p className="text-xs sm:text-sm text-white/75 leading-relaxed">
-                  Located at the epicenter of Indian capital markets. Whether you require comprehensive mutual fund architecture, generational succession frameworks, or corporate liquidity positioning, our senior advisors are at your disposal.
+                  Located in Mumbai. Whether you are looking to start disciplined SIPs, review existing mutual fund holdings, or plan for major life milestones, Parag Doshi handles every discussion personally.
                 </p>
                 
                 <div className="flex items-center gap-6 pt-2">
                   <div className="flex flex-col">
                     <span className="text-xl sm:text-2xl text-[#FD6702] leading-none font-black">
-                      100%
+                      25+
                     </span>
                     <span className="text-[10px] text-white/60 uppercase mt-1 font-semibold">
-                      Fiduciary Alignment
+                      Years Experience
                     </span>
                   </div>
                   <div className="w-px h-8 bg-white/20"></div>
                   <div className="flex flex-col">
                     <span className="text-xl sm:text-2xl text-white leading-none font-black">
-                      83312
+                      ARN-83312
                     </span>
                     <span className="text-[10px] text-white/60 uppercase mt-1 font-semibold">
-                      AMFI Registered ARN
+                      AMFI-registered MFD
                     </span>
                   </div>
                 </div>

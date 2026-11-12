@@ -3,7 +3,7 @@ import React from 'react';
 const LOGO_URL = "/orange-enterprise-logo.png";
 const CURRENT_YEAR = new Date().getFullYear();
 
-export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, onOpenLegal }) {
+export default function Footer({ setActivePage, onOpenSchedule, _onOpenIntake, onOpenLegal }) {
   const handleNav = (page) => {
     setActivePage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,7 +29,7 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
           
-          {/* Column 1: Brand & Fiduciary Credentials (lg:col-span-4) */}
+          {/* Column 1: Brand & AMFI Credentials (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col gap-3">
             <button 
               onClick={() => handleNav('home')} 
@@ -46,36 +46,32 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
 
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#FD6702]/20 border border-[#FD6702]/40 text-[10px] text-[#FFA366] font-bold tracking-wider uppercase w-fit">
               <span className="material-symbols-outlined text-[13px] text-[#FD6702]">verified</span>
-              <span>ARN 83312 • AMFI REGISTERED DISTRIBUTOR</span>
+              <span>AMFI-REGISTERED MUTUAL FUND DISTRIBUTOR • ARN-83312</span>
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
-              Wealth management redefined. Tailored financial strategies, bespoke fiduciary solutions, and disciplined capital preservation designed for families and businesses in Mumbai.
+              Mutual fund investments for families, business owners and senior professionals in Mumbai, handled personally by Parag Doshi, FCA, FCS. Building Tomorrow, Today.
             </p>
 
             {/* Credential links */}
             <div className="flex flex-col gap-1.5 pt-1 text-xs">
-              <div className="flex items-center gap-2 text-slate-200 font-medium">
-                <span className="material-symbols-outlined text-[16px] text-[#FD6702]">corporate_fare</span>
-                <span>In association with <strong>Wealth Works</strong></span>
-              </div>
               <a 
                 className="inline-flex items-center gap-1.5 text-[#FFA366] hover:text-white hover:underline font-semibold w-fit transition-colors" 
-                href="http://www.linkedin.com/in/pbd09" 
+                href="https://linkedin.com/in/pbd09" 
                 rel="noopener noreferrer" 
                 target="_blank"
               >
                 <span className="material-symbols-outlined text-[16px] text-[#FD6702]">account_circle</span>
-                <span>Principal Profile: linkedin.com/in/pbd09</span>
+                <span>Parag Doshi: linkedin.com/in/pbd09</span>
               </a>
             </div>
           </div>
 
-          {/* Column 2: Advisory Offerings (lg:col-span-3) */}
+          {/* Column 2: What We Do (lg:col-span-3) */}
           <div className="lg:col-span-3 flex flex-col gap-3">
             <span className="text-xs uppercase text-white tracking-wider font-extrabold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#3B82F6]"></span>
-              Advisory Offerings
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#38BDF8]"></span>
+              What We Do
             </span>
             <nav className="flex flex-col gap-2 text-xs">
               <button 
@@ -83,100 +79,93 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer flex items-center gap-1.5 group"
               >
                 <span className="material-symbols-outlined text-[14px] text-[#FD6702] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                <span>Mutual Fund Portfolios</span>
+                <span>Mutual Fund Investments</span>
               </button>
               <button 
                 onClick={() => handleNav('services')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer flex items-center gap-1.5 group"
               >
                 <span className="material-symbols-outlined text-[14px] text-[#FD6702] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                <span>Strategic Wealth Advisory</span>
+                <span>Investing for Milestones</span>
               </button>
               <button 
                 onClick={() => handleNav('services')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer flex items-center gap-1.5 group"
               >
                 <span className="material-symbols-outlined text-[14px] text-[#FD6702] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                <span>Insurance & Risk Shield</span>
+                <span>Portfolio Reviews</span>
               </button>
               <button 
                 onClick={() => handleNav('services')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer flex items-center gap-1.5 group"
               >
                 <span className="material-symbols-outlined text-[14px] text-[#FD6702] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                <span>Structured Finance & Liquidity</span>
-              </button>
-              <button 
-                onClick={() => handleNav('services')} 
-                className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer flex items-center gap-1.5 group"
-              >
-                <span className="material-symbols-outlined text-[14px] text-[#FD6702] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                <span>Asset Allocation & Succession</span>
+                <span>Business Finance Consulting</span>
               </button>
             </nav>
           </div>
 
-          {/* Column 3: Quick Navigation & Client Suite (lg:col-span-2) */}
+          {/* Column 3: Quick Navigation (lg:col-span-2) */}
           <div className="lg:col-span-2 flex flex-col gap-3">
             <span className="text-xs uppercase text-white tracking-wider font-extrabold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#3B82F6]"></span>
-              Client Suite
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#38BDF8]"></span>
+              Navigation
             </span>
             <nav className="flex flex-col gap-2 text-xs">
               <button 
                 onClick={() => handleNav('home')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
               >
-                Home Overview
+                Home
               </button>
               <button 
                 onClick={() => handleNav('about')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
               >
-                About Our Firm
+                About
+              </button>
+              <button 
+                onClick={() => handleNav('services')} 
+                className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
+              >
+                Services
               </button>
               <button 
                 onClick={() => handleNav('contact')} 
                 className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
               >
-                Contact Advisory Salon
+                Contact
               </button>
               <button 
                 onClick={() => onOpenSchedule('Footer Book Consultation')} 
                 className="text-left text-[#FFA366] font-bold hover:text-white transition-colors cursor-pointer"
               >
-                Book Consultation
-              </button>
-              <button 
-                onClick={() => onOpenIntake()} 
-                className="text-left text-slate-300 hover:text-[#FD6702] transition-colors cursor-pointer"
-              >
-                Complete Intake Profile
+                Book a Consultation
               </button>
             </nav>
           </div>
 
-          {/* Column 4: Mumbai Advisory Desk (lg:col-span-3) */}
+          {/* Column 4: Mumbai Office (lg:col-span-3) */}
           <div className="lg:col-span-3 flex flex-col gap-3">
             <span className="text-xs uppercase text-white tracking-wider font-extrabold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#3B82F6]"></span>
-              Mumbai Advisory Desk
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#FD6702] to-[#38BDF8]"></span>
+              Mumbai Office
             </span>
 
-            {/* Operating status badge with glassmorphism */}
+            {/* Operating status badge */}
             <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 flex flex-col gap-2 text-xs shadow-lg">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] uppercase font-bold text-slate-300">
-                  Desk Status
+                  Hours [Confirm]
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Active Reception
+                  Open
                 </span>
               </div>
               <div className="flex flex-col gap-1 text-[11px] text-slate-300 pt-1.5 border-t border-white/10">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Mon – Fri</span>
+                  <span className="text-slate-400">Monday – Friday</span>
                   <span className="font-semibold text-white">9:00 AM – 10:00 PM</span>
                 </div>
                 <div className="flex justify-between">
@@ -194,7 +183,7 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
             <div className="flex flex-col gap-1.5 text-xs text-slate-300 pt-1">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[16px] text-[#FD6702]">location_on</span>
-                <span>Mumbai Financial District, MH India</span>
+                <span>Mumbai, Maharashtra</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[16px] text-[#FD6702]">phone</span>
@@ -204,8 +193,8 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
               </div>
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-[16px] text-[#FD6702]">mail</span>
-                <a className="hover:text-white transition-colors font-medium text-slate-200" href="mailto:wlthwrks@gmail.com">
-                  wlthwrks@gmail.com
+                <a className="hover:text-white transition-colors font-medium text-slate-200" href="mailto:parag@[domain].in">
+                  parag@[domain].in
                 </a>
               </div>
             </div>
@@ -214,19 +203,19 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
         </div>
 
         {/* =========================================================================
-            REGULATORY DISCLOSURE & STATUTORY NOTICE (Trust Architecture)
+            REGULATORY DISCLOSURE & STATUTORY NOTICE
             ========================================================================= */}
         <div className="mt-10 p-4 sm:p-5 rounded-xl bg-[#091526]/80 backdrop-blur-md border border-white/15 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-2.5 max-w-4xl">
             <span className="material-symbols-outlined text-[20px] text-[#FD6702] shrink-0 mt-0.5">
-              shield_with_heart
+              shield
             </span>
             <div className="flex flex-col gap-1">
               <span className="text-xs font-bold text-white">
-                AMFI Regulatory Disclosure & Fiduciary Risk Notice
+                Orange Enterprise · AMFI-registered Mutual Fund Distributor · ARN-83312
               </span>
               <p className="text-[11px] text-slate-300 leading-relaxed">
-                Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Registration <strong>ARN 83312</strong> is issued by the Association of Mutual Funds in India (AMFI). Indicative returns, benchmark trajectories, and past performance do not guarantee future yields. Orange Enterprise operates strictly under SEBI fiduciary frameworks and client confidentiality protocols.
+                Mutual fund investments are subject to market risks, read all scheme related documents carefully. Registration <strong>ARN-83312</strong> is issued by the Association of Mutual Funds in India (AMFI). Past performance is not indicative of future returns.
               </p>
             </div>
           </div>
@@ -240,17 +229,17 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
             </button>
             <span>•</span>
             <button 
+              onClick={() => onOpenLegal('Disclaimer')} 
+              className="hover:text-[#FFA366] transition-colors cursor-pointer"
+            >
+              Disclaimer
+            </button>
+            <span>•</span>
+            <button 
               onClick={() => onOpenLegal('Terms of Service')} 
               className="hover:text-[#FFA366] transition-colors cursor-pointer"
             >
               Terms of Service
-            </button>
-            <span>•</span>
-            <button 
-              onClick={() => onOpenLegal('Cookie Policy')} 
-              className="hover:text-[#FFA366] transition-colors cursor-pointer"
-            >
-              Fiduciary Disclosures
             </button>
           </div>
         </div>
@@ -260,7 +249,7 @@ export default function Footer({ setActivePage, onOpenSchedule, onOpenIntake, on
             ========================================================================= */}
         <div className="mt-8 pt-5 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-xs text-slate-400">
           <div>
-            © {CURRENT_YEAR} <strong className="text-white">Orange Enterprise</strong> (ARN 83312). All rights reserved. In association with Wealth Works.
+            © {CURRENT_YEAR} <strong className="text-white">Orange Enterprise</strong>. AMFI-registered Mutual Fund Distributor · ARN-83312. All rights reserved.
           </div>
 
           <button

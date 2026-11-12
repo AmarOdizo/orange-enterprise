@@ -27,15 +27,32 @@ export default function LegalModal({ isOpen, onClose, topic = 'Privacy Policy' }
             {topic === 'Privacy Policy' && (
               <>
                 <p>
-                  At <strong>Orange Enterprise</strong> (AMFI Registered Mutual Fund Distributor ARN 83312, based in Mumbai), we hold fiduciary trust and client confidentiality as our foundational commitment.
+                  At <strong>Orange Enterprise</strong> (AMFI-registered Mutual Fund Distributor ARN-83312, based in Mumbai), we treat client privacy and data confidentiality with the utmost care.
                 </p>
-                <h4 className="font-semibold text-on-surface text-xs">1. Data Safeguards</h4>
+                <h4 className="font-semibold text-on-surface text-xs">1. Data Use</h4>
                 <p>
-                  All personal, contact, and financial portfolio information submitted through our online portals or private advisory salons is strictly utilized for strategic financial evaluation and lawful regulatory compliance under SEBI and AMFI codes.
+                  Form details (name, email, phone, city, message) are used solely to respond to your enquiries, are not sold or shared with any third party, and can be deleted on request by emailing [parag@domain.in].
                 </p>
-                <h4 className="font-semibold text-on-surface text-xs">2. Non-Disclosure</h4>
+                <h4 className="font-semibold text-on-surface text-xs">2. Security</h4>
                 <p>
-                  We never monetize, rent, or lease client data to unauthorized third-party commercial syndicates. Data transmission occurs across encrypted SSL/TLS channels.
+                  We store form submissions locally and securely to ensure your personal details are kept confidential.
+                </p>
+              </>
+            )}
+
+            {topic === 'Disclaimer' && (
+              <>
+                <p>
+                  Orange Enterprise is an AMFI-registered Mutual Fund Distributor (ARN-83312). [Orange Enterprise is not registered with SEBI as an Investment Adviser.]
+                </p>
+                <p>
+                  Information on this website is for general awareness only and should not be treated as investment advice or a recommendation to buy or sell any scheme.
+                </p>
+                <p className="font-semibold text-[#FD6702]">
+                  Mutual fund investments are subject to market risks, read all scheme related documents carefully.
+                </p>
+                <p>
+                  Past performance is not indicative of future returns. Investors should consider their own circumstances, and may seek independent professional advice, before investing.
                 </p>
               </>
             )}
@@ -43,15 +60,11 @@ export default function LegalModal({ isOpen, onClose, topic = 'Privacy Policy' }
             {topic === 'Terms of Service' && (
               <>
                 <p>
-                  Welcome to <strong>Orange Enterprise</strong>. By accessing this platform or engaging our fiduciary advisory services, you acknowledge adherence to the following provisions:
+                  Welcome to <strong>Orange Enterprise</strong>. By accessing this platform or reaching out to us, you acknowledge adherence to the following provisions:
                 </p>
                 <h4 className="font-semibold text-on-surface text-xs">1. Regulatory Capacity</h4>
                 <p>
-                  Orange Enterprise operates as an AMFI registered mutual fund distributor holding ARN 83312. Informational content on this website does not constitute an unconditional guarantee of investment returns. Mutual fund investments remain subject to prevailing market risks.
-                </p>
-                <h4 className="font-semibold text-on-surface text-xs">2. Fiduciary Duty</h4>
-                <p>
-                  Advisory recommendations are formulated on bespoke parameters, utilizing verified market research in formal association with Wealth Works.
+                  Orange Enterprise operates as an AMFI-registered Mutual Fund Distributor holding ARN-83312. Informational content on this website does not constitute investment advice or a recommendation to buy or sell any scheme. Mutual fund investments remain subject to prevailing market risks.
                 </p>
               </>
             )}
@@ -59,10 +72,10 @@ export default function LegalModal({ isOpen, onClose, topic = 'Privacy Policy' }
             {topic === 'Cookie Policy' && (
               <>
                 <p>
-                  This portal utilizes essential technical session cookies solely to preserve navigational states, form telemetry validation, and secure authentication tokens.
+                  This portal utilizes essential technical session cookies solely to preserve navigational states and form submission validation.
                 </p>
                 <p>
-                  We do not execute invasive cross-site tracking or behavioral data profiling. You may disable cookies in your browser preferences without impeding core consultative access.
+                  We do not execute invasive cross-site tracking or behavioral data profiling. You may disable cookies in your browser preferences without impeding core access.
                 </p>
               </>
             )}

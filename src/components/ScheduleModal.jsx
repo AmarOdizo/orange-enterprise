@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 const TODAY_DATE = new Date().toISOString().split('T')[0];
 
-export default function ScheduleModal({ isOpen, onClose, defaultService = 'General Advisory' }) {
+export default function ScheduleModal({ isOpen, onClose, defaultService = 'Mutual fund investments' }) {
   const [prevDefault, setPrevDefault] = useState(defaultService);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     service: defaultService,
-    mode: 'In-Person Salon (Mumbai BKC)',
+    mode: 'In-Person (Mumbai Office)',
     date: TODAY_DATE,
     slot: '11:30 AM – 12:30 PM IST',
     notes: ''
@@ -73,11 +73,11 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
               Consultation Reserved
             </h3>
             <p className="text-xs sm:text-sm text-[#161C25]/75 max-w-sm leading-relaxed">
-              Thank you, <strong className="text-[#161C25]">{formData.name}</strong>. Our Mumbai fiduciary desk has logged your appointment request for <strong className="text-[#FD6702]">{formData.date} ({formData.slot})</strong>.
+              Thank you, <strong className="text-[#161C25]">{formData.name}</strong>. Parag will personally connect with you regarding your call for <strong className="text-[#FD6702]">{formData.date} ({formData.slot})</strong>.
             </p>
             <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 bg-[#FFF4E8] border border-[#E8D5C2] rounded-full text-xs text-[#161C25] font-bold">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>AMFI ARN 83312 • Mumbai Financial Center</span>
+              <span>AMFI-registered Mutual Fund Distributor • ARN-83312</span>
             </div>
           </div>
         ) : (
@@ -92,14 +92,14 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
               <div>
                 <div className="flex items-center gap-2">
                   <h2 className="text-base sm:text-lg font-black text-[#161C25] tracking-tight">
-                    Book Fiduciary Consultation
+                    Book a 30-Minute Call
                   </h2>
                   <span className="px-2 py-0.5 rounded-full bg-[#161C25] text-white text-[10px] font-bold">
-                    ARN 83312
+                    ARN-83312
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-[#161C25]/60 mt-0.5">
-                  Direct, private consultation with Mumbai wealth & fiduciary advisors.
+                  Direct conversation with Parag Doshi, FCA, FCS.
                 </p>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                   </div>
                 </div>
 
-                {/* Field Row 2: Email & Advisory Focus */}
+                {/* Field Row 2: Email & Topic */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-[11px] font-bold text-[#161C25] flex items-center gap-1">
@@ -171,7 +171,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
 
                     <div className="flex flex-col gap-1">
                       <label className="text-[11px] font-bold text-[#161C25]">
-                        <span>Advisory Focus</span>
+                        <span>I'm interested in</span>
                       </label>
                           <div className="relative flex items-center">
                             <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[17px] leading-none select-none flex items-center justify-center">
@@ -182,13 +182,11 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                               onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                               className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
                             >
-                              <option value="Mutual Funds (Growth & Wealth Creation)">Mutual Funds (Portfolio Growth)</option>
-                              <option value="SIP & Wealth Planning">SIP & Wealth Planning</option>
-                              <option value="Portfolio Advisory (HNW Advisory)">Portfolio Advisory (HNW)</option>
-                              <option value="Tax Optimization">Tax Optimization</option>
-                              <option value="Retirement & Estate Planning">Retirement & Estate Planning</option>
-                              <option value="Life & Health Coverage">Life & Health Coverage</option>
-                              <option value="Comprehensive 360° Fiduciary Audit">Comprehensive 360° Fiduciary Audit</option>
+                              <option value="Mutual fund investments">Mutual fund investments</option>
+                              <option value="Investing for retirement or goals">Investing for retirement or goals</option>
+                              <option value="Portfolio review">Portfolio review</option>
+                              <option value="Business finance consulting">Business finance consulting</option>
+                              <option value="Something else">Something else</option>
                             </select>
                               <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[17px] leading-none select-none flex items-center justify-center">
                                 expand_more
@@ -260,9 +258,9 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                                     onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
                                     className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
                                   >
-                                    <option value="In-Person Salon (Mumbai BKC)">In-Person (BKC Mumbai Salon)</option>
-                                    <option value="Encrypted Virtual Video Session">Encrypted Virtual Video</option>
-                                    <option value="Confidential Phone Consultation">Confidential Phone Call</option>
+                                    <option value="In-Person (Mumbai Office)">In-Person (Mumbai Office)</option>
+                                    <option value="Virtual Video Call">Virtual Video Call</option>
+                                    <option value="Phone Call">Phone Call</option>
                                   </select>
                                     <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[17px] leading-none select-none flex items-center justify-center">
                                       expand_more
@@ -272,7 +270,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
 
                             <div className="flex flex-col gap-1">
                               <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between">
-                                <span>Special Goal / Note</span>
+                                <span>Message / Notes</span>
                                 <span className="text-[10px] font-normal text-[#161C25]/45">Optional</span>
                               </label>
                                   <div className="relative flex items-center">
@@ -281,7 +279,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                                     </span>
                                     <input
                                       type="text"
-                                      placeholder="e.g. HNW advisory, Mutual Fund switch"
+                                      placeholder="e.g. SIP planning, portfolio review"
                                       value={formData.notes}
                                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                                       className="w-full pl-11 pr-3.5 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs"
@@ -296,7 +294,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                                 type="submit"
                                 className="w-full py-2.5 px-6 rounded-xl bg-gradient-to-r from-[#FD6702] to-[#FF7824] hover:from-[#E55A00] hover:to-[#FD6702] text-white text-xs sm:text-sm font-bold shadow-sm hover:shadow-md hover:scale-[1.008] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
                               >
-                                <span>Confirm Consultation Booking</span>
+                                <span>Confirm Consultation Request</span>
                                 <span className="material-symbols-outlined text-[17px]">arrow_forward</span>
                               </button>
                             </div>
@@ -304,7 +302,7 @@ export default function ScheduleModal({ isOpen, onClose, defaultService = 'Gener
                             {/* Trust Assurance Footer */}
                             <div className="flex items-center justify-center gap-1.5 text-[10px] text-[#161C25]/55 text-center">
                               <span className="material-symbols-outlined text-[13px] text-emerald-600">lock</span>
-                              <span>100% Confidential • Direct fiduciary session in Mumbai • AMFI ARN 83312</span>
+                              <span>100% Confidential • Parag Doshi • AMFI-registered MFD ARN-83312</span>
                             </div>
 
                           </form>

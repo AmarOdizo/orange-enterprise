@@ -40,10 +40,10 @@ export default function SipCalculator({ onOpenSchedule }) {
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed/40 text-primary text-[10px] font-bold tracking-wider uppercase mb-1">
             <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
-            Fiduciary Growth Engine
+            Systematic Investment Planning
           </div>
           <h3 className="text-lg sm:text-xl font-extrabold text-on-surface tracking-tight">
-            Wealth Growth & SIP Calculator
+            Mutual Fund SIP Calculator
           </h3>
           <p className="text-xs text-on-surface-variant">
             Simulate your compounding potential with systematic portfolio allocation.

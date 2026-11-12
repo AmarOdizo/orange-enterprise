@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function WhatsAppWidget() {
   const phoneNumber = "919820433220";
-  const defaultMessage = encodeURIComponent("Hello Orange Enterprise, I would like to inquire about your wealth management and mutual fund advisory services.");
+  const defaultMessage = encodeURIComponent("Hello Parag, I found your website and would like to talk.");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
   return (
@@ -12,12 +12,11 @@ export default function WhatsAppWidget() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with advisor on WhatsApp"
+        aria-label="Chat on WhatsApp"
         className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest text-on-surface text-xs font-bold shadow-lg border border-surface-container transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-105"
       >
         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span className="text-[#161C25]">Chat with Advisor</span>
-        <span className="text-[10px] text-primary-container font-semibold">(Mumbai Desk)</span>
+        <span className="text-[#161C25]">Chat on WhatsApp</span>
       </a>
 
       {/* Main WhatsApp Floating Action Button */}
@@ -25,8 +24,8 @@ export default function WhatsAppWidget() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Direct WhatsApp Consultation +91 98204 33220"
-        title="Direct WhatsApp Consultation with Orange Enterprise"
+        aria-label="Chat on WhatsApp with Parag Doshi"
+        title="Chat on WhatsApp with Parag Doshi"
         className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white flex items-center justify-center shadow-xl shadow-emerald-900/20 transition-all duration-300 transform group-hover:scale-110 cursor-pointer"
       >
         {/* Pulsing ring */}

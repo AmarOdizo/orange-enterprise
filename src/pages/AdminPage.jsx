@@ -7,6 +7,26 @@ const DEFAULT_ADMIN_CREDENTIALS = {
 };
 
 export default function AdminPage({ setActivePage }) {
+  // Ensure noindex on admin page for SEO compliance
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="robots"]');
+    const created = !meta;
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'robots';
+      document.head.appendChild(meta);
+    }
+    const previousContent = meta.content;
+    meta.content = 'noindex, nofollow';
+    return () => {
+      if (created) {
+        meta.remove();
+      } else {
+        meta.content = previousContent || 'index, follow';
+      }
+    };
+  }, []);
+
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     try {
@@ -736,7 +756,7 @@ export default function AdminPage({ setActivePage }) {
                                   </span>
                                 )}
                                 <span className="font-semibold text-[#FD6702]">
-                                  {lead.service || 'General Advisory'}
+                                  {lead.service || 'Mutual Fund Consultation'}
                                 </span>
                               </div>
                               <span className="text-[11px] text-[#161C25]/60 mt-0.5">

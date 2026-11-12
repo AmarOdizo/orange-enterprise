@@ -5,7 +5,6 @@ const LOGO_URL = "/orange-enterprise-logo.png";
 export default function Header({ activePage, setActivePage, onOpenSchedule }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [leadCount, setLeadCount] = useState(0);
 
   // Navigation Items (Middle Nav - Unified & Consistent)
   const navItems = [
@@ -28,28 +27,6 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Sync lead count from localStorage for the Local Storage badge
-  useEffect(() => {
-    const calculateLeads = () => {
-      try {
-        const appts = JSON.parse(localStorage.getItem('oe_appointments') || '[]').length;
-        const inqs = JSON.parse(localStorage.getItem('oe_inquiries') || '[]').length;
-        const ints = JSON.parse(localStorage.getItem('oe_intakes') || '[]').length;
-        setLeadCount(appts + inqs + ints);
-      } catch {
-        setLeadCount(0);
-      }
-    };
-
-    calculateLeads();
-    window.addEventListener('storage', calculateLeads);
-    const interval = setInterval(calculateLeads, 2000);
-    return () => {
-      window.removeEventListener('storage', calculateLeads);
-      clearInterval(interval);
-    };
   }, []);
 
   // Close mobile menu on resize to tablet/desktop
@@ -86,18 +63,24 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
       >
         <div className="h-16 sm:h-[68px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           
-          {/* Brand Logo (Left) */}
-          <button 
-            onClick={() => handleNavClick('home')}
-            className="flex items-center shrink-0 text-left focus:outline-none cursor-pointer group py-1"
-            title="Orange Enterprise - Home"
-          >
-            <img 
-              alt="Orange Enterprise Logo" 
-              className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
-              src={LOGO_URL} 
-            />
-          </button>
+          {/* Brand Logo & Tagline (Left) */}
+          <div className="flex items-center gap-3 shrink-0">
+            <button 
+              onClick={() => handleNavClick('home')}
+              className="flex items-center shrink-0 text-left focus:outline-none cursor-pointer group py-1"
+              title="Orange Enterprise - Home"
+            >
+              <img 
+                alt="Orange Enterprise Logo" 
+                className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
+                src={LOGO_URL} 
+              />
+            </button>
+            <div className="hidden xl:flex flex-col text-[11px] text-[#161C25]/75 leading-tight font-medium border-l border-[#E8D5C2] pl-3 py-0.5">
+              <span>AMFI-registered Mutual Fund Distributor</span>
+              <span className="font-semibold text-[#FD6702]">ARN-83312</span>
+            </div>
+          </div>
 
           {/* Desktop Navigation (Middle - Home, About, Services, Book Consultation, Contact) */}
           <nav 
@@ -128,13 +111,13 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             })}
           </nav>
 
-          {/* Action Center & Local Storage on Right */}
+          {/* Action Center on Right */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Direct Phone Link (Visible at 100% zoom on laptop/desktop: lg and up) */}
             <a 
               className="hidden lg:inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm text-[#161C25]/85 hover:text-[#FD6702] hover:bg-[#FD6702]/8 font-semibold transition-colors shrink-0" 
               href="tel:+919820433220"
-              title="Call Mumbai Advisory Desk"
+              title="Call Mumbai Desk"
             >
               <span className="material-symbols-outlined text-[16px] text-[#FD6702]">
                 phone
@@ -142,54 +125,27 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
               <span className="whitespace-nowrap font-semibold">+91 98204 33220</span>
             </a>
 
-            {/* Admin Desk Portal Button (Right) */}
+            {/* Book a Call Button (Replacing Admin) */}
             <button
-              onClick={() => handleNavClick('admin')}
-              title="Open Admin Portal (ARN 83312)"
-              className={`hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold shadow-xs transition-all duration-200 cursor-pointer border ${
-                activePage === 'admin'
-                  ? 'bg-[#FD6702] text-white border-[#FD6702]'
-                  : 'bg-[#161C25] hover:bg-black text-white border-[#161C25]'
-              }`}
+              onClick={() => onOpenSchedule('Navbar Consultation')}
+              title="Book a 30-minute introductory call"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs sm:text-sm font-bold bg-[#FD6702] hover:bg-[#E55A00] text-white shadow-xs transition-all duration-200 cursor-pointer"
             >
-              <span className={`material-symbols-outlined text-[16px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
-                admin_panel_settings
+              <span className="material-symbols-outlined text-[16px]">
+                calendar_today
               </span>
-              <span>Admin</span>
-              {leadCount > 0 && (
-                <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${activePage === 'admin' ? 'bg-white text-[#FD6702]' : 'bg-[#FD6702] text-white'}`}>
-                  {leadCount}
-                </span>
-              )}
+              <span>Book a call</span>
             </button>
 
-            {/* Quick Call Icon Button (Mobile & Tablet: < lg) */}
+            {/* Quick Call Icon Button (Mobile & Tablet: < sm) */}
             <a
               href="tel:+919820433220"
-              className="lg:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs shrink-0"
-              title="Call Advisor Desk (+91 98204 33220)"
+              className="sm:hidden w-9 h-9 rounded-lg bg-white/90 border border-[#E8D5C2] text-[#FD6702] hover:bg-[#FD6702] hover:text-white flex items-center justify-center transition-colors shadow-2xs shrink-0"
+              title="Call Mumbai Desk (+91 98204 33220)"
               aria-label="Call +91 98204 33220"
             >
               <span className="material-symbols-outlined text-[18px]">phone</span>
             </a>
-
-            {/* Mobile Admin Icon Button (< sm) */}
-            <button
-              onClick={() => handleNavClick('admin')}
-              title="Open Admin Portal"
-              className={`sm:hidden relative w-9 h-9 rounded-lg flex items-center justify-center transition-colors shadow-2xs cursor-pointer ${
-                activePage === 'admin' ? 'bg-[#FD6702] text-white' : 'bg-[#161C25] text-white'
-              }`}
-            >
-              <span className={`material-symbols-outlined text-[18px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
-                admin_panel_settings
-              </span>
-              {leadCount > 0 && (
-                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-[#FD6702] text-white text-[9px] font-bold rounded-full flex items-center justify-center shadow-xs">
-                  {leadCount}
-                </span>
-              )}
-            </button>
 
             {/* Mobile Hamburger Menu Toggle (< md) */}
             <button
@@ -258,29 +214,19 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
             {/* Quick Actions in Mobile Drawer */}
             <div className="pt-2 border-t border-[#F2DECA] flex flex-col gap-2">
               <span className="text-[11px] uppercase tracking-wider font-bold text-[#161C25]/60">
-                Client Desk & Portal
+                Direct Contact
               </span>
 
-              {/* Admin Leads Portal */}
+              {/* Book a Call */}
               <button
-                onClick={() => handleNavClick('admin')}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold shadow-xs transition-all cursor-pointer ${
-                  activePage === 'admin'
-                    ? 'bg-[#FD6702] text-white'
-                    : 'bg-[#161C25] hover:bg-black text-white'
-                }`}
+                onClick={() => {
+                  onOpenSchedule('Mobile Menu Consultation');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#FD6702] hover:bg-[#E55A00] text-white text-xs font-bold shadow-xs transition-all cursor-pointer"
               >
-                <div className="flex items-center gap-2.5">
-                  <span className={`material-symbols-outlined text-[16px] ${activePage === 'admin' ? 'text-white' : 'text-[#FD6702]'}`}>
-                    admin_panel_settings
-                  </span>
-                  <span>Admin Portal</span>
-                </div>
-                {leadCount > 0 && (
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${activePage === 'admin' ? 'bg-white text-[#FD6702]' : 'bg-[#FD6702] text-white'}`}>
-                    {leadCount} Leads
-                  </span>
-                )}
+                <span className="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span>Book a 30-minute call</span>
               </button>
 
               {/* Direct Phone Call */}
@@ -292,12 +238,12 @@ export default function Header({ activePage, setActivePage, onOpenSchedule }) {
                   <span className="material-symbols-outlined text-[16px] text-[#FD6702]">phone</span>
                   <span>+91 98204 33220</span>
                 </div>
-                <span className="text-[10px] text-[#161C25]/60">10 AM – 7 PM IST</span>
+                <span className="text-[10px] text-[#161C25]/60">Mon – Fri 9am – 10pm</span>
               </a>
 
               {/* Compliance Footer */}
               <div className="pt-2 text-center text-[10px] text-[#161C25]/60 leading-relaxed">
-                AMFI Registered Mutual Fund Distributor • ARN 83312 • Mumbai Desk
+                Orange Enterprise · AMFI-registered Mutual Fund Distributor · ARN-83312
               </div>
             </div>
           </div>

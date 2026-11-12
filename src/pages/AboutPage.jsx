@@ -42,13 +42,13 @@ export default function AboutPage({ onOpenSchedule }) {
               <div className="bg-surface-container-low p-4 sm:p-5 rounded-xl shadow-xs flex flex-col gap-2 relative overflow-hidden border border-surface-container">
                 <div className="absolute top-0 right-0 w-20 h-20 bg-primary-fixed/20 rounded-bl-full pointer-events-none"></div>
                 <div className="text-[11px] uppercase tracking-widest text-primary font-bold">
-                  Fiduciary Credentials
+                  AMFI Credentials
                 </div>
                 <div className="text-lg sm:text-xl text-on-surface font-bold">
-                  ARN 83312
+                  ARN-83312
                 </div>
                 <div className="text-xs text-on-surface-variant leading-relaxed">
-                  Certified Mutual Fund Distribution desk operating in association with Wealth Works, compliant with SEBI & AMFI code of fiduciary conduct.
+                  AMFI-registered Mutual Fund Distributor, ARN-83312, based in Mumbai.
                 </div>
                 <div className="pt-1 flex items-center justify-between text-xs text-on-surface">
                   <span className="flex items-center gap-1 text-primary font-semibold">
@@ -73,7 +73,7 @@ export default function AboutPage({ onOpenSchedule }) {
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div className="relative w-full h-[220px] sm:h-[280px] lg:h-[340px] rounded-xl overflow-hidden shadow-sm group">
                 <img 
-                  alt="Orange Enterprise advisory session in an executive boardroom overlooking Mumbai" 
+                  alt="Orange Enterprise office overlooking Mumbai" 
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
                   src={BOARDROOM_IMG} 
                 />
@@ -81,19 +81,19 @@ export default function AboutPage({ onOpenSchedule }) {
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-on-primary flex flex-col gap-1">
                   <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary-container text-on-primary text-[10px] tracking-widest uppercase w-fit font-bold">
                     <span className="material-symbols-outlined text-[13px]">apartment</span>
-                    Mumbai Advisory Headquarters
+                    Mumbai Office
                   </div>
                   <p className="text-xs sm:text-sm font-semibold text-white drop-shadow-xs">
-                    Strategic counsel framed against India’s most dynamic economic epicenter.
+                    Disciplined investing, guided by 25 years of experience.
                   </p>
                   <span className="text-[11px] sm:text-xs text-secondary-fixed font-light">
-                    High-level consultation sessions at our private executive salon.
+                    Direct consultations with Parag Doshi.
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Verbatim Company Text & Fiduciary Foundation */}
+            {/* Verbatim Company Text & Practice Foundation */}
             <div className="lg:col-span-5 flex flex-col justify-between bg-surface-container-low p-4 sm:p-5 lg:p-6 rounded-xl shadow-xs border border-surface-container mt-4 lg:mt-0">
               <div className="flex flex-col gap-2.5 sm:gap-3">
                 <div className="flex items-center justify-between">
@@ -107,13 +107,13 @@ export default function AboutPage({ onOpenSchedule }) {
                   Guiding capital with deliberate rigor and client-aligned precision.
                 </div>
                 
-                {/* Exact Verbatim Company Quote */}
+                {/* Company Story */}
                 <blockquote className="text-xs sm:text-sm text-on-surface-variant leading-relaxed bg-surface p-3 sm:p-3.5 rounded-lg shadow-xs border-l-3 border-primary italic">
-                  “Orange Enterprise is your trusted partner in navigating the complex world of wealth management. Based in Mumbai, we specialize in tailor-made financial strategies that cater to your unique goals and aspirations. Our experienced team is dedicated to enhancing your financial journey, ensuring that every decision is aligned with your vision for the future. Together, we will build a secure financial legacy that stands the test of time.”
+                  “Orange Enterprise is a Mumbai-based mutual fund distribution practice founded by Parag Doshi in 2022. We work with a select number of families, business owners and senior professionals. Every client works directly with Parag, from the first conversation to every review.”
                 </blockquote>
                 
                 <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                  Every client journey begins with intensive listening. We reject standardized asset models in favor of rigorous portfolio mapping that considers generational transition, risk liquidity, and wealth sustainability.
+                  Our approach is simple. We understand your goals and how much risk you are comfortable with, suggest mutual fund schemes suited to you, and review them with you regularly. No churning, and no chasing short-term market moves.
                 </p>
               </div>
 
@@ -138,10 +138,10 @@ export default function AboutPage({ onOpenSchedule }) {
                 Guiding Foundations
               </span>
               <h2 className="text-xl sm:text-2xl text-on-surface mt-1 font-bold">
-                Core Tenets of Our Wealth Practice
+                Core Tenets of Our Practice
               </h2>
               <p className="text-xs sm:text-sm text-on-surface-variant max-w-2xl mt-0.5">
-                Three pillar principles that govern every recommendation, asset review, and fiduciary relationship.
+                Three pillar principles that govern every recommendation, scheme review, and client relationship.
               </p>
             </div>
 
@@ -207,7 +207,7 @@ export default function AboutPage({ onOpenSchedule }) {
                     Transparency & Integrity
                   </h3>
                   <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                    Strict ARN 83312 compliance and unwavering fiduciary dedication. Every product recommendation undergoes unbiased due diligence with total disclosure of fee structures and risks.
+                    Strict ARN-83312 compliance and client-first commitment. Every scheme recommendation undergoes disciplined due diligence with complete transparency on commissions and risks.
                   </p>
                 </div>
                 <div className="mt-3 pt-2 flex items-center gap-1 text-xs text-primary font-semibold">
@@ -223,40 +223,40 @@ export default function AboutPage({ onOpenSchedule }) {
         </div>
       </section>
 
-      {/* Section 3: Leadership, Advisory Network & Fiduciary Infrastructure */}
+      {/* Section 3: Leadership & Practice Infrastructure */}
       <section className="w-full bg-surface py-8 sm:py-12 lg:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
-            {/* Left: Leadership Focus and Wealth Works Alliance */}
+            {/* Left: Leadership Focus */}
             <div className="lg:col-span-6 flex flex-col gap-3">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
                 <span className="text-[11px] uppercase tracking-widest text-primary font-bold">
-                  LEADERSHIP & NETWORK
+                  LEADERSHIP
                 </span>
               </div>
 
               <h2 className="text-xl sm:text-2xl text-on-surface leading-snug font-bold">
-                Institutional stewardship in association with Wealth Works.
+                Personal guidance by Parag Doshi, FCA, FCS.
               </h2>
 
               <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed">
-                Orange Enterprise is anchored by executive leadership bringing decades of cumulative market experience. In formal association with <strong>Wealth Works</strong>, our advisory practice combines proprietary analytics, deep Mumbai market access, and tailored advisory mechanisms.
+                Parag has spent more than 25 years inside India's financial institutions, from mutual fund houses to research and corporate finance. That experience shapes how he works with clients today: carefully, patiently and with an eye on the long term.
               </p>
 
               {/* Executive Leadership Profile Card */}
               <div className="bg-surface-container-low p-4 rounded-xl shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-1 border border-surface-container">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-xs font-bold text-sm">
-                    OE
+                    PD
                   </div>
                   <div className="flex flex-col">
                     <span className="text-sm sm:text-base text-on-surface font-bold">
-                      Principal Advisor & Leadership
+                      Parag Doshi, FCA, FCS
                     </span>
                     <span className="text-xs text-on-surface-variant">
-                      Wealth Works Association • ARN 83312
+                      Founder and CEO, Orange Enterprise • ARN-83312
                     </span>
                     <span className="text-[10px] text-primary mt-0.5 uppercase tracking-wider font-semibold">
                       Mumbai, Maharashtra, India
@@ -266,7 +266,7 @@ export default function AboutPage({ onOpenSchedule }) {
 
                 <a 
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-inverse-surface text-inverse-on-surface hover:bg-on-background transition-colors rounded-lg text-xs shrink-0 shadow-xs font-semibold" 
-                  href="http://www.linkedin.com/in/pbd09" 
+                  href="https://linkedin.com/in/pbd09" 
                   rel="noopener noreferrer" 
                   target="_blank"
                 >
@@ -287,14 +287,14 @@ export default function AboutPage({ onOpenSchedule }) {
                 </div>
                 <div className="flex items-center gap-1.5 text-on-surface-variant">
                   <span className="material-symbols-outlined text-[16px] text-primary">mail</span>
-                  <a className="hover:text-on-surface transition-colors font-semibold text-on-surface" href="mailto:wlthwrks@gmail.com">
-                    wlthwrks@gmail.com
+                  <a className="hover:text-on-surface transition-colors font-semibold text-on-surface" href="mailto:parag@[domain].in">
+                    parag@[domain].in
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Right: Operational Salon Hours & Location */}
+            {/* Right: Operational Hours & Location */}
             <div className="lg:col-span-6 flex flex-col gap-3 mt-4 lg:mt-0">
               <div className="bg-surface-container-low p-4 sm:p-5 rounded-xl shadow-xs flex flex-col gap-3 border border-surface-container">
                 <div className="flex items-center justify-between pb-2 border-b border-surface-container">
@@ -303,7 +303,7 @@ export default function AboutPage({ onOpenSchedule }) {
                       Location & Desk Availability
                     </span>
                     <span className="text-sm sm:text-base text-on-surface font-bold">
-                      Advisory Desk Schedule
+                      Mumbai Desk Schedule
                     </span>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
@@ -330,14 +330,14 @@ export default function AboutPage({ onOpenSchedule }) {
                 {/* Geographic Marker */}
                 <div className="pt-1 flex flex-col gap-1">
                   <span className="text-[10px] uppercase text-on-surface-variant font-bold">
-                    Physical Salon & Registered Desk
+                    Registered Office & Meeting Location
                   </span>
                   <div className="flex items-start gap-1.5">
                     <span className="material-symbols-outlined text-primary text-[18px] mt-0.5">location_on</span>
                     <div className="flex flex-col text-xs text-on-surface">
                       <span className="font-semibold">Mumbai, Maharashtra, India</span>
                       <span className="text-[11px] text-on-surface-variant">
-                        Central financial nexus • Private meeting salon by confirmed appointment
+                        In-person meetings by appointment
                       </span>
                     </div>
                   </div>
@@ -345,10 +345,10 @@ export default function AboutPage({ onOpenSchedule }) {
 
                 <div className="pt-1 flex items-center">
                   <button
-                    onClick={() => onOpenSchedule('In-Person Salon Consultation')}
+                    onClick={() => onOpenSchedule('In-Person Meeting')}
                     className="inline-flex items-center gap-1 text-primary text-xs font-semibold hover:underline cursor-pointer"
                   >
-                    <span>Reserve a confidential consultation</span>
+                    <span>Reserve a conversation</span>
                     <span className="material-symbols-outlined text-[14px]">chevron_right</span>
                   </button>
                 </div>

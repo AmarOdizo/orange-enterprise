@@ -28,7 +28,7 @@ export default function App() {
 
   // Modals state
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
-  const [scheduleService, setScheduleService] = useState('General Advisory');
+  const [scheduleService, setScheduleService] = useState('Mutual Fund Consultation');
   const [intakeModalOpen, setIntakeModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalTopic, setLegalTopic] = useState('Privacy Policy');
@@ -58,7 +58,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [activePage]);
 
-  const handleOpenSchedule = (serviceName = 'General Advisory') => {
+  const handleOpenSchedule = (serviceName = 'Mutual Fund Consultation') => {
     setScheduleService(serviceName);
     setScheduleModalOpen(true);
   };

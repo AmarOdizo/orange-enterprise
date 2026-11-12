@@ -1,42 +1,31 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 
-// 7 Service nodes with 3D normalized coordinates orbiting the central OE sphere
-// Positioned to match the reference layout (Machine Learning, Generative AI, AI Ethics, Computer Vision, NLP, Prompt Eng, Deep Learning)
+// 5 Service nodes orbiting the central OE sphere (AMFI compliant)
 const SERVICE_NODES = [
   {
     id: 'mutual-funds',
     label: 'Mutual Funds',
-    coords: [-0.82, 0.78, 0.36], // Bottom-Left foreground (like Machine Learning)
+    coords: [-0.82, 0.68, 0.40],
   },
   {
-    id: 'sip-planning',
-    label: 'SIP & Wealth Planning',
-    coords: [-0.18, 0.92, 0.42], // Bottom-Center foreground (like Generative AI)
-  },
-  {
-    id: 'portfolio-advisory',
-    label: 'Portfolio Advisory',
-    coords: [0.74, 0.82, 0.34], // Bottom-Right foreground (like AI Ethics)
-  },
-  {
-    id: 'life-health',
-    label: 'Life & Health Cover',
-    coords: [0.92, -0.36, 0.32], // Mid-Right foreground (like Computer Vision)
+    id: 'sip',
+    label: 'SIP',
+    coords: [0.78, 0.72, 0.38],
   },
   {
     id: 'retirement',
-    label: 'Retirement Planning',
-    coords: [0.02, -0.94, -0.32], // Top background (like NLP)
+    label: 'Retirement',
+    coords: [-0.85, -0.42, 0.28],
   },
   {
-    id: 'wealth-architecture',
-    label: 'Wealth Architecture',
-    coords: [-0.94, -0.16, -0.34], // Mid-Left background (like Prompt Engineering)
+    id: 'portfolio-reviews',
+    label: 'Portfolio Reviews',
+    coords: [0.82, -0.38, -0.32],
   },
   {
-    id: 'tax-optimization',
-    label: 'Tax Optimization',
-    coords: [0.52, 0.12, -0.42], // Inside-Right background (like Deep Learning)
+    id: 'business-finance',
+    label: 'Business Finance',
+    coords: [0.05, -0.92, -0.36],
   },
 ];
 

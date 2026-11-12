@@ -83,7 +83,7 @@ export default function AdminDeskModal({ isOpen, onClose }) {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base sm:text-lg font-bold text-on-surface">
-                  Advisory Desk Portal
+                  Orange Enterprise Portal
                 </h2>
                 <span className="px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-[10px] font-bold">
                   ARN 83312
@@ -242,7 +242,7 @@ export default function AdminDeskModal({ isOpen, onClose }) {
                           {item.name || 'Anonymous Client'}
                         </span>
                         <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#FD6702]/15 text-[#FD6702]">
-                          {item.service || 'Advisory'}
+                          {item.service || 'Mutual Funds'}
                         </span>
                       </div>
 
@@ -420,7 +420,7 @@ export default function AdminDeskModal({ isOpen, onClose }) {
 
         {/* Modal Footer */}
         <div className="pt-3 border-t border-surface-container flex items-center justify-between text-xs text-on-surface-variant">
-          <span>🔒 Local storage cache • AMFI compliant fiduciary confidentiality</span>
+          <span>🔒 Local storage cache • AMFI ARN-83312 client confidentiality</span>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-lg bg-inverse-surface text-inverse-on-surface font-semibold hover:bg-black transition-colors cursor-pointer"

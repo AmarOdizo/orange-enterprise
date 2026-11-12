@@ -9,7 +9,7 @@ export default function IntakeModal({ isOpen, onClose }) {
     primaryGoal: 'Long-Term Capital Compounding & Legacy',
     riskAppetite: 'Balanced Growth (Tactical Equity + Debt Hedge)',
     timeHorizon: '5 to 10 Years',
-    currentAdvisory: 'Self-Managed / Direct Mutual Funds',
+    currentManagement: 'Self-Managed / Direct Mutual Funds',
     additionalDetails: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -69,11 +69,11 @@ export default function IntakeModal({ isOpen, onClose }) {
               Intake Profile Transmitted
             </h3>
             <p className="text-xs sm:text-sm text-[#161C25]/75 max-w-md leading-relaxed">
-              Thank you, <strong className="text-[#161C25]">{formData.name}</strong>. Your confidential wealth diagnostic profile ({formData.assetBracket} bracket) has been securely delivered to our Mumbai senior advisory desk.
+              Thank you, <strong className="text-[#161C25]">{formData.name}</strong>. Your profile ({formData.assetBracket} bracket) has been securely delivered to Parag Doshi.
             </p>
             <div className="mt-2 inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#FFF4E8] border border-[#E8D5C2] rounded-full text-xs text-[#161C25] font-bold">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Encrypted Dossier • AMFI ARN 83312 • Mumbai Financial Center</span>
+              <span>Confidential • AMFI-registered MFD ARN-83312 • Mumbai</span>
             </div>
           </div>
         ) : (
@@ -88,14 +88,14 @@ export default function IntakeModal({ isOpen, onClose }) {
               <div>
                 <div className="flex items-center gap-2">
                   <h2 className="text-base sm:text-lg font-black text-[#161C25] tracking-tight">
-                    Client Advisory Intake Questionnaire
+                    Client Intake Questionnaire
                   </h2>
                   <span className="px-2 py-0.5 rounded-full bg-[#161C25] text-white text-[10px] font-bold">
-                    ARN 83312
+                    ARN-83312
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-[#161C25]/60 mt-0.5">
-                  Confidential preliminary diagnostic for private wealth and institutional mandates.
+                  Preliminary diagnostic for mutual fund distribution and portfolio guidance.
                 </p>
               </div>
             </div>
@@ -174,14 +174,14 @@ export default function IntakeModal({ isOpen, onClose }) {
                               account_balance
                             </span>
                             <select
-                              value={formData.currentAdvisory}
-                              onChange={(e) => setFormData({ ...formData, currentAdvisory: e.target.value })}
+                              value={formData.currentManagement}
+                              onChange={(e) => setFormData({ ...formData, currentManagement: e.target.value })}
                               className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
                             >
                               <option value="Self-Managed / Direct Mutual Funds">Self-Managed / Direct MF</option>
                               <option value="Bank Wealth Desk / Relationship Manager">Bank RM / Traditional Broker</option>
-                              <option value="Discretionary PMS / AIF">Existing PMS / AIF Account</option>
-                              <option value="Family Office / Multi-Advisor">Family Office / Multi-Advisor</option>
+                              <option value="Existing PMS / AIF Account">Existing PMS / AIF Account</option>
+                              <option value="Family Office / Other Distributor">Family Office / Other Distributor</option>
                             </select>
                               <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[17px] leading-none select-none flex items-center justify-center">
                                 expand_more
@@ -218,7 +218,7 @@ export default function IntakeModal({ isOpen, onClose }) {
 
                         <div className="flex flex-col gap-1">
                           <label className="text-[11px] font-bold text-[#161C25]">
-                            <span>Primary Fiduciary Mandate</span>
+                            <span>Primary Investment Goal</span>
                           </label>
                               <div className="relative flex items-center">
                                 <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[17px] leading-none select-none flex items-center justify-center">
@@ -321,10 +321,10 @@ export default function IntakeModal({ isOpen, onClose }) {
                                 </button>
                               </div>
 
-                              {/* Privacy & Fiduciary Compliance Footer */}
+                              {/* Privacy & Compliance Footer */}
                               <div className="flex items-center justify-center gap-1.5 text-[10px] text-[#161C25]/55 text-center">
                                 <span className="material-symbols-outlined text-[13px] text-emerald-600">lock</span>
-                                <span>Confidential Fiduciary Disclosure • AMFI ARN 83312 • 256-bit Encrypted Handling</span>
+                                <span>Confidential Submission • Parag Doshi • AMFI-registered MFD ARN-83312</span>
                               </div>
 
                             </form>
