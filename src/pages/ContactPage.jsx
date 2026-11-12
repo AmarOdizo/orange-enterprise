@@ -7,9 +7,11 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
+    city: '',
     topic: 'Mutual fund investments',
     message: '',
-    consent: true
+    consent: true,
+    website: '' // honeypot
   });
 
   const [errors, setErrors] = useState({});
@@ -24,19 +26,24 @@ export default function ContactPage() {
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
-      errs.email = 'Please provide a valid corporate or personal email.';
+      errs.email = 'Please provide a valid email.';
     }
     if (!formData.phone.trim()) {
       errs.phone = 'Please enter a reachable contact number.';
     }
     if (!formData.consent) {
-      errs.consent = 'Consent is required to process client submissions under regulatory protocols.';
+      errs.consent = 'Consent is required to submit your enquiry.';
     }
     return errs;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.website) {
+      // Spam detected via honeypot
+      setIsSubmitted(true);
+      return;
+    }
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
@@ -73,9 +80,11 @@ export default function ContactPage() {
         name: '',
         email: '',
         phone: '',
+        city: '',
         topic: 'Mutual fund investments',
         message: '',
-        consent: true
+        consent: true,
+        website: ''
       });
     }, 700);
   };
@@ -318,7 +327,7 @@ export default function ContactPage() {
                     <div className="flex flex-col">
                       <span className="font-bold text-emerald-900 text-sm sm:text-base">Inquiry Successfully Sent</span>
                       <span className="text-emerald-700 mt-0.5 leading-relaxed">
-                        Thank you for reaching out to Orange Enterprise. Parag Doshi will connect with you shortly.
+                        Thank you. Parag will get back to you within one working day.
                       </span>
                     </div>
                   </div>
@@ -326,6 +335,16 @@ export default function ContactPage() {
 
                 {/* Clean, Tactile Form */}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+                  {/* Honeypot field (hidden from real users) */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    style={{ display: 'none' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
 
                   {/* Row 1: Full Name & Phone Number */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -388,7 +407,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Row 2: Email Address & Topic */}
+                  {/* Row 2: Email Address & City */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div className="flex flex-col gap-1">
                       <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-email">
@@ -420,34 +439,55 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-topic">
-                        <span>How can Parag help?</span>
-                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Topic</span>
+                      <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-city">
+                        <span>City</span>
+                        <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Location</span>
                       </label>
                       <div className="relative flex items-center">
                         <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
-                          account_balance_wallet
+                          location_city
                         </span>
-                        <select
-                          id="input-topic"
-                          value={formData.topic}
-                          onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                          className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
-                        >
-                          <option value="Mutual fund investments">Mutual fund investments</option>
-                          <option value="Investing for retirement or goals">Investing for retirement or goals</option>
-                          <option value="Portfolio review">Portfolio review</option>
-                          <option value="Business finance consulting">Business finance consulting</option>
-                          <option value="Something else">Something else</option>
-                        </select>
-                        <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
-                          expand_more
-                        </span>
+                        <input
+                          id="input-city"
+                          type="text"
+                          value={formData.city}
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                          placeholder="e.g. Mumbai"
+                          className="w-full pl-11 pr-3.5 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] placeholder:text-[#161C25]/35 focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs"
+                        />
                       </div>
                     </div>
                   </div>
 
-                  {/* Row 3: Message Textarea */}
+                  {/* Row 3: "I'm interested in" Dropdown */}
+                  <div className="flex flex-col gap-1">
+                    <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-topic">
+                      <span>I'm interested in</span>
+                      <span className="text-[10px] text-[#161C25]/45 uppercase font-medium">Topic</span>
+                    </label>
+                    <div className="relative flex items-center">
+                      <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                        account_balance_wallet
+                      </span>
+                      <select
+                        id="input-topic"
+                        value={formData.topic}
+                        onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                        className="w-full pl-11 pr-9 h-10 rounded-xl border border-[#E8D5C2] bg-white text-xs sm:text-sm text-[#161C25] focus:outline-none focus:border-[#FD6702] focus:ring-2 focus:ring-[#FD6702]/20 transition-all shadow-2xs appearance-none cursor-pointer truncate"
+                      >
+                        <option value="Mutual fund investments">Mutual fund investments</option>
+                        <option value="Investing for retirement or goals">Investing for retirement or goals</option>
+                        <option value="Portfolio review">Portfolio review</option>
+                        <option value="Business finance consulting">Business finance consulting</option>
+                        <option value="Something else">Something else</option>
+                      </select>
+                      <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#161C25]/45 text-[18px] leading-none select-none flex items-center justify-center">
+                        expand_more
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Row 4: Message Textarea */}
                   <div className="flex flex-col gap-1">
                     <label className="text-[11px] font-bold text-[#161C25] flex items-center justify-between" htmlFor="input-message">
                       <span className="inline-flex items-center gap-1.5">
@@ -479,7 +519,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex flex-col">
                       <label className="text-[11px] text-[#161C25]/80 cursor-pointer select-none leading-snug" htmlFor="input-consent">
-                        I authorize Orange Enterprise to contact me regarding mutual fund investments and financial consulting under AMFI ARN-83312 guidelines. <span className="text-[#FD6702] font-bold">*</span>
+                        I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the <a href="#privacy" className="underline hover:text-[#FD6702] font-semibold">Privacy Policy</a>. <span className="text-[#FD6702] font-bold">*</span>
                       </label>
                       {errors.consent && (
                         <span className="text-[10px] text-red-600 font-semibold mt-0.5">{errors.consent}</span>
@@ -498,7 +538,7 @@ export default function ContactPage() {
                         <span>Sending...</span>
                       ) : (
                         <>
-                          <span>Send message</span>
+                          <span>Request a call</span>
                           <span className="material-symbols-outlined text-[17px]">send</span>
                         </>
                       )}

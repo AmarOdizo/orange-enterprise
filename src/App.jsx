@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import AdminPage from './pages/AdminPage';
+import DisclaimerPage from './pages/DisclaimerPage';
+import PrivacyPage from './pages/PrivacyPage';
 import ScheduleModal from './components/ScheduleModal';
 import IntakeModal from './components/IntakeModal';
 import LegalModal from './components/LegalModal';
@@ -13,11 +15,15 @@ import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import AdminDeskModal from './components/AdminDeskModal';
 
-const VALID_PAGES = ['home', 'about', 'services', 'contact', 'admin', 'insights', 'parag', 'how-we-work'];
+const VALID_PAGES = ['home', 'about', 'services', 'contact', 'admin', 'insights', 'parag', 'how-we-work', 'disclaimer', 'privacy'];
 
 export default function App() {
   const [activePage, setActivePageState] = useState(() => {
     if (typeof window !== 'undefined') {
+      const path = window.location.pathname.replace(/^\//, '').toLowerCase();
+      if (VALID_PAGES.includes(path)) {
+        return path;
+      }
       const hash = window.location.hash.replace('#', '').toLowerCase();
       if (VALID_PAGES.includes(hash)) {
         return hash;
@@ -149,6 +155,20 @@ export default function App() {
           <ContactPage 
             onOpenSchedule={handleOpenSchedule}
             onOpenIntake={handleOpenIntake}
+          />
+        )}
+
+        {activePage === 'disclaimer' && (
+          <DisclaimerPage 
+            setActivePage={setActivePage}
+            onOpenSchedule={handleOpenSchedule}
+          />
+        )}
+
+        {activePage === 'privacy' && (
+          <PrivacyPage 
+            setActivePage={setActivePage}
+            onOpenSchedule={handleOpenSchedule}
           />
         )}
 

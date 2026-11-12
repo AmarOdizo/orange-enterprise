@@ -31,6 +31,52 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     rel="stylesheet" />
+  <!-- Structured Data: LocalBusiness & Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://orangeenterprise.in/#organization",
+        "name": "Orange Enterprise",
+        "legalName": "Orange Enterprise",
+        "description": "AMFI-registered Mutual Fund Distributor (ARN-83312) in Mumbai, offering disciplined mutual fund investments for families, business owners, and senior professionals.",
+        "url": "https://orangeenterprise.in",
+        "telephone": "+919820433220",
+        "email": "parag@[domain].in",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mumbai",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/pbd09"
+        ],
+        "founder": {
+          "@id": "https://orangeenterprise.in/#parag-doshi"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://orangeenterprise.in/#parag-doshi",
+        "name": "Parag Doshi",
+        "jobTitle": "Founder and CEO",
+        "worksFor": {
+          "@id": "https://orangeenterprise.in/#organization"
+        },
+        "alumniOf": "University of Mumbai",
+        "hasCredential": [
+          "Fellow Chartered Accountant (FCA) - ICAI",
+          "Fellow Company Secretary (FCS) - ICSI",
+          "CFA Institute Investment Foundations Program"
+        ],
+        "sameAs": "https://linkedin.com/in/pbd09"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">

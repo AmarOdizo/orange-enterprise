@@ -10,22 +10,49 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
     name: '',
     email: '',
     phone: '',
+    city: '',
+    topic: 'Mutual fund investments',
     message: '',
-    consent: false
+    consent: false,
+    website: '' // honeypot
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.website) {
+      // Spam detected via honeypot
+      setFormSubmitted(true);
+      return;
+    }
+    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
+      setFormError('Please fill in all required fields (Name, Email, Phone).');
+      return;
+    }
+    if (!formData.consent) {
+      setFormError('Please accept the consent checkbox to submit your inquiry.');
+      return;
+    }
+
+    setFormError('');
     try {
       const existing = JSON.parse(localStorage.getItem('oe_inquiries') || '[]');
-      localStorage.setItem('oe_inquiries', JSON.stringify([...existing, { ...formData, source: 'Home Page Inquiry', submittedAt: new Date().toISOString() }]));
+      localStorage.setItem('oe_inquiries', JSON.stringify([
+        ...existing, 
+        { 
+          ...formData, 
+          subject: formData.topic,
+          source: 'Home Page Inquiry', 
+          submittedAt: new Date().toISOString() 
+        }
+      ]));
     } catch {
       // ignore
     }
     setFormSubmitted(true);
     setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', message: '', consent: false });
+      setFormData({ name: '', email: '', phone: '', city: '', topic: 'Mutual fund investments', message: '', consent: false, website: '' });
     }, 4000);
   };
 
@@ -107,7 +134,7 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                     FCA · FCS
                   </span>
                   <span className="text-[9px] sm:text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
-                    CA & CS
+                    Chartered Accountant, Company Secretary
                   </span>
                 </div>
 
@@ -116,7 +143,7 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                     JM · Zurich · CRISIL
                   </span>
                   <span className="text-[9px] sm:text-[10px] text-[#161C25]/70 uppercase font-semibold mt-0.5">
-                    Leadership Roles
+                    Former leadership roles
                   </span>
                 </div>
 
@@ -849,42 +876,37 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
               </div>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                {/* Name Field */}
-                <div className="flex flex-col">
-                  <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-name">
-                    Name <span className="text-error">*</span>
-                  </label>
-                  <input
-                    id="home-contact-name"
-                    required
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Vikram Malhotra"
-                    className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary-container transition-all"
-                  />
-                </div>
+                {/* Honeypot anti-spam field (hidden from real users) */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
 
-                {/* Email & Phone Grid */}
+                {/* Row 1: Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex flex-col">
-                    <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-email">
-                      Email address <span className="text-error">*</span>
+                    <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-name">
+                      Name <span className="text-error font-bold text-[#FD6702]">*</span>
                     </label>
                     <input
-                      id="home-contact-email"
+                      id="home-contact-name"
                       required
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="v.malhotra@domain.com"
-                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary-container transition-all"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="e.g. Anand Mahindra"
+                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all border border-surface-container"
                     />
                   </div>
 
                   <div className="flex flex-col">
                     <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-phone">
-                      Phone number <span className="text-error">*</span>
+                      Phone <span className="text-error font-bold text-[#FD6702]">*</span>
                     </label>
                     <input
                       id="home-contact-phone"
@@ -892,13 +914,64 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+91 98000 00000"
-                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary-container transition-all"
+                      placeholder="+91 98204 33220"
+                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all border border-surface-container"
                     />
                   </div>
                 </div>
 
-                {/* Message Field */}
+                {/* Row 2: Email & City */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="flex flex-col">
+                    <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-email">
+                      Email <span className="text-error font-bold text-[#FD6702]">*</span>
+                    </label>
+                    <input
+                      id="home-contact-email"
+                      required
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="name@example.com"
+                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all border border-surface-container"
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-city">
+                      City
+                    </label>
+                    <input
+                      id="home-contact-city"
+                      type="text"
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                      placeholder="e.g. Mumbai"
+                      className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all border border-surface-container"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 3: "I'm interested in" Dropdown */}
+                <div className="flex flex-col">
+                  <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-topic">
+                    I'm interested in
+                  </label>
+                  <select
+                    id="home-contact-topic"
+                    value={formData.topic}
+                    onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
+                    className="w-full h-9 sm:h-10 px-3 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all border border-surface-container cursor-pointer"
+                  >
+                    <option value="Mutual fund investments">Mutual fund investments</option>
+                    <option value="Investing for retirement or goals">Investing for retirement or goals</option>
+                    <option value="Portfolio review">Portfolio review</option>
+                    <option value="Business finance consulting">Business finance consulting</option>
+                    <option value="Something else">Something else</option>
+                  </select>
+                </div>
+
+                {/* Row 4: Message Field */}
                 <div className="flex flex-col">
                   <label className="text-xs text-on-surface mb-1 font-semibold" htmlFor="home-contact-msg">
                     Message
@@ -909,7 +982,7 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Share your goals or questions..."
-                    className="w-full p-2.5 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary-container transition-all resize-none"
+                    className="w-full p-2.5 rounded-md bg-surface-container-low text-on-surface text-xs sm:text-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-[#FD6702] transition-all resize-none border border-surface-container"
                   ></textarea>
                 </div>
 
@@ -921,17 +994,25 @@ export default function HomePage({ _setActivePage, onOpenSchedule, _onOpenIntake
                     type="checkbox"
                     checked={formData.consent}
                     onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                    className="mt-0.5 h-3.5 w-3.5 rounded accent-primary cursor-pointer"
+                    className="mt-0.5 h-3.5 w-3.5 rounded accent-[#FD6702] cursor-pointer"
                   />
                   <label className="text-[11px] text-on-surface-variant cursor-pointer leading-tight" htmlFor="home-consent-check">
-                    I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the Privacy Policy. <span className="text-error">*</span>
+                    I agree that Orange Enterprise may store my details to respond to my enquiry, as described in the <a href="#privacy" className="underline hover:text-[#FD6702] font-semibold">Privacy Policy</a>. <span className="text-[#FD6702] font-bold">*</span>
                   </label>
                 </div>
 
+                {/* Error Banner */}
+                {formError && (
+                  <div className="p-2.5 rounded-md bg-red-50 text-red-700 flex items-center gap-2 border border-red-200 text-xs">
+                    <span className="material-symbols-outlined text-[16px] text-red-600">error</span>
+                    <span>{formError}</span>
+                  </div>
+                )}
+
                 {/* Submission Success Banner */}
                 {formSubmitted && (
-                  <div className="p-2.5 rounded-md bg-surface-container text-on-surface flex items-center gap-2 border border-primary/20 text-xs">
-                    <span className="material-symbols-outlined text-primary-container text-[18px]">check_circle</span>
+                  <div className="p-3 rounded-md bg-emerald-50 text-emerald-800 flex items-center gap-2 border border-emerald-200 text-xs">
+                    <span className="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
                     <span className="font-semibold">
                       Thank you. Parag will get back to you within one working day.
                     </span>

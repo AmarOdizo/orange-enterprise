@@ -27,14 +27,15 @@ export default function AboutPage({ onOpenSchedule }) {
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-4xl text-on-surface tracking-tight leading-tight max-w-3xl font-extrabold">
-                Empower your wealth through{' '}
+                Disciplined investing,{' '}
                 <span className="text-primary-container underline decoration-primary-fixed decoration-2 underline-offset-4">
-                  strategic discipline
-                </span>.
+                  guided by 25 years
+                </span>{' '}
+                of experience.
               </h1>
 
               <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant max-w-2xl leading-relaxed">
-                Institutional caliber private wealth planning and capital guidance tailored for high-net-worth families, entrepreneurs, and visionary investors across India.
+                Mutual fund investments for families, business owners and senior professionals in Mumbai, handled personally by Parag Doshi, FCA, FCS.
               </p>
             </div>
 
